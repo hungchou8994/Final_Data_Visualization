@@ -148,6 +148,11 @@ with st.container():
     if st.button("Download images"):
         # List all image files in the folder
         image_files = [f for f in os.listdir(export_folder) if f.endswith(('.png', '.jpg', '.jpeg'))]
+
+        # Display available images
+        st.write("Images available for download:")
+        for image in image_files:
+            st.write(image)
         
         # Create a zip file in memory
         zip_buffer = io.BytesIO()
