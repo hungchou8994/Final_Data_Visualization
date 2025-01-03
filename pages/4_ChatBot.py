@@ -91,8 +91,6 @@ with st.container():
         img_file_buffer = st.file_uploader("Upload an image", type=["png", "jpg", "jpeg"], accept_multiple_files=True)
         user_input = st.chat_input("Ask me ><:")
 
-        pdf_buffer = None
-
         if user_input:
             st.write("Input")
             # Create PDF in memory
@@ -193,13 +191,15 @@ with st.container():
             c.save()
             pdf_buffer.seek(0)
 
-        # Provide Download Button
-        st.download_button(
-            label="Download PDF",
-            data=pdf_buffer,
-            file_name="output.pdf",
-            mime="application/pdf"
-        )
+            st.write("Done")
+
+            # Provide Download Button
+            st.download_button(
+                label="Download PDF",
+                data=pdf_buffer,
+                file_name="output.pdf",
+                mime="application/pdf"
+            )
 
 # export_folder = os.path.join(os.getcwd(), "exports")
 # sdf = SmartDataframe(data, config={"save_charts": True, "save_charts_path": export_folder, "verbose": True, "response_parser": StreamlitResponse, "custom_whitelisted_dependencies": ["to_numeric"]})
