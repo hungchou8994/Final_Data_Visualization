@@ -1,0 +1,50 @@
+1. Giới thiệu về bài báo cáo.
+  - Lý do chọn đề tài
+  - Mục tiêu nghiên cứu
+  - Dữ liệu sử dụng
+  - Công cụ sử dụng
+
+2. Giới thiệu về bộ dataset.
+  - Nguồn gốc
+  - Các biến trong dataset
+  - Kích thước và phạm vi của dataset
+  - Các vấn đề liên quan đến dataset
+
+3. Xử lý dữ liệu.
+  - Tiền xử lý dữ liệu
+  - Chuyển đổi dữ liệu
+  - Khám phá dữ liệu
+  - Kiểm tra tính hợp lệ của dữ liệu
+
+4. Phân tích và trực quan hóa dữ liệu.
+4.1. Dash 1: Xu hướng tai nạn theo tời gian và địa điểm.
+  - Đặt vấn đề
+  - Xu hướng số vụ tai nạn theo tháng
+  - Xu hướng số vụ tai nạn theo ngày
+  - Xu hướng số vụ tai nạn theo giờ
+  - Nhận xét tổng quan
+
+4.2. Dash 2: Phân tích đa chiều về tai nạn giao thông và đánh giá các yếu tố rủi ro.
+  - Đặt vấn đề
+  - Phân loại và đánh giá các nguyên nhân phổ biến
+  - So sánh tỷ lệ tai nạn trong các điều kiện thời tiết khác nhau.
+  - Xác định loại đường nguy hiểm
+  - Đánh giá mức độ rủi ro theo phương tiện và địa lý
+  - Nhận xét tổng quan
+
+4.3. Dash 3: Tác động của tai nạn giao thông theo khu vực và phương tiện.
+  - Đặt vấn đề
+  - So sánh thiệt hại về người giữa các khu vực
+  - Phân tích thiệt hại theo quận/huyện
+  - Xác định phương tiện gay ra thiệt hại lớn
+  - Phân tích rủi ro liên quan đến từng loại phương tiện
+  - Nhận xét tổng quan
+
+5. Kết luận và đề xuất.
+  - Đưa ra những gợi ý hoặc chiến lược ứng dụng kết quà từ nghiên cứu vào thực tế
+
+6. Giới hạn của nghiên cứu.
+  - Các yếu tố có thể ảnh hưởng đến kết quả
+  - Các phương pháp nghiên cứu khác có thể được áp dụng
+
+7. Tài liệu tham khảo.

@@ -38,3 +38,4 @@ numba==0.58.1
 requests>=2.27
 toml>=0.10.1
 seaborn
+zipfile
