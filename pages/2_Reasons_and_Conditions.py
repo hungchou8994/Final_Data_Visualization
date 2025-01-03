@@ -195,7 +195,7 @@ with chart_col1.container():
             x=1, y=1,  # Position the legend to the right of the chart
             showarrow=False,
             align="left",
-            font=dict(size=12),
+            font=dict(size=9),
             bgcolor="rgba(255, 255, 255, 0.8)",  # Add background color
             bordercolor="black",
             borderwidth=1.5
