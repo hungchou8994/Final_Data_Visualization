@@ -131,8 +131,7 @@ with st.container():
 
     if config_file is not None:
         # Open and read the JSON file
-        with open(config_file, 'r', encoding='utf-8') as file:
-            data = json.load(file)  # Parse JSON data into a Python dictionary
+        data = json.load(config_file)
 
         report_name = data["Report Name"]
         reporter_name = data["Reporter Name"]
