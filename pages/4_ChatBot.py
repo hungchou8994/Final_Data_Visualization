@@ -125,6 +125,8 @@ with st.container():
                 except Exception as e:
                     st.error(f"Lỗi xử lý hình ảnh: {e}")
 
+export_folder = os.path.join(os.getcwd(), "exports")
+sdf = SmartDataframe(data, config={"save_charts": True, "save_charts_path": export_folder, "verbose": True, "response_parser": StreamlitResponse, "custom_whitelisted_dependencies": ["to_numeric"]})
 with st.container():
     # File uploader widget to upload a CSV file
     config_file = st.file_uploader("Upload your config file", type=["json"])
@@ -160,6 +162,7 @@ with st.container():
             response = sdf.chat(translated_input)
 
             image_files = [f for f in os.listdir(export_folder) if f.endswith(('.png', '.jpg', '.jpeg'))]
+            st.write(image_files)
 
             if image_files:
                 image_path = os.path.join(export_folder, image_files[0])
