@@ -164,7 +164,7 @@ with st.container(border=False):
             yaxis_title='Số vụ tai nạn',
             font=dict(size=12),
             # width=900,
-            height=170
+            height=300
         )
 
         # Hiển thị trên Streamlit
@@ -205,7 +205,7 @@ with st.container(border=False):
             xaxis_title='Ngày',
             yaxis_title='Số vụ tai nạn',
             # width=900,  # Độ rộng biểu đồ
-            height=170,  # Chiều cao biểu đồ
+            height=300,  # Chiều cao biểu đồ
             font=dict(size=12)  # Kích thước font chữ
         )
 
