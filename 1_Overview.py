@@ -37,7 +37,7 @@ with st.sidebar.container():
     from_date_input = col1.date_input("Ngày bắt đầu", value="2020-01-01", min_value="2020-01-01", max_value="2021-12-31")
     to_date_input = col2.date_input("Ngày kết thúc", value="2021-12-31", min_value="2020-01-01", max_value="2021-12-31")
 
-district_input = st.sidebar.multiselect("Quận/Huyện", options=data['Quận/Huyện'].unique())
+district_input = st.sidebar.multiselect("Quận/Huyện", options=data['Quận/Huyện'].unique(), label_visibility="visible")
 road_type_input = st.sidebar.multiselect("Loại đường", options=data['Loại đường'].unique())
 weather_type_input = st.sidebar.multiselect("Tình trạng thời tiết", options=data['Tình trạng thời tiết'].unique())
 
