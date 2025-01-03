@@ -122,7 +122,7 @@ with st.container():
 
                     # Xử lý hình ảnh với API Ollama (LLaVA)
                     try:
-                        user_input = """As a professional Data Scientist, your task is write 200 words to analyze a given chart image and generate a comprehensive report. 
+                        user_input = """As a professional Data Scientist, your task is write a paragraph (about 400 characters) to analyze a given chart image and generate a comprehensive report. 
                             Begin by identifying the chart type (e.g., bar chart, line graph, scatter plot, pie chart, histogram) and briefly explain its purpose and what it conveys. 
                             Describe the axes, including the variables on the x-axis and y-axis, and note any important markers such as trends, categories, or data points. 
                             Analyze the overall data patterns, highlighting trends (e.g., increasing, decreasing), correlations between variables, and any visible clusters or groupings. 
@@ -153,18 +153,26 @@ with st.container():
                                 image.save(tmp_file, format="PNG")
                                 tmp_file_path = tmp_file.name
 
-                            c.drawImage(tmp_file_path, 100, 500, width=200, height=200)
+                            c.drawImage(tmp_file_path, x_position, y_position - 200, width=200, height=150)
                             # st.write(translator_ollava.translate(result['response']))
+
+                            # Giảm y_position sau khi thêm ảnh
+                            y_position -= 220
+
+                            text_object = c.beginText(x_position, y_position)
+                            text_object.setFont("Times-Roman", 12)
                             text_object.textLines(translator_ollava.translate(result['response']))
 
-                            y_position = text_object.getY()
+                            c.drawText(text_object)
+
+                            # Giảm y_position dựa trên nội dung đoạn văn
+                            y_position -= 50
 
                             # Nếu hết không gian trên trang, chuyển sang trang mới
                             if y_position < 100:
                                 c.showPage()  # Chuyển sang trang mới
-                                text_object = c.beginText(x_position, 750)  # Đặt lại vị trí y trên trang mới
                                 text_object.setFont("Times-Roman", 12)
-                                text_object.setTextOrigin(x_position, 750)
+                                y_position = 750
 
                             # c.drawString(100, 700, translator_ollava.translate(result['response']))
 
@@ -185,7 +193,7 @@ with st.container():
                         # st.write(res["response"])
                     except Exception as e:
                         st.error(f"Lỗi xử lý hình ảnh: {e}")
-            c.drawText(text_object)
+
             c.save()
             pdf_buffer.seek(0)
 
