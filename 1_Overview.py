@@ -246,7 +246,7 @@ with st.container(border=False):
             yaxis_title='Số vụ tai nạn',
             xaxis=dict(tickmode='linear', dtick=1),  # Hiển thị đầy đủ giờ
             # width=900,  # Độ rộng biểu đồ
-            height=170,  # Chiều cao biểu đồ
+            height=300,  # Chiều cao biểu đồ
             font=dict(size=12)  # Kích thước font chữ
         )
 
@@ -289,7 +289,7 @@ with st.container(border=False):
             xaxis_title='Số vụ tai nạn',
             yaxis_title='Quận/Huyện',
             # width=900,  # Độ rộng biểu đồ
-            height=170,  # Chiều cao biểu đồ
+            height=300,  # Chiều cao biểu đồ
             font=dict(size=12)  # Kích thước font chữ
         )
 
