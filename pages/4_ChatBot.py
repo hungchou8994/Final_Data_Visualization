@@ -73,12 +73,13 @@ with st.container():
     with col2.container(border=True):
         modelfile = f"""
             FROM llava
-            SYSTEM "Act as a professional Data Scientist capable of interpreting complex charts, graphs, and diagrams. For the given visualization:
-                    Describe the visualized data: Explain the axes, variables, and any key markers.
-                    Analyze trends and patterns: Identify relationships, peaks, dips, or significant changes.
-                    Highlight anomalies: Point out unusual data points or outliers.
-                    Derive conclusions: Summarize the main insights in a clear, actionable manner.
-                    Provide recommendations: Suggest potential actions or strategic decisions based on the findings."
+            SYSTEM "Act as a professional Data Scientist specializing in interpreting complex charts, graphs, and diagrams. For the given visualization:
+                    - Describe the visualized data: Identify the chart type (bar, line, scatter, etc.), explain the axes, variables, and any key markers, such as titles or legends.
+                    - Analyze trends and patterns: Observe the overall shape of the data. Identify relationships, correlations, peaks, troughs, and significant changes over time or between variables.
+                    - Highlight anomalies: Point out unusual data points or outliers. Suggest reasons for any unexpected results or data behaviors.
+                    - Derive conclusions: Summarize key insights from the chart and suggest actionable conclusions based on the visualized trends and patterns.
+                    - Provide recommendations: Suggest potential actions, strategic decisions, or areas for further analysis based on the findings. Highlight areas that require attention or optimization.
+                    - For specific types of charts (e.g., line graphs, scatter plots), analyze the distribution of data, clustering, trends over time, and the significance of extreme points."
             PARAMETER temperature 0.7
             """
 
@@ -98,18 +99,29 @@ with st.container():
 
                 # Xử lý hình ảnh với API Ollama (LLaVA)
                 try:
-
+                    user_input = """
+                        As a professional Data Scientist, your task is to analyze a given chart image and generate a comprehensive report. 
+                        Begin by identifying the chart type (e.g., bar chart, line graph, scatter plot, pie chart, histogram) and briefly explain its purpose and what it conveys. 
+                        Describe the axes, including the variables on the x-axis and y-axis, and note any important markers such as trends, categories, or data points. 
+                        Analyze the overall data patterns, highlighting trends (e.g., increasing, decreasing), correlations between variables, and any visible clusters or groupings. 
+                        Point out any anomalies or outliers, providing possible reasons for their occurrence, and discuss if any data points significantly deviate from the expected trend. 
+                        Summarize the main insights drawn from the chart, considering how the data aligns with or challenges expectations. 
+                        Based on your analysis, suggest actionable insights, potential decisions, or further areas for investigation. 
+                        Note important visual elements such as titles, labels, legends, and color usage, and provide comparisons if multiple datasets are presented. 
+                        Conclude with a concise summary of the key observations that support your conclusions and recommendations
+                    """
                     #####################################
                     # Gửi yêu cầu đến API Ollama
                     response = requests.post(
-                        "https://229e-115-78-15-156.ngrok-free.app/api/generate",
+                        "https://5921-116-110-40-71.ngrok-free.app/api/generate",
                         json={"modelfile": modelfile, "model": "llava", "prompt": user_input, "images":[img_base64], "stream": False}
                     )
+                    translator_ollava = Translator(to_lang="vi", from_lang="en")
                     
                     if response.status_code == 200:
                         result = response.json()
                         st.write("**Trả lời:**")
-                        st.write(result['response'])
+                        st.write(translator_ollava.translate(result['response']))
                     elif response.status_code == 403:
                         st.error("🚫 Forbidden: Check if the API endpoint requires authentication or IP whitelisting.")
                     elif response.status_code == 404:
