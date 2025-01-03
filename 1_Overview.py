@@ -8,7 +8,7 @@ file_path = 'data_dv.csv'  # Replace with your uploaded file path
 data = pd.read_csv(file_path)
 
 # Page configuration
-st.set_page_config(page_title="Overview", layout="wide", theme='light')
+st.set_page_config(page_title="Overview", layout="wide")
 
 # Tùy chỉnh CSS để đẩy Markdown sát trên cùng
 st.markdown(
