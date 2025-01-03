@@ -107,7 +107,7 @@ with st.container():
 
             # Tạo một đối tượng TextObject để chèn toàn bộ đoạn văn mà không cần dùng strip
             text_object = c.beginText(x_position, y_position)
-            text_object.setFont("Helvetica", 12)
+            text_object.setFont("Times-Roman", 12)
             text_object.setTextOrigin(x_position, y_position)
 
         # Hiển thị hình ảnh nếu người dùng tải lên
@@ -122,8 +122,7 @@ with st.container():
 
                     # Xử lý hình ảnh với API Ollama (LLaVA)
                     try:
-                        user_input = """
-                            As a professional Data Scientist, your task is write 200 words to analyze a given chart image and generate a comprehensive report. 
+                        user_input = """As a professional Data Scientist, your task is write 200 words to analyze a given chart image and generate a comprehensive report. 
                             Begin by identifying the chart type (e.g., bar chart, line graph, scatter plot, pie chart, histogram) and briefly explain its purpose and what it conveys. 
                             Describe the axes, including the variables on the x-axis and y-axis, and note any important markers such as trends, categories, or data points. 
                             Analyze the overall data patterns, highlighting trends (e.g., increasing, decreasing), correlations between variables, and any visible clusters or groupings. 
@@ -131,18 +130,16 @@ with st.container():
                             Summarize the main insights drawn from the chart, considering how the data aligns with or challenges expectations. 
                             Based on your analysis, suggest actionable insights, potential decisions, or further areas for investigation. 
                             Note important visual elements such as titles, labels, legends, and color usage, and provide comparisons if multiple datasets are presented. 
-                            Conclude with a concise summary of the key observations that support your conclusions and recommendations
-                        """
+                            Conclude with a concise summary of the key observations that support your conclusions and recommendations\n"""
 
                         # Duyệt qua tất cả các cột và dữ liệu
                         for col in data.columns:
-                            st.write(col)
                             user_input += f"{col}: {data[col].tolist()}\n"
 
                         #####################################
                         # Gửi yêu cầu đến API Ollama
                         response = requests.post(
-                            "https://db38-116-110-40-71.ngrok-free.app/api/generate",
+                            "https://aae8-115-78-15-156.ngrok-free.app/api/generate",
                             json={"modelfile": modelfile, "model": "llava", "prompt": user_input, "images":[img_base64], "stream": False}
                         )
                         translator_ollava = Translator(to_lang="vi", from_lang="en")
@@ -166,7 +163,7 @@ with st.container():
                             if y_position < 100:
                                 c.showPage()  # Chuyển sang trang mới
                                 text_object = c.beginText(x_position, 750)  # Đặt lại vị trí y trên trang mới
-                                text_object.setFont("Helvetica", 12)
+                                text_object.setFont("Times-Roman", 12)
                                 text_object.setTextOrigin(x_position, 750)
 
                             # c.drawString(100, 700, translator_ollava.translate(result['response']))
