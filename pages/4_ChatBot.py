@@ -161,6 +161,14 @@ with st.container():
 
             response = sdf.chat(translated_input)
 
+            # Check if the response contains an image path
+            if isinstance(response, str) and os.path.isfile(response):  # If it's an image path
+                image = Image.open(response)
+                st.image(image)
+            else:
+                # If the response isn't an image path, handle the output as text or other content
+                st.write(response)
+
             image_files = [f for f in os.listdir(export_folder) if f.endswith(('.png', '.jpg', '.jpeg'))]
             st.write(image_files)
 
