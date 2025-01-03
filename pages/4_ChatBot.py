@@ -92,6 +92,7 @@ with st.container():
         user_input = st.chat_input("Ask me ><:")
 
         if user_input:
+            st.write("Input")
             # Create PDF in memory
             pdf_buffer = BytesIO()
             c = canvas.Canvas(pdf_buffer, pagesize=letter)
@@ -140,7 +141,7 @@ with st.container():
                         #####################################
                         # Gửi yêu cầu đến API Ollama
                         response = requests.post(
-                            "https://9f62-115-78-15-156.ngrok-free.app/api/generate",
+                            "https://db38-116-110-40-71.ngrok-free.app/api/generate",
                             json={"modelfile": modelfile, "model": "llava", "prompt": user_input, "images":[img_base64], "stream": False}
                         )
                         translator_ollava = Translator(to_lang="vi", from_lang="en")
