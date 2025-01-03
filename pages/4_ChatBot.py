@@ -17,8 +17,6 @@ set_pd_engine("pandas")
 
 export_folder = os.path.join(os.getcwd(), "exports")
 
-st.write(export_folder)
-
 # Load data
 file_path = 'data_dv.csv'  # Replace with your uploaded file path
 data = pd.read_csv(file_path)
@@ -131,46 +129,53 @@ with st.container():
     # File uploader widget to upload a CSV file
     config_file = st.file_uploader("Upload your config file", type=["json"])
 
+    if 'Send_button' not in st.session_state:
+        st.session_state.send_button = False
+    
     if st.button("Send"):
-        if config_file is not None:
-            # Open and read the JSON file
-            data = json.load(config_file)
+        st.session_state.send_button = True
 
-            report_name = data["Report Name"]
-            reporter_name = data["Reporter Name"]
-            graph_lists_name = data['Graphs']
-            colors = data["Colors"]
+    if st.session_state.send_button and config_file is not None:
+        # Open and read the JSON file
+        data = json.load(config_file)
 
-            for index, graph in enumerate(graph_lists_name):
-                translated_graph_name = translator.translate(graph)
+        report_name = data["Report Name"]
+        reporter_name = data["Reporter Name"]
+        graph_lists_name = data['Graphs']
+        colors = data["Colors"]
 
-                translated_input = "Draw " + translated_graph_name + "with matplotlib and seaborn"
+        for index, graph in enumerate(graph_lists_name):
+            translated_graph_name = translator.translate(graph)
 
-                response = sdf.chat(translated_input)
+            translated_input = "Draw " + translated_graph_name + "with matplotlib and seaborn"
 
-    if st.button("Download images"):
-        # List all image files in the folder
-        image_files = [f for f in os.listdir(export_folder) if f.endswith(('.png', '.jpg', '.jpeg'))]
+            response = sdf.chat(translated_input)
 
-        # Display available images
-        st.write("Images available for download:")
-        for image in image_files:
-            st.write(image)
-        
-        # Create a zip file in memory
-        zip_buffer = io.BytesIO()
-        with zipfile.ZipFile(zip_buffer, "w") as zip_file:
+        if st.button("Download images"):
+            # List all image files in the folder
+            image_files = [f for f in os.listdir(export_folder) if f.endswith(('.png', '.jpg', '.jpeg'))]
+
+            # Display available images
+            st.write("Images available for download:")
             for image in image_files:
-                image_path = os.path.join(export_folder, image)
-                zip_file.write(image_path, arcname=image)
-        
-        # Reset buffer position to the beginning
-        zip_buffer.seek(0)
+                st.write(image)
+            
+            # Create a zip file in memory
+            zip_buffer = io.BytesIO()
+            with zipfile.ZipFile(zip_buffer, "w") as zip_file:
+                for image in image_files:
+                    image_path = os.path.join(export_folder, image)
+                    zip_file.write(image_path, arcname=image)
+            
+            # Reset buffer position to the beginning
+            zip_buffer.seek(0)
 
-        # Provide download button for the zip file
-        st.download_button(
-            label="Download All Images as ZIP",
-            data=zip_buffer,
-            file_name="images.zip",
-            mime="application/zip"
-        )
+            # Provide download button for the zip file
+            st.download_button(
+                label="Download All Images as ZIP",
+                data=zip_buffer,
+                file_name="images.zip",
+                mime="application/zip"
+            )
+
+        st.session_state.send_button = False
