@@ -37,4 +37,5 @@ matplotlib==3.7.1
 numba==0.58.1
 requests>=2.27
 toml>=0.10.1
+reportlab
 seaborn
