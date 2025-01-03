@@ -136,6 +136,7 @@ with st.container():
 
                         # Duyệt qua tất cả các cột và dữ liệu
                         for col in data.columns:
+                            st.write(col)
                             user_input += f"{col}: {data[col].tolist()}\n"
 
                         #####################################
