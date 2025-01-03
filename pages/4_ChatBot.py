@@ -129,6 +129,8 @@ with st.container():
     # File uploader widget to upload a CSV file
     config_file = st.file_uploader("Upload your config file", type=["json"])
 
+    images = []
+
     if 'Send_button' not in st.session_state:
         st.session_state.send_button = False
     
@@ -144,6 +146,12 @@ with st.container():
         graph_lists_name = data['Graphs']
         colors = data["Colors"]
 
+        # Clear export folder before generating images
+        for file in os.listdir(export_folder):
+            file_path = os.path.join(export_folder, file)
+            if os.path.isfile(file_path) and file.lower().endswith(('.png', '.jpg', '.jpeg')):
+                os.remove(file_path)
+
         for index, graph in enumerate(graph_lists_name):
             translated_graph_name = translator.translate(graph)
 
@@ -151,31 +159,14 @@ with st.container():
 
             response = sdf.chat(translated_input)
 
-        if st.button("Download images"):
-            # List all image files in the folder
             image_files = [f for f in os.listdir(export_folder) if f.endswith(('.png', '.jpg', '.jpeg'))]
 
-            # Display available images
-            st.write("Images available for download:")
-            for image in image_files:
-                st.write(image)
-            
-            # Create a zip file in memory
-            zip_buffer = io.BytesIO()
-            with zipfile.ZipFile(zip_buffer, "w") as zip_file:
-                for image in image_files:
-                    image_path = os.path.join(export_folder, image)
-                    zip_file.write(image_path, arcname=image)
-            
-            # Reset buffer position to the beginning
-            zip_buffer.seek(0)
+            if image_files:
+                image_path = os.path.join(export_folder, image_files[0])
+                images.append(Image.open(image_path))
 
-            # Provide download button for the zip file
-            st.download_button(
-                label="Download All Images as ZIP",
-                data=zip_buffer,
-                file_name="images.zip",
-                mime="application/zip"
-            )
+        
+        for image in images:
+            st.Image(image)
 
         st.session_state.send_button = False
