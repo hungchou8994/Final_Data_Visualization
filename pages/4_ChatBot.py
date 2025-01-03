@@ -141,7 +141,7 @@ with st.container():
         for index, graph in enumerate(graph_lists_name):
             translated_graph_name = translator.translate(graph)
 
-            translated_input = "Draw " + translated_graph_name + "with plotly"
+            translated_input = "Draw " + translated_graph_name + "with matplotlib and seaborn"
 
             response = sdf.chat(translated_input)
 
