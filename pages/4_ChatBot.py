@@ -17,6 +17,8 @@ set_pd_engine("pandas")
 
 export_folder = os.path.join(os.getcwd(), "exports")
 
+st.write(export_folder)
+
 # Load data
 file_path = 'data_dv.csv'  # Replace with your uploaded file path
 data = pd.read_csv(file_path)
