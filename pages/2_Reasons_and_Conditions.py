@@ -153,7 +153,7 @@ with chart_col1.container():
             title_x=0.5,  # Center the title
             legend_title="Tình trạng thời tiết",
             # width=900,  # Adjusted width for better visualization
-            height=170,  # Adjusted height for better visualization
+            height=300,  # Adjusted height for better visualization
             font=dict(size=10),  # Set default font size
             # autosize=True
         )
@@ -208,7 +208,7 @@ with chart_col1.container():
             x=1, y=1,  # Position the legend to the right of the chart
             showarrow=False,
             align="left",
-            font=dict(size=6),
+            font=dict(size=12),
             bgcolor="rgba(255, 255, 255, 0.8)",  # Add background color
             bordercolor="black",
             borderwidth=1.5
@@ -225,7 +225,7 @@ with chart_col1.container():
             legend_title="Nguyên nhân",
             # width=1000,  # Adjust width to make room for annotations
             # height=600  # Adjust height
-            height=170,
+            height=300,
         )
 
         # Hiển thị biểu đồ trên Streamlit
