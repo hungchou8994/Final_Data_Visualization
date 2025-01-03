@@ -125,61 +125,61 @@ with st.container():
                 except Exception as e:
                     st.error(f"Lỗi xử lý hình ảnh: {e}")
 
-export_folder = os.path.join(os.getcwd(), "exports")
-sdf = SmartDataframe(data, config={"save_charts": True, "save_charts_path": export_folder, "verbose": True, "response_parser": StreamlitResponse, "custom_whitelisted_dependencies": ["to_numeric"]})
-with st.container():
-    # File uploader widget to upload a CSV file
-    config_file = st.file_uploader("Upload your config file", type=["json"])
+# export_folder = os.path.join(os.getcwd(), "exports")
+# sdf = SmartDataframe(data, config={"save_charts": True, "save_charts_path": export_folder, "verbose": True, "response_parser": StreamlitResponse, "custom_whitelisted_dependencies": ["to_numeric"]})
+# with st.container():
+#     # File uploader widget to upload a CSV file
+#     config_file = st.file_uploader("Upload your config file", type=["json"])
 
-    images = []
+#     images = []
 
-    if 'Send_button' not in st.session_state:
-        st.session_state.send_button = False
+#     if 'Send_button' not in st.session_state:
+#         st.session_state.send_button = False
     
-    if st.button("Send"):
-        st.session_state.send_button = True
+#     if st.button("Send"):
+#         st.session_state.send_button = True
 
-    if st.session_state.send_button and config_file is not None:
-        # Open and read the JSON file
-        data = json.load(config_file)
+#     if st.session_state.send_button and config_file is not None:
+#         # Open and read the JSON file
+#         data = json.load(config_file)
 
-        report_name = data["Report Name"]
-        reporter_name = data["Reporter Name"]
-        graph_lists_name = data['Graphs']
-        colors = data["Colors"]
+#         report_name = data["Report Name"]
+#         reporter_name = data["Reporter Name"]
+#         graph_lists_name = data['Graphs']
+#         colors = data["Colors"]
 
-        # Clear export folder before generating images
-        for file in os.listdir(export_folder):
-            file_path = os.path.join(export_folder, file)
-            if os.path.isfile(file_path) and file.lower().endswith(('.png', '.jpg', '.jpeg')):
-                os.remove(file_path)
+#         # Clear export folder before generating images
+#         for file in os.listdir(export_folder):
+#             file_path = os.path.join(export_folder, file)
+#             if os.path.isfile(file_path) and file.lower().endswith(('.png', '.jpg', '.jpeg')):
+#                 os.remove(file_path)
 
-        for index, graph in enumerate(graph_lists_name):
-            translated_graph_name = translator.translate(graph)
+#         for index, graph in enumerate(graph_lists_name):
+#             translated_graph_name = translator.translate(graph)
 
-            # translated_input = "Draw " + translated_graph_name + "with matplotlib and seaborn"
-            translated_input = "Plot " + translated_graph_name
+#             # translated_input = "Draw " + translated_graph_name + "with matplotlib and seaborn"
+#             translated_input = "Plot " + translated_graph_name
 
-            response = sdf.chat(translated_input)
+#             response = sdf.chat(translated_input)
 
-            # Check if the response contains an image path
-            if isinstance(response, str) and os.path.isfile(response):  # If it's an image path
-                image = Image.open(response)
-                st.image(image)
-            else:
-                # If the response isn't an image path, handle the output as text or other content
-                st.write(response)
+#             # Check if the response contains an image path
+#             if isinstance(response, str) and os.path.isfile(response):  # If it's an image path
+#                 image = Image.open(response)
+#                 st.image(image)
+#             else:
+#                 # If the response isn't an image path, handle the output as text or other content
+#                 st.write(response)
 
-            image_files = [f for f in os.listdir(export_folder) if f.endswith(('.png', '.jpg', '.jpeg'))]
-            st.write(image_files)
+#             image_files = [f for f in os.listdir(export_folder) if f.endswith(('.png', '.jpg', '.jpeg'))]
+#             st.write(image_files)
 
-            if image_files:
-                image_path = os.path.join(export_folder, image_files[0])
-                st.Image(image_path)
-                images.append(Image.open(image_path))
+#             if image_files:
+#                 image_path = os.path.join(export_folder, image_files[0])
+#                 st.Image(image_path)
+#                 images.append(Image.open(image_path))
 
         
-        for image in images:
-            st.Image(image)
+#         for image in images:
+#             st.Image(image)
 
-        st.session_state.send_button = False
+#         st.session_state.send_button = False
