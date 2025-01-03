@@ -264,11 +264,12 @@ with st.container(border=False):
             .rename(columns={'Quận/Huyện': 'Quận/Huyện', 'Số vụ': 'Số vụ tai nạn'})
         )
 
-        district_accidents['Quận/Huyện'] = district_accidents['Quận/Huyện'].astype(str) + ' <span style="color:white;">a</span>'
         st.write(district_accidents)
 
+        district_accidents['Quận/Huyện'] = district_accidents['Quận/Huyện'].astype(str) + ' <span style="color:white;">a</span>'
+
         # Sắp xếp tăng dần theo số vụ tai nạn
-        district_accidents = district_accidents.sort_values(by='count', ascending=True)
+        district_accidents = district_accidents.sort_values(by='Quận/Huyện', ascending=True)
 
         # Vẽ biểu đồ Horizontal Bar Chart
         fig_district = px.bar(
