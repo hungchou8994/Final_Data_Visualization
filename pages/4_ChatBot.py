@@ -89,7 +89,7 @@ with st.container():
 
         # User input
         img_file_buffer = st.file_uploader("Upload an image", type=["png", "jpg", "jpeg"], accept_multiple_files=True)
-        user_input = st.text_input("Ask me:")
+        user_input = st.chat_input("Ask me:")
 
         if user_input:
             # Create PDF in memory
