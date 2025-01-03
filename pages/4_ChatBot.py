@@ -163,6 +163,7 @@ with st.container():
 
             if image_files:
                 image_path = os.path.join(export_folder, image_files[0])
+                st.Image(image_path)
                 images.append(Image.open(image_path))
 
         
