@@ -98,6 +98,17 @@ with st.container():
 
             # Add the paragraph
             c.setFont("Times-Roman", 12)
+
+            # Tọa độ bắt đầu
+            x_position = 100  # Vị trí x cố định
+            y_position = 750  # Vị trí y bắt đầu từ trên xuống
+            max_width = 450  # Chiều rộng tối đa của một dòng
+
+            # Tạo một đối tượng TextObject để chèn toàn bộ đoạn văn mà không cần dùng strip
+            text_object = c.beginText(x_position, y_position)
+            text_object.setFont("Helvetica", 12)
+            text_object.setTextOrigin(x_position, y_position)
+
         # Hiển thị hình ảnh nếu người dùng tải lên
             for image in img_file_buffer:
                 if image:
@@ -125,7 +136,7 @@ with st.container():
                         # Duyệt qua tất cả các cột và dữ liệu
                         for col in data.columns:
                             user_input += f"{col}: {data[col].tolist()}\n"
-                            
+
                         #####################################
                         # Gửi yêu cầu đến API Ollama
                         response = requests.post(
@@ -145,7 +156,18 @@ with st.container():
 
                             c.drawImage(tmp_file_path, 100, 500, width=200, height=200)
                             # st.write(translator_ollava.translate(result['response']))
-                            c.drawString(100, 700, translator_ollava.translate(result['response']))
+                            text_object.textLines(translator_ollava.translate(result['response']))
+
+                            y_position = text_object.getY()
+
+                            # Nếu hết không gian trên trang, chuyển sang trang mới
+                            if y_position < 100:
+                                c.showPage()  # Chuyển sang trang mới
+                                text_object = c.beginText(x_position, 750)  # Đặt lại vị trí y trên trang mới
+                                text_object.setFont("Helvetica", 12)
+                                text_object.setTextOrigin(x_position, 750)
+
+                            # c.drawString(100, 700, translator_ollava.translate(result['response']))
 
                             os.remove(tmp_file_path)
 
@@ -164,6 +186,7 @@ with st.container():
                         # st.write(res["response"])
                     except Exception as e:
                         st.error(f"Lỗi xử lý hình ảnh: {e}")
+            c.drawText(text_object)
             c.save()
             pdf_buffer.seek(0)
 
