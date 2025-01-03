@@ -9,6 +9,7 @@ import io
 from io import BytesIO
 import tempfile
 import json
+import textwrap
 import zipfile
 from translate import Translator
 from pandasai import SmartDataframe
@@ -159,25 +160,23 @@ with st.container():
                             # Giảm y_position sau khi thêm ảnh
                             y_position -= 220
 
-                            text_object = c.beginText(x_position, y_position)
-                            text_object.setFont("Times-Roman", 12)
-                            text_object.textLines(translator_ollava.translate(result['response']))
+                            response_text = translator_ollava.translate(result['response'])
+                            wrapped_text = textwrap.wrap(response_text, width=70)
+
+                            for line in wrapped_text:
+                                if y_position < 100:  # Nếu hết trang
+                                    c.showPage()
+                                    text_object = c.beginText(x_position, 750)
+                                    text_object.setFont("Times-Roman", 12)
+                                    y_position = 750
+
+                                text_object.setTextOrigin(x_position, y_position)
+                                text_object.textLine(line)
+                                y_position -= 15  # Giảm y_position cho mỗi dòng
 
                             c.drawText(text_object)
 
-                            # Giảm y_position dựa trên nội dung đoạn văn
-                            y_position -= 50
-
-                            # Nếu hết không gian trên trang, chuyển sang trang mới
-                            if y_position < 100:
-                                c.showPage()  # Chuyển sang trang mới
-                                text_object.setFont("Times-Roman", 12)
-                                y_position = 750
-
-                            # c.drawString(100, 700, translator_ollava.translate(result['response']))
-
                             os.remove(tmp_file_path)
-
                             st.success("Analysis added to the PDF!")
                         elif response.status_code == 403:
                             st.error("🚫 Forbidden: Check if the API endpoint requires authentication or IP whitelisting.")
