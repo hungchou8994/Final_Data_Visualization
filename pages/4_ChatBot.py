@@ -7,6 +7,7 @@ import base64
 import requests
 import io
 from io import BytesIO
+import tempfile
 import json
 import zipfile
 from translate import Translator
@@ -131,9 +132,17 @@ with st.container():
                         if response.status_code == 200:
                             result = response.json()
                             st.write("**Trả lời:**")
-                            c.drawImage(buffered, 100, 500, width=200, height=200)
+
+                            # Save image temporarily
+                            with tempfile.NamedTemporaryFile(delete=False, suffix=".png") as tmp_file:
+                                image.save(tmp_file, format="PNG")
+                                tmp_file_path = tmp_file.name
+
+                            c.drawImage(tmp_file_path, 100, 500, width=200, height=200)
                             # st.write(translator_ollava.translate(result['response']))
                             c.drawString(100, 700, translator_ollava.translate(result['response']))
+
+                            os.remove(tmp_file_path)
 
                             st.success("Analysis added to the PDF!")
                         elif response.status_code == 403:
