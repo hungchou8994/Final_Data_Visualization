@@ -265,6 +265,7 @@ with st.container(border=False):
         )
 
         district_accidents['Quận/Huyện'] = district_accidents['Quận/Huyện'].astype(str) + ' <span style="color:white;">a</span>'
+        st.write(district_accidents)
 
         # Sắp xếp tăng dần theo số vụ tai nạn
         district_accidents = district_accidents.sort_values(by='count', ascending=True)
