@@ -121,10 +121,15 @@ with st.container():
                             Note important visual elements such as titles, labels, legends, and color usage, and provide comparisons if multiple datasets are presented. 
                             Conclude with a concise summary of the key observations that support your conclusions and recommendations
                         """
+
+                        # Duyệt qua tất cả các cột và dữ liệu
+                        for col in data.columns:
+                            user_input += f"{col}: {data[col].tolist()}\n"
+                            
                         #####################################
                         # Gửi yêu cầu đến API Ollama
                         response = requests.post(
-                            "https://5921-116-110-40-71.ngrok-free.app/api/generate",
+                            "https://db93-115-78-15-156.ngrok-free.app/api/generate",
                             json={"modelfile": modelfile, "model": "llava", "prompt": user_input, "images":[img_base64], "stream": False}
                         )
                         translator_ollava = Translator(to_lang="vi", from_lang="en")
