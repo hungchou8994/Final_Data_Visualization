@@ -269,8 +269,6 @@ with st.container(border=False):
         # Sắp xếp tăng dần theo số vụ tai nạn
         district_accidents = district_accidents.sort_values(by='Quận/Huyện', ascending=True)
 
-        st.write(district_accidents.keys())
-
         # Vẽ biểu đồ Horizontal Bar Chart
         fig_district = px.bar(
             district_accidents,
@@ -279,8 +277,8 @@ with st.container(border=False):
             orientation='h',  # Biểu đồ ngang
             # title='Top 10 quận/huyện có số vụ tai nạn cao nhất (Sắp xếp tăng dần)',
             title=' ',
-            labels={'count': 'Số vụ tai nạn', 'Quận/Huyện': 'Quận/Huyện'},
-            color='count',
+            labels={'Quận/Huyện': 'Quận/Huyện', 'index': 'index'},
+            color='Quận/Huyện',
             color_continuous_scale='Viridis'  # Thang màu Viridis
         )
 
@@ -288,8 +286,8 @@ with st.container(border=False):
         fig_district.update_layout(
             margin=dict(l=0, r=0, t=0, b=0),
             title_x=0.5,  # Căn giữa tiêu đề
-            xaxis_title='Số vụ tai nạn',
-            yaxis_title='Quận/Huyện',
+            xaxis_title='Quận/Huyện',
+            yaxis_title='index',
             # width=900,  # Độ rộng biểu đồ
             height=300,  # Chiều cao biểu đồ
             font=dict(size=12)  # Kích thước font chữ
