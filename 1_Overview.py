@@ -264,9 +264,9 @@ with st.container(border=False):
             .rename(columns={'Quận/Huyện': 'Quận/Huyện', 'Số vụ': 'Số vụ tai nạn'})
         )
 
-        st.write(district_accidents)
+        district_accidents['index'] = district_accidents['index'].astype(str) + ' <span style="color:white;">a</span>'
 
-        district_accidents['Quận/Huyện'] = district_accidents['Quận/Huyện'].astype(str) + ' <span style="color:white;">a</span>'
+        st.write(district_accidents)
 
         # Sắp xếp tăng dần theo số vụ tai nạn
         district_accidents = district_accidents.sort_values(by='Quận/Huyện', ascending=True)
@@ -274,8 +274,8 @@ with st.container(border=False):
         # Vẽ biểu đồ Horizontal Bar Chart
         fig_district = px.bar(
             district_accidents,
-            x='count',
-            y='Quận/Huyện',
+            x='Quận/Huyện',
+            y='index',
             orientation='h',  # Biểu đồ ngang
             # title='Top 10 quận/huyện có số vụ tai nạn cao nhất (Sắp xếp tăng dần)',
             title=' ',
