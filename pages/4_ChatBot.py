@@ -158,7 +158,7 @@ with st.container():
             translated_graph_name = translator.translate(graph)
 
             # translated_input = "Draw " + translated_graph_name + "with matplotlib and seaborn"
-            translated_input = "Draw " + translated_graph_name
+            translated_input = "Plot " + translated_graph_name
 
             response = sdf.chat(translated_input)
 
