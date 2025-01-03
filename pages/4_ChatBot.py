@@ -143,7 +143,7 @@ with st.container():
 
             translated_input = "Draw " + translated_graph_name + "with plotly"
 
-            response = sdf.chat(translated_text)
+            response = sdf.chat(translated_input)
 
     if st.button("Download images"):
         # List all image files in the folder
