@@ -263,15 +263,13 @@ with st.container(border=False):
             .reset_index()
             .rename(columns={'Quận/Huyện': 'Quận/Huyện', 'Số vụ': 'Số vụ tai nạn'})
         )
-        
-        st.write(district_accidents)
 
         district_accidents['index'] = district_accidents['index'].astype(str) + ' <span style="color:white;">a</span>'
 
-        st.write(district_accidents)
-
         # Sắp xếp tăng dần theo số vụ tai nạn
         district_accidents = district_accidents.sort_values(by='Quận/Huyện', ascending=True)
+
+        st.write(district_accidents.keys())
 
         # Vẽ biểu đồ Horizontal Bar Chart
         fig_district = px.bar(
