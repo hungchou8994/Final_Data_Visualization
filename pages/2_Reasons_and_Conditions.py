@@ -30,49 +30,36 @@ st.markdown(
 st.markdown("<h3 style='text-align: center;'>Nguyên nhân và điều kiện khách quan</h3>", unsafe_allow_html=True)
 
 ###########################################
+
 st.sidebar.title("Control Panel")
 
-# Nhập ngày
+# Nhập gi
 with st.sidebar.container():
     col1, col2 = st.sidebar.columns(2)
-    from_date_input = col1.date_input("Ngày bắt đầu", value="2020-01-01", min_value="2020-01-01", max_value="2021-12-31")
-    to_date_input = col2.date_input("Ngày kết thúc", value="2021-12-31", min_value="2020-01-01", max_value="2021-12-31")
+    from_hour_input = col1.selectbox("Giờ bắt đầu (24h)", options=range(0, 24))
+    to_hour_input = col2.selectbox("Giờ kết thúc (24h)", options=range(0, 24), index=23)
 
-district_input = st.sidebar.multiselect("Quận/Huyện", options=data['Quận/Huyện'].unique())
-road_type_input = st.sidebar.multiselect("Loại đường", options=data['Loại đường'].unique())
-weather_type_input = st.sidebar.multiselect("Tình trạng thời tiết", options=data['Tình trạng thời tiết'].unique())
-
-# Convert 'Ngày xảy ra tai nạn' to datetime if it's not already
-data['Ngày xảy ra tai nạn'] = pd.to_datetime(data['Ngày xảy ra tai nạn'], errors='coerce')
-
-# Convert date inputs to datetime64[ns]
-from_date_input = pd.to_datetime(from_date_input)
-to_date_input = pd.to_datetime(to_date_input)
+collision_input = st.sidebar.multiselect("Hình thức va chạm", options=data['Hình thức va chạm'].unique())
+accident_type_input = st.sidebar.multiselect("Phân loại tai nạn", options=data['Phân loại tai nạn'].unique())
 
 # Filtering function
-def filter_df(df, from_date, to_date, district, road_type, weather_type):
-    # Ensure 'Ngày xảy ra tai nạn' is in datetime format
-    df['Ngày xảy ra tai nạn'] = pd.to_datetime(df['Ngày xảy ra tai nạn'], errors='coerce')
+def filter_df(df, from_hour_input, to_hour_input, collision_input, accident_type_input):
+    df['Thời gian xảy ra tai nạn'] = pd.to_datetime(df['Thời gian xảy ra tai nạn'], errors='coerce')
+
+    df['Hour'] = df['Thời gian xảy ra tai nạn'].dt.hour
+
+    df_filtered = df[(df['Hour'] >= from_hour_input) & (df['Hour'] <= to_hour_input)]
     
-    # Filter by date range
-    df_filtered = df[(df['Ngày xảy ra tai nạn'] >= from_date) & (df['Ngày xảy ra tai nạn'] <= to_date)]
-    
-    # Filter by selected districts
-    if district:
-        df_filtered = df_filtered[df_filtered['Quận/Huyện'].isin(district)]
-    
-    # Filter by selected road types
-    if road_type:
-        df_filtered = df_filtered[df_filtered['Loại đường'].isin(road_type)]
-    
-    # Filter by selected weather conditions
-    if weather_type:
-        df_filtered = df_filtered[df_filtered['Tình trạng thời tiết'].isin(weather_type)]
+    if collision_input:
+        df_filtered = df_filtered[df_filtered['Hình thức va chạm'].isin(collision_input)]
+
+    if accident_type_input:
+        df_filtered = df_filtered[df_filtered['Phân loại tai nạn'].isin(accident_type_input)]
     
     return df_filtered
 
 # Apply the filtering based on user input from the sidebar
-filtered_df = filter_df(data, from_date_input, to_date_input, district_input, road_type_input, weather_type_input)
+filtered_df = filter_df(data, from_hour_input, to_hour_input, collision_input, accident_type_input)
 
 #############################################
 
@@ -165,12 +152,12 @@ with chart_col1.container():
     ############################################################
     with st.container(border=True):
         # Extract individual causes from the 'Nguyên nhân và Lỗi vi phạm' column
-        data['Nguyên nhân'] = data['Nguyên nhân và Lỗi vi phạm'].apply(
+        filtered_df['Nguyên nhân'] = filtered_df['Nguyên nhân và Lỗi vi phạm'].apply(
             lambda x: ast.literal_eval(x) if isinstance(x, str) else []
         )
 
         # Explode the list of causes into separate rows
-        exploded_causes = data.explode('Nguyên nhân')
+        exploded_causes = filtered_df.explode('Nguyên nhân')
 
         # Filter for accidents with at least one death
         fatal_accidents = exploded_causes[exploded_causes['Số người chết'] >= 1]
@@ -232,4 +219,75 @@ with chart_col1.container():
         st.markdown("**📊 Top 10 Nguyên nhân gây tai nạn có người chết**")
         st.plotly_chart(fig, use_container_width=True)
 
+##########################################################
+with chart_col2.container():
+    with st.container(border=True):
+        # Đếm số vụ tai nạn theo từng loại đường và lấy top 10
+        road_type_accidents = filtered_df['Loại đường'].value_counts().head(10).reset_index()
+        road_type_accidents.columns = ['Loại đường', 'Số vụ']
 
+        # Sắp xếp dữ liệu theo số vụ tai nạn từ cao đến thấp
+        road_type_accidents = road_type_accidents.sort_values(by='Số vụ', ascending=True)
+
+        # Vẽ biểu đồ Horizontal Bar Chart
+        fig_road_type = px.bar(
+            road_type_accidents,
+            x='Số vụ',
+            y='Loại đường',
+            orientation='h',  # Horizontal bar chart
+            title=' ',
+            labels={'Số vụ': 'Số vụ tai nạn', 'Loại đường': 'Loại đường'},
+            color='Số vụ',
+            color_continuous_scale='Plasma'  # Thang màu
+        )
+
+        # Tùy chỉnh hiển thị biểu đồ
+        fig_road_type.update_layout(
+            margin=dict(l=0, r=0, t=0, b=0),
+            title_x=0.5,  # Căn giữa tiêu đề
+            xaxis_title='Số vụ tai nạn',
+            yaxis_title='Loại đường',
+            # width=900,  # Độ rộng biểu đồ
+            height=300,  # Chiều cao biểu đồ
+            font=dict(size=12)  # Kích thước font chữ
+        )
+
+        # Hiển thị biểu đồ trên Streamlit
+        st.markdown("**📊 Top 10 loại đường có số vụ tai nạn cao nhất**")
+        st.plotly_chart(fig_road_type, use_container_width=True)
+    ######################################################
+    with st.container(border=True):
+
+        # Chuẩn bị dữ liệu
+        # Loại bỏ các hàng có giá trị thiếu trong 'Nhóm PT1' và 'Quận/Huyện'
+        treemap_data = filtered_df.dropna(subset=['Nhóm PT1', 'Quận/Huyện'])
+
+        # Đổi tên cột 'Nhóm PT1' thành 'Loại phương tiện' để dễ đọc hơn
+        treemap_data = treemap_data.rename(columns={'Nhóm PT1': 'Loại phương tiện'})
+
+        # Đếm số vụ tai nạn theo 'Loại phương tiện' và 'Quận/Huyện'
+        treemap_summary = treemap_data.groupby(['Quận/Huyện', 'Loại phương tiện']).size().reset_index(name='Số vụ')
+
+        # Vẽ biểu đồ Treemap
+        fig = px.treemap(
+            treemap_summary,
+            path=['Quận/Huyện', 'Loại phương tiện'],  # Cấp độ: Quận/Huyện -> Loại phương tiện
+            values='Số vụ',
+            title=' ',
+            color='Số vụ',
+            color_continuous_scale='Viridis',  # Thang màu
+            labels={'Số vụ': 'Số vụ tai nạn'}
+        )
+
+        # Tùy chỉnh hiển thị
+        fig.update_layout(
+            margin=dict(l=0, r=0, t=0, b=0),
+            title_x=0.5,  # Căn giữa tiêu đề
+            height=300,  # Chiều cao biểu đồ
+            # width=900,  # Độ rộng biểu đồ
+            font=dict(size=12)  # Kích thước font chữ
+        )
+
+        # Hiển thị biểu đồ trên Streamlit
+        st.markdown("**📊 Phân tích tai nạn theo loại phương tiện và quận/huyện**")
+        st.plotly_chart(fig, use_container_width=True)
