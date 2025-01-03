@@ -129,21 +129,22 @@ with st.container():
     # File uploader widget to upload a CSV file
     config_file = st.file_uploader("Upload your config file", type=["json"])
 
-    if config_file is not None:
-        # Open and read the JSON file
-        data = json.load(config_file)
+    if st.button("Send"):
+        if config_file is not None:
+            # Open and read the JSON file
+            data = json.load(config_file)
 
-        report_name = data["Report Name"]
-        reporter_name = data["Reporter Name"]
-        graph_lists_name = data['Graphs']
-        colors = data["Colors"]
+            report_name = data["Report Name"]
+            reporter_name = data["Reporter Name"]
+            graph_lists_name = data['Graphs']
+            colors = data["Colors"]
 
-        for index, graph in enumerate(graph_lists_name):
-            translated_graph_name = translator.translate(graph)
+            for index, graph in enumerate(graph_lists_name):
+                translated_graph_name = translator.translate(graph)
 
-            translated_input = "Draw " + translated_graph_name + "with matplotlib and seaborn"
+                translated_input = "Draw " + translated_graph_name + "with matplotlib and seaborn"
 
-            response = sdf.chat(translated_input)
+                response = sdf.chat(translated_input)
 
     if st.button("Download images"):
         # List all image files in the folder
