@@ -261,7 +261,7 @@ with st.container(border=False):
             .value_counts()
             .head(10)
             .reset_index()
-            .rename(columns={'Quận/Huyện': 'Quận/Huyện', 'Số vụ': 'Số vụ tai nạn'})
+            .rename(columns={'index': 'Quận/Huyện', 'Số vụ': 'Số vụ tai nạn'})
         )
 
         district_accidents['index'] = district_accidents['index'].astype(str) + ' <span style="color:white;">a</span>'
