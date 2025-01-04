@@ -123,8 +123,8 @@ with st.container():
 
                     # Xử lý hình ảnh với API Ollama (LLaVA)
                     try:
-                        user_input = """This is one of the charts in the traffic accident data in Vietnam for the years 2020-2021, analyze this chart."""
-
+                        # user_input = """This is one of the charts in the traffic accident data in Vietnam for the years 2020-2021, analyze this chart."""
+                        user_input = 'Analyze this chart of traffic accident data in Vietnam for 2020-2021.'
                         # # Duyệt qua tất cả các cột và dữ liệu
                         # for col in data.columns:
                         #     user_input += f"{col}: {data[col].tolist()}\n"
