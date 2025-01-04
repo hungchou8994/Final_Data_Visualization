@@ -99,7 +99,7 @@ with st.container():
             c = canvas.Canvas(pdf_buffer, pagesize=letter)
 
             # Add the paragraph
-            c.setFont("Arial", 12)
+            c.setFont("Helvetica", 12)
 
             # Tọa độ bắt đầu
             x_position = 100  # Vị trí x cố định
@@ -108,7 +108,7 @@ with st.container():
 
             # Tạo một đối tượng TextObject để chèn toàn bộ đoạn văn mà không cần dùng strip
             text_object = c.beginText(x_position, y_position)
-            text_object.setFont("Arial", 12)
+            text_object.setFont("Helvetica", 12)
             text_object.setTextOrigin(x_position, y_position)
 
         # Hiển thị hình ảnh nếu người dùng tải lên
@@ -165,7 +165,7 @@ with st.container():
                                 if y_position < 100:  # Nếu hết trang
                                     c.showPage()
                                     text_object = c.beginText(x_position, 750)
-                                    text_object.setFont("Arial", 12)
+                                    text_object.setFont("Helvetica", 12)
                                     y_position = 750
 
                                 text_object.setTextOrigin(x_position, y_position)
