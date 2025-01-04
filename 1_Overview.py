@@ -321,7 +321,7 @@ with st.container(border=False):
             # title='Top 10 quận/huyện có số vụ tai nạn cao nhất (Sắp xếp tăng dần)',
             title=' ',
             labels={'Số vụ tai nạn': 'Quận/Huyện', 'index': 'index'},
-            color='Quận/Huyện',
+            color='Số vụ tai nạn',
             color_continuous_scale='Viridis'  # Thang màu Viridis
         )
 
