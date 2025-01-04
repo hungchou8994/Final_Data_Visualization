@@ -306,12 +306,13 @@ with chart_col2.container():
                 itemsizing='constant',  # Đảm bảo mỗi mục có kích thước giống nhau
                 traceorder='normal',
                 font=dict(size=10),
-                title=dict(text='Quận/Huyện', font=dict(size=12), 
-                        x=0,  # Di chuyển tiêu đề sang bên trái
-                        xanchor='left',  # Căn chỉnh tiêu đề với phía bên trái
-                        yanchor='top'
-                )
-            )
+                title=dict(text='Quận/Huyện', font=dict(size=12))
+            ),
+            title=dict(
+                x=0,  # Di chuyển tiêu đề sang bên trái
+                xanchor='left',  # Căn chỉnh tiêu đề với phía bên trái
+                yanchor='top'  # Căn chỉnh theo chiều dọc ở phía trên
+            ),
         )
         # Hiển thị biểu đồ trên Streamlit
         # st.markdown("**📊 Phân tích thiệt hại theo quận/huyện**")
