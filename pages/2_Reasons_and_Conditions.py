@@ -206,13 +206,23 @@ with chart_col1.container():
         fig.update_layout(
             margin=dict(l=0, r=0, t=0, b=0),
             title_x=0.5,  # Center the title
-            xaxis_title='Nguyên nhân (Rút gọn)',
-            yaxis_title='Số vụ',
+            # xaxis_title='Nguyên nhân (Rút gọn)',
+            # yaxis_title='Số vụ',
             font=dict(size=12),  # Set default font size
             legend_title="Nguyên nhân",
             # width=1000,  # Adjust width to make room for annotations
             # height=600  # Adjust height
             height=300,
+            xaxis=dict(
+                title='Nguyên nhân (Rút gọn)',
+                title_font=dict(size=14, color='black'),  # Bôi đen nhãn trục X
+                tickfont=dict(size=12, color='black')
+            ),
+            yaxis=dict(
+                title='Số vụ',
+                title_font=dict(size=14, color='black'),  # Bôi đen nhãn trục Y
+                tickfont=dict(size=12, color='black')
+            ),
         )
 
         # Hiển thị biểu đồ trên Streamlit
