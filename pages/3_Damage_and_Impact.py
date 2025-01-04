@@ -148,13 +148,23 @@ with chart_col1.container():
         fig.update_layout(
             margin=dict(l=0, r=0, t=0, b=0),
             title_x=0.5,  # Căn giữa tiêu đề
-            xaxis_title='Quận/Huyện',
-            yaxis_title='Số người',
+            # xaxis_title='Quận/Huyện',
+            # yaxis_title='Số người',
             barmode='stack',  # Biểu đồ dạng stacked
             font=dict(size=12),  # Kích thước font chữ
             height=300,  # Chiều cao biểu đồ
             # width=1000,  # Độ rộng biểu đồ
-            xaxis=dict(tickangle=45)  # Xoay nhãn trục X nếu cần
+            xaxis=dict(tickangle=45),  # Xoay nhãn trục X nếu cần
+            xaxis=dict(
+                title='Quận/Huyện',
+                title_font=dict(size=14, color='black'),  # Bôi đen nhãn trục X
+                tickfont=dict(size=12, color='black')
+            ),
+            yaxis=dict(
+                title='Số người',
+                title_font=dict(size=14, color='black'),  # Bôi đen nhãn trục Y
+                tickfont=dict(size=12, color='black')
+            ),
         )
         # Hiển thị biểu đồ trên Streamlit
         st.markdown("**📊 Số người chết và bị thương theo quận/huyện**")
@@ -208,12 +218,22 @@ with chart_col1.container():
         fig_stacked_bar.update_layout(
             margin=dict(l=0, r=0, t=0, b=0),
             title_x=0.5,  # Căn giữa tiêu đề
-            xaxis_title='Loại phương tiện',
-            yaxis_title='Số người',
+            # xaxis_title='Loại phương tiện',
+            # yaxis_title='Số người',
             font=dict(size=12),  # Kích thước font chữ
             height=300,  # Chiều cao biểu đồ
             # width=900,  # Độ rộng biểu đồ
-            xaxis=dict(tickangle=45)  # Xoay nhãn trục X nếu cần
+            xaxis=dict(tickangle=45),  # Xoay nhãn trục X nếu cần
+            xaxis=dict(
+                title='Loại phương tiện',
+                title_font=dict(size=14, color='black'),  # Bôi đen nhãn trục X
+                tickfont=dict(size=12, color='black')
+            ),
+            yaxis=dict(
+                title='Số người',
+                title_font=dict(size=14, color='black'),  # Bôi đen nhãn trục Y
+                tickfont=dict(size=12, color='black')
+            ),
         )
         # Hiển thị biểu đồ trên Streamlit
         st.markdown("**📊 Số người chết và bị thương theo loại phương tiện**")
@@ -316,10 +336,20 @@ with chart_col2.container():
         fig.update_layout(
             margin=dict(l=0, r=0, t=0, b=0),
             title_x=0.5,
-            xaxis_title='Thiệt hại trung bình (triệu đồng)',
-            yaxis_title='Loại phương tiện',
+            # xaxis_title='Thiệt hại trung bình (triệu đồng)',
+            # yaxis_title='Loại phương tiện',
             font=dict(size=12),
             height=300,
+            xaxis=dict(
+                title='Thiệt hại trung bình (triệu đồng)',
+                title_font=dict(size=14, color='black'),  # Bôi đen nhãn trục X
+                tickfont=dict(size=12, color='black')
+            ),
+            yaxis=dict(
+                title='Loại phương tiện',
+                title_font=dict(size=14, color='black'),  # Bôi đen nhãn trục Y
+                tickfont=dict(size=12, color='black')
+            ),
             # width=900
         )
         # Hiển thị biểu đồ trên Streamlit
