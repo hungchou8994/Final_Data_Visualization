@@ -99,7 +99,7 @@ with st.container():
             c = canvas.Canvas(pdf_buffer, pagesize=letter)
 
             # Add the paragraph
-            c.setFont("Times-Roman", 12)
+            c.setFont("Arial", 12)
 
             # Tọa độ bắt đầu
             x_position = 100  # Vị trí x cố định
@@ -108,7 +108,7 @@ with st.container():
 
             # Tạo một đối tượng TextObject để chèn toàn bộ đoạn văn mà không cần dùng strip
             text_object = c.beginText(x_position, y_position)
-            text_object.setFont("Times-Roman", 12)
+            text_object.setFont("Arial", 12)
             text_object.setTextOrigin(x_position, y_position)
 
         # Hiển thị hình ảnh nếu người dùng tải lên
@@ -123,15 +123,12 @@ with st.container():
 
                     # Xử lý hình ảnh với API Ollama (LLaVA)
                     try:
-                        user_input = """As a professional Data Scientist, your task is write a paragraph (about 400 characters) to analyze a given chart image and generate a comprehensive report. 
+                        user_input = """As a professional Data Scientist, your task is write a paragraph (about 300-400 characters) to analyze a given chart image. 
                             Begin by identifying the chart type (e.g., bar chart, line graph, scatter plot, pie chart, histogram) and briefly explain its purpose and what it conveys. 
                             Describe the axes, including the variables on the x-axis and y-axis, and note any important markers such as trends, categories, or data points. 
                             Analyze the overall data patterns, highlighting trends (e.g., increasing, decreasing), correlations between variables, and any visible clusters or groupings. 
-                            Point out any anomalies or outliers, providing possible reasons for their occurrence, and discuss if any data points significantly deviate from the expected trend. 
                             Summarize the main insights drawn from the chart, considering how the data aligns with or challenges expectations. 
-                            Based on your analysis, suggest actionable insights, potential decisions, or further areas for investigation. 
-                            Note important visual elements such as titles, labels, legends, and color usage, and provide comparisons if multiple datasets are presented. 
-                            Conclude with a concise summary of the key observations that support your conclusions and recommendations\n"""
+                            Based on your analysis, suggest actionable insights, potential decisions, or further areas for investigation.\n"""
 
                         # Duyệt qua tất cả các cột và dữ liệu
                         for col in data.columns:
@@ -160,14 +157,15 @@ with st.container():
                             # Giảm y_position sau khi thêm ảnh
                             y_position -= 220
 
-                            response_text = translator_ollava.translate(result['response'])
+                            # response_text = translator_ollava.translate(result['response'])
+                            response_text = result['response']
                             wrapped_text = textwrap.wrap(response_text, width=70)
 
                             for line in wrapped_text:
                                 if y_position < 100:  # Nếu hết trang
                                     c.showPage()
                                     text_object = c.beginText(x_position, 750)
-                                    text_object.setFont("Times-Roman", 12)
+                                    text_object.setFont("Arial", 12)
                                     y_position = 750
 
                                 text_object.setTextOrigin(x_position, y_position)
