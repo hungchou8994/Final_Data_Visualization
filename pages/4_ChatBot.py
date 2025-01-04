@@ -17,8 +17,13 @@ from pandasai.responses.streamlit_response import StreamlitResponse
 from pandasai.engine import set_pd_engine
 from reportlab.lib.pagesizes import letter
 from reportlab.pdfgen import canvas
+from reportlab.pdfbase.ttfonts import TTFont
+from reportlab.pdfbase import pdfmetrics
 
 set_pd_engine("pandas")
+
+# Đăng ký font Be VietNam Pro
+pdfmetrics.registerFont(TTFont('BeVietNamPro', r'Be_Vietnam_Pro/BeVietnamPro-Black.ttf'))
 
 export_folder = os.path.join(os.getcwd(), "exports")
 
@@ -99,7 +104,7 @@ with st.container():
             c = canvas.Canvas(pdf_buffer, pagesize=letter)
 
             # Add the paragraph
-            c.setFont("Helvetica", 12)
+            c.setFont("BeVietNamPro", 12)
 
             # Tọa độ bắt đầu
             x_position = 100  # Vị trí x cố định
@@ -108,7 +113,7 @@ with st.container():
 
             # Tạo một đối tượng TextObject để chèn toàn bộ đoạn văn mà không cần dùng strip
             text_object = c.beginText(x_position, y_position)
-            text_object.setFont("Helvetica", 12)
+            text_object.setFont("BeVietNamPro", 12)
             text_object.setTextOrigin(x_position, y_position)
 
         # Hiển thị hình ảnh nếu người dùng tải lên
@@ -117,7 +122,7 @@ with st.container():
                     image = Image.open(image)
                     # st.image(image, caption="Ảnh đã tải lên", width=500)
                     image = image.resize((512, 200))
-                    image = image.convert("L")
+                    # image = image.convert("L")
 
                     buffered = io.BytesIO()
                     image.save(buffered, format="PNG")
@@ -148,7 +153,7 @@ with st.container():
                                 image.save(tmp_file, format="PNG")
                                 tmp_file_path = tmp_file.name
 
-                            c.drawImage(tmp_file_path, x_position, y_position - 200, width=600 ,height=150)
+                            c.drawImage(tmp_file_path, x_position, y_position - 200, width=512 ,height=200)
                             # st.write(translator_ollava.translate(result['response']))
 
                             # Giảm y_position sau khi thêm ảnh
@@ -163,7 +168,7 @@ with st.container():
                                 if y_position < 100:  # Nếu hết trang
                                     c.showPage()
                                     text_object = c.beginText(x_position, 750)
-                                    text_object.setFont("Helvetica", 12)
+                                    text_object.setFont("BeVietNamPro", 12)
                                     y_position = 750
 
                                 text_object.setTextOrigin(x_position, y_position)
