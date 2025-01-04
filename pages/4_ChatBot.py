@@ -93,6 +93,10 @@ with st.container():
         user_input = st.chat_input("Ask me ><:")
 
         if user_input:
+            # Duyệt qua tất cả các cột và dữ liệu
+            for col in data.columns:
+                user_input += f"{data}\n"
+
             st.write("Input")
             # Create PDF in memory
             pdf_buffer = BytesIO()
@@ -130,9 +134,9 @@ with st.container():
                         #     Summarize the main insights drawn from the chart, considering how the data aligns with or challenges expectations. 
                         #     Based on your analysis, suggest actionable insights, potential decisions, or further areas for investigation.\n"""
 
-                        # Duyệt qua tất cả các cột và dữ liệu
-                        for col in data.columns:
-                            user_input += f"{col}: {data[col].tolist()}\n"
+                        # # Duyệt qua tất cả các cột và dữ liệu
+                        # for col in data.columns:
+                        #     user_input += f"{col}: {data[col].tolist()}\n"
 
                         #####################################
                         # Gửi yêu cầu đến API Ollama
