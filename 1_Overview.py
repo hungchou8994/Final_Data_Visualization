@@ -318,7 +318,7 @@ with st.container(border=False):
             x='Quận/Huyện',
             y='index',
             orientation='h',  # Biểu đồ ngang
-            title='Top 10 quận/huyện có số vụ tai nạn cao nhất (Sắp xếp tăng dần)',
+            title='📊 Top 10 quận/huyện có số vụ tai nạn cao nhất (Sắp xếp tăng dần)',
             # title=' ',
             labels={'Quận/Huyện': 'Quận/Huyện', 'index': 'index'},
             color='Quận/Huyện',
@@ -327,7 +327,7 @@ with st.container(border=False):
 
         # Tùy chỉnh hiển thị biểu đồ
         fig_district.update_layout(
-            margin=dict(l=0, r=0, t=0, b=0),
+            margin=dict(l=0, r=0, t=5, b=0),
             title_x=0.5,  # Căn giữa tiêu đề
             # xaxis_title='Số vụ tai nạn',
             # yaxis_title='Quận/Huyện',
