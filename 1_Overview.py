@@ -159,12 +159,24 @@ with st.container(border=False):
             title_x=0.5,
             title_y=0.9,
             title_pad=dict(t=5),
-            xaxis=dict(tickmode='linear', dtick=1, title_font=dict(size=14, color='black')),
-            yaxis=dict(title_font=dict(size=14, color='black')),
-            xaxis_title='Tháng trong năm',
-            yaxis_title='Số vụ tai nạn',
+            # xaxis=dict(tickmode='linear', dtick=1, title_font=dict(size=14, color='black')),
+            # yaxis=dict(title_font=dict(size=14, color='black')),
+            # xaxis_title='Tháng trong năm',
+            # yaxis_title='Số vụ tai nạn',
+            # font=dict(size=12),
+            # # width=900,
+            # height=300
+            xaxis=dict(
+                tickmode='linear',
+                dtick=1,
+                title='Tháng trong năm',
+                title_font=dict(size=14, color='black'),  # Bôi đen nhãn trục X
+            ),
+            yaxis=dict(
+                title='Số vụ tai nạn',
+                title_font=dict(size=14, color='black'),  # Bôi đen nhãn trục Y
+            ),
             font=dict(size=12),
-            # width=900,
             height=300
         )
 
