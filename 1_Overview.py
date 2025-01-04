@@ -346,6 +346,11 @@ with st.container(border=False):
                 title_font=dict(size=14, color='black'),  # Bôi đen nhãn trục Y
                 tickfont=dict(size=12, color='black')
             ),
+            title=dict(
+                x=0,  # Di chuyển tiêu đề sang bên trái
+                xanchor='left',  # Căn chỉnh tiêu đề với phía bên trái
+                yanchor='top'  # Căn chỉnh theo chiều dọc ở phía trên
+            )
             font=dict(size=12),
             height=300
         )
