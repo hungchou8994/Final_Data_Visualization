@@ -224,8 +224,9 @@ with chart_col1.container():
             font=dict(size=12),  # Kích thước font chữ
             height=300,  # Chiều cao biểu đồ
             # width=900,  # Độ rộng biểu đồ
-            xaxis=dict(tickangle=45),  # Xoay nhãn trục X nếu cần
+            # xaxis=dict(tickangle=45),  # Xoay nhãn trục X nếu cần
             xaxis=dict(
+                tickangle=45,
                 title='Loại phương tiện',
                 title_font=dict(size=14, color='black'),  # Bôi đen nhãn trục X
                 tickfont=dict(size=12, color='black')
