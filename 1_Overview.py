@@ -351,6 +351,6 @@ with st.container(border=False):
         )
 
         # Hiển thị biểu đồ trên Streamlit
-        st.markdown("**📊 Top 10 Quận/Huyện Có Số Vụ Tai Nạn Cao Nhất**")
+        # st.markdown("**📊 Top 10 Quận/Huyện Có Số Vụ Tai Nạn Cao Nhất**")
         st.plotly_chart(fig_district, use_container_width=True)
 
