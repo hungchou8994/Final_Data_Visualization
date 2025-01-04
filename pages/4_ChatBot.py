@@ -137,7 +137,7 @@ with st.container():
                         #####################################
                         # Gửi yêu cầu đến API Ollama
                         response = requests.post(
-                            "https://eed4-14-161-7-63.ngrok-free.app/api/generate",
+                            "https://b0dc-116-110-40-71.ngrok-free.app/api/generate",
                             json={"modelfile": modelfile, "model": "llava", "prompt": user_input, "images":[img_base64], "stream": False}
                         )
                         translator_ollava = Translator(to_lang="vi", from_lang="en")
