@@ -94,6 +94,8 @@ with st.container():
 
         if user_input:
 
+            user_input = "This is one of the charts in the traffic accident data in Vietnam for the years 2020-2021. " + user_input
+
             st.write("Input")
             # Create PDF in memory
             pdf_buffer = BytesIO()
