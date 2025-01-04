@@ -123,12 +123,12 @@ with st.container():
 
                     # Xử lý hình ảnh với API Ollama (LLaVA)
                     try:
-                        user_input = """As a professional Data Scientist, your task is write a paragraph (about 300-400 characters) to analyze a given chart image. 
-                            Begin by identifying the chart type (e.g., bar chart, line graph, scatter plot, pie chart, histogram) and briefly explain its purpose and what it conveys. 
-                            Describe the axes, including the variables on the x-axis and y-axis, and note any important markers such as trends, categories, or data points. 
-                            Analyze the overall data patterns, highlighting trends (e.g., increasing, decreasing), correlations between variables, and any visible clusters or groupings. 
-                            Summarize the main insights drawn from the chart, considering how the data aligns with or challenges expectations. 
-                            Based on your analysis, suggest actionable insights, potential decisions, or further areas for investigation.\n"""
+                        # user_input = """As a professional Data Scientist, your task is write a paragraph (about 300-400 characters) to analyze a given chart image. 
+                        #     Begin by identifying the chart type (e.g., bar chart, line graph, scatter plot, pie chart, histogram) and briefly explain its purpose and what it conveys. 
+                        #     Describe the axes, including the variables on the x-axis and y-axis, and note any important markers such as trends, categories, or data points. 
+                        #     Analyze the overall data patterns, highlighting trends (e.g., increasing, decreasing), correlations between variables, and any visible clusters or groupings. 
+                        #     Summarize the main insights drawn from the chart, considering how the data aligns with or challenges expectations. 
+                        #     Based on your analysis, suggest actionable insights, potential decisions, or further areas for investigation.\n"""
 
                         # Duyệt qua tất cả các cột và dữ liệu
                         for col in data.columns:
