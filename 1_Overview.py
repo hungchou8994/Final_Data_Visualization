@@ -329,25 +329,25 @@ with st.container(border=False):
         fig_district.update_layout(
             margin=dict(l=0, r=0, t=0, b=0),
             title_x=0.5,  # Căn giữa tiêu đề
-            xaxis_title='Số vụ tai nạn',
-            yaxis_title='Quận/Huyện',
-            # width=900,  # Độ rộng biểu đồ
-            height=300,  # Chiều cao biểu đồ
-            font=dict(size=12)  # Kích thước font chữ
-            # xaxis=dict(
-            #     tickmode='linear',
-            #     dtick=1,
-            #     title='Số vụ tai nạn',
-            #     title_font=dict(size=14, color='black'),  # Bôi đen nhãn trục X
-            #     tickfont=dict(size=12, color='black')
-            # ),
-            # yaxis=dict(
-            #     title='Quận/Huyện',
-            #     title_font=dict(size=14, color='black'),  # Bôi đen nhãn trục Y
-            #     tickfont=dict(size=12, color='black')
-            # ),
-            # font=dict(size=12),
-            # height=300
+            # xaxis_title='Số vụ tai nạn',
+            # yaxis_title='Quận/Huyện',
+            # # width=900,  # Độ rộng biểu đồ
+            # height=300,  # Chiều cao biểu đồ
+            # font=dict(size=12)  # Kích thước font chữ
+            xaxis=dict(
+                tickmode='linear',
+                dtick=1,
+                title='Số vụ tai nạn',
+                title_font=dict(size=14, color='black'),  # Bôi đen nhãn trục X
+                tickfont=dict(size=12, color='black')
+            ),
+            yaxis=dict(
+                title='Quận/Huyện',
+                title_font=dict(size=14, color='black'),  # Bôi đen nhãn trục Y
+                tickfont=dict(size=12, color='black')
+            ),
+            font=dict(size=12),
+            height=300
         )
 
         # Hiển thị biểu đồ trên Streamlit
