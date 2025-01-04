@@ -320,8 +320,8 @@ with st.container(border=False):
             orientation='h',  # Biểu đồ ngang
             # title='Top 10 quận/huyện có số vụ tai nạn cao nhất (Sắp xếp tăng dần)',
             title=' ',
-            labels={'Số vụ tai nạn': 'Quận/Huyện', 'index': 'index'},
-            color='Số vụ tai nạn',
+            labels={'Quận/Huyện': 'Quận/Huyện', 'index': 'index'},
+            color='Quận/Huyện',
             color_continuous_scale='Viridis'  # Thang màu Viridis
         )
 
