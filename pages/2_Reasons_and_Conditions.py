@@ -208,7 +208,7 @@ with chart_col1.container():
             title_x=0.5,  # Center the title
             # xaxis_title='Nguyên nhân (Rút gọn)',
             # yaxis_title='Số vụ',
-            font=dict(size=12),  # Set default font size
+            font=dict(size=12, weight='bold'),  # Set default font size
             legend_title="Nguyên nhân",
             # width=1000,  # Adjust width to make room for annotations
             # height=600  # Adjust height
