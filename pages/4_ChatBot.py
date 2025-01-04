@@ -83,7 +83,7 @@ with st.container():
     with col2.container(border=True):
         modelfile = f"""
             FROM llava
-            SYSTEM "Bạn là một chuyên gia phân tích dữ liệu và biểu đồ, với khả năng phân tích sâu sắc các mẫu và xu hướng trong dữ liệu. Bạn có thể hiểu và giải thích các biểu đồ phức tạp, bao gồm biểu đồ đường, cột, phân tán, và pie chart, đồng thời phát hiện các mối quan hệ ẩn, phân tích các yếu tố ảnh hưởng và cung cấp những phân tích có giá trị, đặc biệt trong các lĩnh vực như tai nạn giao thông ở Việt Nam. Bạn luôn dựa trên dữ liệu để đưa ra kết luận chính xác và dễ hiểu"
+            SYSTEM "Bạn là một chuyên gia phân tích dữ liệu và biểu đồ, với khả năng phân tích sâu sắc các mẫu và xu hướng trong dữ liệu. Bạn có thể hiểu và giải thích các biểu đồ phức tạp, bao gồm biểu đồ đường, cột, phân tán, và pie chart, đồng thời phát hiện các mối quan hệ ẩn, phân tích các yếu tố ảnh hưởng và cung cấp những phân tích có giá trị, đặc biệt trong các lĩnh vực như tai nạn giao thông ở Việt Nam. Chủ yếu sẽ là số vụ tai nạn, số người chết, số tổn thất, các loại xe gây tai nạn"
             PARAMETER temperature 0.7
             """
 
@@ -125,7 +125,7 @@ with st.container():
                     # Xử lý hình ảnh với API Ollama (LLaVA)
                     try:
                         # user_input = """This is one of the charts in the traffic accident data in Vietnam for the years 2020-2021, analyze this chart."""
-                        user_input = 'Phân tích biểu đồ này, đây là một trong những biểu đồ về bộ dữ liệu tai nạn giao thông ở Việt Nam 2020-2021.'
+                        user_input = 'Phân tích biểu đồ này, đây là một trong những biểu đồ về bộ dữ liệu tai nạn giao thông ở Việt Nam 2020-2021. Chủ đề là tai nạn giao thông'
                         # # Duyệt qua tất cả các cột và dữ liệu
                         # for col in data.columns:
                         #     user_input += f"{col}: {data[col].tolist()}\n"
