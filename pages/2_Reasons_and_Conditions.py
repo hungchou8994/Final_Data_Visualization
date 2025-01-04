@@ -224,7 +224,7 @@ with chart_col1.container():
                 tickfont=dict(size=12, color='black')
             ),
             legend=dict(
-                title=dict(text='Nguyên nhân', font=dict(size=14, color='black'),  # Tiêu đề legend in đậm
+                title=dict(text='Nguyên nhân', font=dict(size=14, color='black')),  # Tiêu đề legend in đậm
                 font=dict(size=12, color='black')  # Văn bản trong legend in đậm
             ),
         )
