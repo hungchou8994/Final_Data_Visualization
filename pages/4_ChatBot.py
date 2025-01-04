@@ -115,7 +115,7 @@ with st.container():
                 if image:
                     image = Image.open(image)
                     # st.image(image, caption="Ảnh đã tải lên", width=500)
-                    image = image.resize((512, 200))
+                    # image = image.resize((512, 200))
                     # image = image.convert("L")
 
                     buffered = io.BytesIO()
