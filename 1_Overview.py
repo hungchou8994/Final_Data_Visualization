@@ -320,7 +320,7 @@ with st.container(border=False):
             orientation='h',  # Biểu đồ ngang
             # title='Top 10 quận/huyện có số vụ tai nạn cao nhất (Sắp xếp tăng dần)',
             title=' ',
-            labels={'Quận/Huyện': 'Quận/Huyện', 'index': 'index'},
+            labels={'Số vụ tai nạn': 'Quận/Huyện', 'index': 'index'},
             color='Quận/Huyện',
             color_continuous_scale='Viridis'  # Thang màu Viridis
         )
@@ -336,7 +336,7 @@ with st.container(border=False):
             # font=dict(size=12)  # Kích thước font chữ
             xaxis=dict(
                 tickmode='linear',
-                dtick=1,
+                dtick=100,
                 title='Số vụ tai nạn',
                 title_font=dict(size=14, color='black'),  # Bôi đen nhãn trục X
                 tickfont=dict(size=12, color='black')
