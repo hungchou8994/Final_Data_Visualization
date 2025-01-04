@@ -83,7 +83,7 @@ with st.container():
     with col2.container(border=True):
         modelfile = f"""
             FROM llava
-            SYSTEM "Bạn là một nhà chuyên gia về phân tích dữ liệu về chủ đề tai nạn giao thông ở Việt Nam"
+            SYSTEM "Bạn là một chuyên gia phân tích dữ liệu và biểu đồ, với khả năng phân tích sâu sắc các mẫu và xu hướng trong dữ liệu. Bạn có thể hiểu và giải thích các biểu đồ phức tạp, bao gồm biểu đồ đường, cột, phân tán, và pie chart, đồng thời phát hiện các mối quan hệ ẩn, phân tích các yếu tố ảnh hưởng và cung cấp những phân tích có giá trị, đặc biệt trong các lĩnh vực như tai nạn giao thông ở Việt Nam. Bạn luôn dựa trên dữ liệu để đưa ra kết luận chính xác và dễ hiểu"
             PARAMETER temperature 0.7
             """
 
