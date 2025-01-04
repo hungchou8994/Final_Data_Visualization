@@ -259,11 +259,21 @@ with chart_col2.container():
         fig_road_type.update_layout(
             margin=dict(l=0, r=0, t=0, b=0),
             title_x=0.5,  # Căn giữa tiêu đề
-            xaxis_title='Số vụ tai nạn',
-            yaxis_title='Loại đường',
+            # xaxis_title='Số vụ tai nạn',
+            # yaxis_title='Loại đường',
             # width=900,  # Độ rộng biểu đồ
             height=300,  # Chiều cao biểu đồ
             font=dict(size=12)  # Kích thước font chữ
+            xaxis=dict(
+                title='Số vụ tai nạn',
+                title_font=dict(size=14, color='black'),  # Bôi đen nhãn trục X
+                tickfont=dict(size=12, color='black')
+            ),
+            yaxis=dict(
+                title='Loại đường',
+                title_font=dict(size=14, color='black'),  # Bôi đen nhãn trục Y
+                tickfont=dict(size=12, color='black')
+            ),
         )
 
         # Hiển thị biểu đồ trên Streamlit
