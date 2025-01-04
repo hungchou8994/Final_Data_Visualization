@@ -126,7 +126,7 @@ with st.container():
                     # Xử lý hình ảnh với API Ollama (LLaVA)
                     try:
                         # user_input = """This is one of the charts in the traffic accident data in Vietnam for the years 2020-2021, analyze this chart."""
-                        user_input = 'Analyze this chart of traffic accident data in Vietnam for 2020-2021.'
+                        user_input = 'Phân tích biểu đồ này, đây là một trong những biểu đồ về bộ dữ liệu tai nạn giao thông ở Việt Nam 2020-2021.'
                         # # Duyệt qua tất cả các cột và dữ liệu
                         # for col in data.columns:
                         #     user_input += f"{col}: {data[col].tolist()}\n"
@@ -148,7 +148,7 @@ with st.container():
                                 image.save(tmp_file, format="PNG")
                                 tmp_file_path = tmp_file.name
 
-                            c.drawImage(tmp_file_path, x_position, y_position - 200, height=150)
+                            c.drawImage(tmp_file_path, x_position, y_position - 200, width=600 ,height=150)
                             # st.write(translator_ollava.translate(result['response']))
 
                             # Giảm y_position sau khi thêm ảnh
@@ -157,7 +157,7 @@ with st.container():
                             # response_text = translator_ollava.translate(result['response'])
                             response_text = result['response']
                             st.write(response_text)
-                            wrapped_text = textwrap.wrap(response_text, width=70)
+                            wrapped_text = textwrap.wrap(response_text, width=90)
 
                             for line in wrapped_text:
                                 if y_position < 100:  # Nếu hết trang
