@@ -123,7 +123,7 @@ with st.container():
 
                     # Xử lý hình ảnh với API Ollama (LLaVA)
                     try:
-                        user_input = """This is one of the charts in the traffic accident data in Vietnam for the years 2020-2021. Analyze this chart less than 400 characters."""
+                        user_input = """This is one of the charts in the traffic accident data in Vietnam for the years 2020-2021, analyze this chart."""
 
                         # # Duyệt qua tất cả các cột và dữ liệu
                         # for col in data.columns:
