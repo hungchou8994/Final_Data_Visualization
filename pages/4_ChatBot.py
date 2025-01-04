@@ -83,7 +83,7 @@ with st.container():
     with col2.container(border=True):
         modelfile = f"""
             FROM llava
-            SYSTEM f"Bạn là một chuyên gia phân tích dữ liệu và biểu đồ với chủ đề Tai nạn giao thông ở Việt Nam, bạn có thể sử dụng thông tin dataset ở đây {data}"
+            SYSTEM f"Bạn là một chuyên gia phân tích dữ liệu và biểu đồ với chủ đề Tai nạn giao thông ở Việt Nam, bạn có thể sử dụng thông tin dataset ở đây '$(data_dv.csv)'"
             PARAMETER temperature 0.7
             """
 
@@ -125,7 +125,7 @@ with st.container():
                     # Xử lý hình ảnh với API Ollama (LLaVA)
                     try:
                         # user_input = """This is one of the charts in the traffic accident data in Vietnam for the years 2020-2021, analyze this chart."""
-                        user_input = """Từ tập dữ liệu ${data}, phân tích biểu đồ này, mô tả title của biểu đồ, là dòng chữ phía trên bên trái của biểu đồ, phía sau kí tự '📊', mô tả các trục của biểu đồ, mô tả các điểm quan trọng của biểu đồ, từ biểu đồ đó rút ra mô tả xu hướng của biểu đồ."""
+                        user_input = """Từ tập dữ liệu "$(data_dv.csv)" Phân tích biểu đồ này, mô tả title của biểu đồ, là dòng chữ phía trên bên trái của biểu đồ, phía sau kí tự '📊', mô tả các trục của biểu đồ, mô tả các điểm quan trọng của biểu đồ, từ biểu đồ đó rút ra mô tả xu hướng của biểu đồ."""
                         # # Duyệt qua tất cả các cột và dữ liệu
                         # for col in data.columns:
                         #     user_input += f"{col}: {data[col].tolist()}\n"
