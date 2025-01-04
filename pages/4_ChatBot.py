@@ -93,9 +93,6 @@ with st.container():
         user_input = st.chat_input("Ask me ><:")
 
         if user_input:
-
-            user_input = "This is one of the charts in the traffic accident data in Vietnam for the years 2020-2021. " + user_input
-
             st.write("Input")
             # Create PDF in memory
             pdf_buffer = BytesIO()
@@ -126,12 +123,7 @@ with st.container():
 
                     # Xử lý hình ảnh với API Ollama (LLaVA)
                     try:
-                        # user_input = """As a professional Data Scientist, your task is write a paragraph (about 300-400 characters) to analyze a given chart image. 
-                        #     Begin by identifying the chart type (e.g., bar chart, line graph, scatter plot, pie chart, histogram) and briefly explain its purpose and what it conveys. 
-                        #     Describe the axes, including the variables on the x-axis and y-axis, and note any important markers such as trends, categories, or data points. 
-                        #     Analyze the overall data patterns, highlighting trends (e.g., increasing, decreasing), correlations between variables, and any visible clusters or groupings. 
-                        #     Summarize the main insights drawn from the chart, considering how the data aligns with or challenges expectations. 
-                        #     Based on your analysis, suggest actionable insights, potential decisions, or further areas for investigation.\n"""
+                        user_input = """"This is one of the charts in the traffic accident data in Vietnam for the years 2020-2021. Analyze this chart""""
 
                         # # Duyệt qua tất cả các cột và dữ liệu
                         # for col in data.columns:
@@ -154,14 +146,14 @@ with st.container():
                                 image.save(tmp_file, format="PNG")
                                 tmp_file_path = tmp_file.name
 
-                            c.drawImage(tmp_file_path, x_position, y_position - 200, width=200, height=150)
+                            c.drawImage(tmp_file_path, x_position, y_position - 200, height=150)
                             # st.write(translator_ollava.translate(result['response']))
 
                             # Giảm y_position sau khi thêm ảnh
                             y_position -= 220
 
-                            # response_text = translator_ollava.translate(result['response'])
-                            response_text = result['response']
+                            response_text = translator_ollava.translate(result['response'])
+                            # response_text = result['response']
                             st.write(response_text)
                             wrapped_text = textwrap.wrap(response_text, width=70)
 
