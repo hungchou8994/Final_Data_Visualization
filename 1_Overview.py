@@ -147,7 +147,7 @@ with st.container(border=False):
             monthly_accidents,
             x='Tháng',
             y='Số vụ',
-            title='Xu hướng số vụ tai nạn theo từng tháng',
+            title='📊 Xu hướng số vụ tai nạn theo từng tháng',
             # title=' ',
             labels={'Tháng': 'Tháng trong năm', 'Số vụ': 'Số vụ tai nạn'},
             color_discrete_sequence=['#636EFA']  # Màu biểu đồ
@@ -155,7 +155,7 @@ with st.container(border=False):
 
         # Tùy chỉnh hiển thị biểu đồ
         fig.update_layout(
-            margin=dict(l=0, r=0, t=0, b=0),
+            margin=dict(l=0, r=0, t=70, b=0),
             title_x=0.5,
             title_y=0.9,
             title_pad=dict(t=5),
@@ -178,12 +178,17 @@ with st.container(border=False):
                 title_font=dict(size=14, color='black'),  # Bôi đen nhãn trục Y
                 tickfont=dict(size=12, color='black')
             ),
+            title=dict(
+                x=0,  # Di chuyển tiêu đề sang bên trái
+                xanchor='left',  # Căn chỉnh tiêu đề với phía bên trái
+                yanchor='top'  # Căn chỉnh theo chiều dọc ở phía trên
+            ),
             font=dict(size=12),
             height=300
         )
 
         # Hiển thị trên Streamlit
-        st.markdown("**📊 Xu hướng số vụ tai nạn theo từng tháng**")
+        # st.markdown("**📊 Xu hướng số vụ tai nạn theo từng tháng**")
         st.plotly_chart(fig, use_container_width=True)
     ######################################################
     with chart_col2.container(border=True):
@@ -205,7 +210,7 @@ with st.container(border=False):
             daily_accidents,
             x='Ngày',
             y='Số vụ',
-            title='Xu hướng số vụ tai nạn theo ngày trong tháng',
+            title='📊 Xu hướng số vụ tai nạn theo ngày trong tháng',
             # title=' ',
             labels={'Ngày': 'Ngày', 'Số vụ': 'Số vụ tai nạn'},
             markers=True
@@ -213,7 +218,7 @@ with st.container(border=False):
 
         # Tùy chỉnh hiển thị biểu đồ
         fig_daily.update_layout(
-            margin=dict(l=0, r=0, t=0, b=0),
+            margin=dict(l=0, r=0, t=70, b=0),
             title_x=0.5,  # Căn giữa tiêu đề
             title_y=0.9,  # Đưa tiêu đề lên gần biểu đồ hơn
             # xaxis=dict(tickmode='linear', dtick=1),  # Hiển thị đầy đủ các ngày
@@ -234,12 +239,17 @@ with st.container(border=False):
                 title_font=dict(size=14, color='black'),  # Bôi đen nhãn trục Y
                 tickfont=dict(size=12, color='black')
             ),
+            title=dict(
+                x=0,  # Di chuyển tiêu đề sang bên trái
+                xanchor='left',  # Căn chỉnh tiêu đề với phía bên trái
+                yanchor='top'  # Căn chỉnh theo chiều dọc ở phía trên
+            ),
             font=dict(size=12),
             height=300
         )
 
         # Hiển thị biểu đồ trên Streamlit
-        st.markdown("**📊 Xu hướng số vụ tai nạn theo ngày trong tháng**")
+        # st.markdown("**📊 Xu hướng số vụ tai nạn theo ngày trong tháng**")
         st.plotly_chart(fig_daily, use_container_width=True)
     ######################################################
 
@@ -259,7 +269,7 @@ with st.container(border=False):
             hourly_accidents,
             x='Giờ',
             y='Số vụ',
-            title='Số vụ tai nạn theo khung giờ',
+            title='📊 Số vụ tai nạn theo khung giờ',
             # title=' ',
             text='Số vụ',
             color='Số vụ',
@@ -269,7 +279,7 @@ with st.container(border=False):
         # Tùy chỉnh hiển thị biểu đồ
         fig_hourly.update_traces(textposition='outside')
         fig_hourly.update_layout(
-            margin=dict(l=0, r=0, t=0, b=0),
+            margin=dict(l=0, r=0, t=70, b=0),
             title_x=0.5,  # Căn giữa tiêu đề
             # xaxis_title='Giờ trong ngày',
             # yaxis_title='Số vụ tai nạn',
@@ -289,12 +299,17 @@ with st.container(border=False):
                 title_font=dict(size=14, color='black'),  # Bôi đen nhãn trục Y
                 tickfont=dict(size=12, color='black')
             ),
+            title=dict(
+                x=0,  # Di chuyển tiêu đề sang bên trái
+                xanchor='left',  # Căn chỉnh tiêu đề với phía bên trái
+                yanchor='top'  # Căn chỉnh theo chiều dọc ở phía trên
+            ),
             font=dict(size=12),
             height=300
         )
 
         # Hiển thị biểu đồ trên Streamlit
-        st.markdown("**📊 Số vụ tai nạn theo khung giờ**")
+        # st.markdown("**📊 Số vụ tai nạn theo khung giờ**")
         st.plotly_chart(fig_hourly, use_container_width=True)
     ######################################################
     with chart_col2.container(border=True):
