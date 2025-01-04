@@ -23,7 +23,7 @@ from reportlab.pdfbase import pdfmetrics
 set_pd_engine("pandas")
 
 # Đăng ký font Be VietNam Pro
-pdfmetrics.registerFont(TTFont('BeVietNamPro', r'Be_Vietnam_Pro/BeVietnamPro-Black.ttf'))
+pdfmetrics.registerFont(TTFont('BeVietNamPro', r'Be_Vietnam_Pro/BeVietnamPro-Light.ttf'))
 
 export_folder = os.path.join(os.getcwd(), "exports")
 
@@ -139,7 +139,7 @@ with st.container():
                         #####################################
                         # Gửi yêu cầu đến API Ollama
                         response = requests.post(
-                            "https://cb6b-115-78-15-156.ngrok-free.app/api/generate",
+                            "https://e70b-14-161-7-63.ngrok-free.app/api/generate",
                             json={"model": "llava", "prompt": user_input, "images":[img_base64], "stream": False}
                         )
                         translator_ollava = Translator(to_lang="vi", from_lang="en")
@@ -153,7 +153,7 @@ with st.container():
                                 image.save(tmp_file, format="PNG")
                                 tmp_file_path = tmp_file.name
 
-                            c.drawImage(tmp_file_path, x_position, y_position - 200, width=512 ,height=200)
+                            c.drawImage(tmp_file_path, x_position, y_position - 200, width=450 ,height=200)
                             # st.write(translator_ollava.translate(result['response']))
 
                             # Giảm y_position sau khi thêm ảnh
@@ -162,7 +162,7 @@ with st.container():
                             # response_text = translator_ollava.translate(result['response'])
                             response_text = result['response']
                             st.write(response_text)
-                            wrapped_text = textwrap.wrap(response_text, width=90)
+                            wrapped_text = textwrap.wrap(response_text, width=80)
 
                             for line in wrapped_text:
                                 if y_position < 100:  # Nếu hết trang
