@@ -139,7 +139,8 @@ with chart_col1.container():
             x='Quận/Huyện',
             y='Số lượng',
             color='Loại thống kê',
-            title=' ',
+            title='Số người chết và bị thương theo quận/huyện',
+            # title=' ',
             labels={'Số lượng': 'Số người', 'Quận/Huyện': 'Quận/Huyện', 'Loại thống kê': 'Loại thống kê'},
             color_discrete_sequence=px.colors.qualitative.Set2  # Sử dụng bảng màu Set1
         )
@@ -205,7 +206,8 @@ with chart_col1.container():
             x='Loại phương tiện',
             y='Số lượng',
             color='Loại thống kê',
-            title=' ',
+            title='Số người chết và bị thương theo loại phương tiện',
+            # title=' ',
             labels={
                 'Loại phương tiện': 'Loại phương tiện',
                 'Số lượng': 'Số người',
@@ -267,7 +269,8 @@ with chart_col2.container():
             y='Tổng_thiệt_hại',
             size='Thiệt_hại_trung_bình',
             color='Quận/Huyện',
-            title=' ',
+            title='Phân tích thiệt hại theo quận/huyện',
+            # title=' ',
             labels={
                 'Tổng_số_vụ': 'Số vụ tai nạn',
                 'Tổng_thiệt_hại': 'Tổng thiệt hại (triệu đồng)',
@@ -328,7 +331,8 @@ with chart_col2.container():
             x='Thiệt hại trung bình',
             y='Loại phương tiện',
             orientation='h',
-            title=' ',
+            title='Thiệt hại trung bình theo loại phương tiện',
+            # title=' ',
             color='Thiệt hại trung bình',
             color_continuous_scale='viridis',
             labels={'Thiệt hại trung bình': 'Thiệt hại trung bình (triệu đồng)', 'Loại phương tiện': 'Loại phương tiện'}

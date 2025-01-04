@@ -147,8 +147,8 @@ with st.container(border=False):
             monthly_accidents,
             x='Tháng',
             y='Số vụ',
-            # title='Xu hướng số vụ tai nạn theo từng tháng',
-            title=' ',
+            title='Xu hướng số vụ tai nạn theo từng tháng',
+            # title=' ',
             labels={'Tháng': 'Tháng trong năm', 'Số vụ': 'Số vụ tai nạn'},
             color_discrete_sequence=['#636EFA']  # Màu biểu đồ
         )
@@ -205,8 +205,8 @@ with st.container(border=False):
             daily_accidents,
             x='Ngày',
             y='Số vụ',
-            # title='Xu hướng số vụ tai nạn theo ngày trong tháng',
-            title=' ',
+            title='Xu hướng số vụ tai nạn theo ngày trong tháng',
+            # title=' ',
             labels={'Ngày': 'Ngày', 'Số vụ': 'Số vụ tai nạn'},
             markers=True
         )
@@ -259,8 +259,8 @@ with st.container(border=False):
             hourly_accidents,
             x='Giờ',
             y='Số vụ',
-            # title='Số vụ tai nạn theo khung giờ',
-            title=' ',
+            title='Số vụ tai nạn theo khung giờ',
+            # title=' ',
             text='Số vụ',
             color='Số vụ',
             color_continuous_scale='Plasma'  # Thang màu Plasma
@@ -318,8 +318,8 @@ with st.container(border=False):
             x='Quận/Huyện',
             y='index',
             orientation='h',  # Biểu đồ ngang
-            # title='Top 10 quận/huyện có số vụ tai nạn cao nhất (Sắp xếp tăng dần)',
-            title=' ',
+            title='Top 10 quận/huyện có số vụ tai nạn cao nhất (Sắp xếp tăng dần)',
+            # title=' ',
             labels={'Quận/Huyện': 'Quận/Huyện', 'index': 'index'},
             color='Quận/Huyện',
             color_continuous_scale='Viridis'  # Thang màu Viridis

@@ -125,7 +125,8 @@ with chart_col1.container():
             weather_condition_counts, 
             values='Số vụ', 
             names='Tình trạng thời tiết', 
-            title=' ',
+            title='Tỷ lệ tai nạn dựa trên tình trạng thời tiết',
+            # title=' ',
             color_discrete_sequence=px.colors.sequential.Viridis  # Changed to Viridis for better contrast
         )
 
@@ -176,7 +177,8 @@ with chart_col1.container():
             y='Số vụ', 
             text='Số vụ',
             color='Số vụ', 
-            title=' ',
+            title='Top 10 Nguyên nhân gây tai nạn có người chết',
+            # title=' ',
             color_continuous_scale='Viridis',
             labels={'Abbreviation': 'Nguyên nhân (Rút gọn)', 'Số vụ': 'Số vụ'}
         )
@@ -249,7 +251,8 @@ with chart_col2.container():
             x='Số vụ',
             y='Loại đường',
             orientation='h',  # Horizontal bar chart
-            title=' ',
+            title='Top 10 loại đường có số vụ tai nạn cao nhất',
+            # title=' ',
             labels={'Số vụ': 'Số vụ tai nạn', 'Loại đường': 'Loại đường'},
             color='Số vụ',
             color_continuous_scale='Plasma'  # Thang màu
@@ -297,7 +300,8 @@ with chart_col2.container():
             treemap_summary,
             path=['Quận/Huyện', 'Loại phương tiện'],  # Cấp độ: Quận/Huyện -> Loại phương tiện
             values='Số vụ',
-            title=' ',
+            title='Phân tích tai nạn theo loại phương tiện và quận/huyện',
+            # title=' ',
             color='Số vụ',
             color_continuous_scale='Viridis',  # Thang màu
             labels={'Số vụ': 'Số vụ tai nạn'}
