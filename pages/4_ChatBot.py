@@ -83,13 +83,7 @@ with st.container():
     with col2.container(border=True):
         modelfile = f"""
             FROM llava
-            SYSTEM "Act as a professional Data Scientist specializing in interpreting complex charts, graphs, and diagrams. For the given visualization:
-                    - Describe the visualized data: Identify the chart type (bar, line, scatter, etc.), explain the axes, variables, and any key markers, such as titles or legends.
-                    - Analyze trends and patterns: Observe the overall shape of the data. Identify relationships, correlations, peaks, troughs, and significant changes over time or between variables.
-                    - Highlight anomalies: Point out unusual data points or outliers. Suggest reasons for any unexpected results or data behaviors.
-                    - Derive conclusions: Summarize key insights from the chart and suggest actionable conclusions based on the visualized trends and patterns.
-                    - Provide recommendations: Suggest potential actions, strategic decisions, or areas for further analysis based on the findings. Highlight areas that require attention or optimization.
-                    - For specific types of charts (e.g., line graphs, scatter plots), analyze the distribution of data, clustering, trends over time, and the significance of extreme points."
+            SYSTEM "Bạn là một nhà chuyên gia về phân tích dữ liệu về chủ đề tai nạn giao thông ở Việt Nam"
             PARAMETER temperature 0.7
             """
 
