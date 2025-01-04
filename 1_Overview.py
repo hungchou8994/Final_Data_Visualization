@@ -327,7 +327,7 @@ with st.container(border=False):
 
         # Tùy chỉnh hiển thị biểu đồ
         fig_district.update_layout(
-            margin=dict(l=0, r=0, t=25, b=0),
+            margin=dict(l=0, r=0, t=30, b=0),
             title_x=0.5,  # Căn giữa tiêu đề
             # xaxis_title='Số vụ tai nạn',
             # yaxis_title='Quận/Huyện',
