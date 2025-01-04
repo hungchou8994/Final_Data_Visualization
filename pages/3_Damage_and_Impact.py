@@ -139,7 +139,7 @@ with chart_col1.container():
             x='Quận/Huyện',
             y='Số lượng',
             color='Loại thống kê',
-            title='Số người chết và bị thương theo quận/huyện',
+            title='📊 Số người chết và bị thương theo quận/huyện',
             # title=' ',
             labels={'Số lượng': 'Số người', 'Quận/Huyện': 'Quận/Huyện', 'Loại thống kê': 'Loại thống kê'},
             color_discrete_sequence=px.colors.qualitative.Set2  # Sử dụng bảng màu Set1
@@ -147,7 +147,7 @@ with chart_col1.container():
 
         # Tùy chỉnh hiển thị
         fig.update_layout(
-            margin=dict(l=0, r=0, t=0, b=0),
+            margin=dict(l=0, r=0, t=70, b=0),
             title_x=0.5,  # Căn giữa tiêu đề
             # xaxis_title='Quận/Huyện',
             # yaxis_title='Số người',
@@ -167,9 +167,14 @@ with chart_col1.container():
                 title_font=dict(size=14, color='black'),  # Bôi đen nhãn trục Y
                 tickfont=dict(size=12, color='black')
             ),
+            title=dict(
+                x=0,  # Di chuyển tiêu đề sang bên trái
+                xanchor='left',  # Căn chỉnh tiêu đề với phía bên trái
+                yanchor='top'  # Căn chỉnh theo chiều dọc ở phía trên
+            ),
         )
         # Hiển thị biểu đồ trên Streamlit
-        st.markdown("**📊 Số người chết và bị thương theo quận/huyện**")
+        # st.markdown("**📊 Số người chết và bị thương theo quận/huyện**")
         st.plotly_chart(fig, use_container_width=True)
 
 
@@ -206,7 +211,7 @@ with chart_col1.container():
             x='Loại phương tiện',
             y='Số lượng',
             color='Loại thống kê',
-            title='Số người chết và bị thương theo loại phương tiện',
+            title='📊 Số người chết và bị thương theo loại phương tiện',
             # title=' ',
             labels={
                 'Loại phương tiện': 'Loại phương tiện',
@@ -219,7 +224,7 @@ with chart_col1.container():
 
         # Tùy chỉnh hiển thị
         fig_stacked_bar.update_layout(
-            margin=dict(l=0, r=0, t=0, b=0),
+            margin=dict(l=0, r=0, t=70, b=0),
             title_x=0.5,  # Căn giữa tiêu đề
             # xaxis_title='Loại phương tiện',
             # yaxis_title='Số người',
@@ -238,9 +243,14 @@ with chart_col1.container():
                 title_font=dict(size=14, color='black'),  # Bôi đen nhãn trục Y
                 tickfont=dict(size=12, color='black')
             ),
+            title=dict(
+                x=0,  # Di chuyển tiêu đề sang bên trái
+                xanchor='left',  # Căn chỉnh tiêu đề với phía bên trái
+                yanchor='top'  # Căn chỉnh theo chiều dọc ở phía trên
+            ),
         )
         # Hiển thị biểu đồ trên Streamlit
-        st.markdown("**📊 Số người chết và bị thương theo loại phương tiện**")
+        # st.markdown("**📊 Số người chết và bị thương theo loại phương tiện**")
         st.plotly_chart(fig_stacked_bar, use_container_width=True)
 
 
@@ -269,7 +279,7 @@ with chart_col2.container():
             y='Tổng_thiệt_hại',
             size='Thiệt_hại_trung_bình',
             color='Quận/Huyện',
-            title='Phân tích thiệt hại theo quận/huyện',
+            title='📊 Phân tích thiệt hại theo quận/huyện',
             # title=' ',
             labels={
                 'Tổng_số_vụ': 'Số vụ tai nạn',
@@ -283,7 +293,7 @@ with chart_col2.container():
 
         # Tùy chỉnh hiển thị
         fig_bubble.update_layout(
-            margin=dict(l=0, r=0, t=0, b=0),
+            margin=dict(l=0, r=0, t=70, b=0),
             title_x=0.5,  # Căn giữa tiêu đề
             font=dict(size=12),  # Kích thước font chữ
             height=300,  # Chiều cao biểu đồ
@@ -296,11 +306,15 @@ with chart_col2.container():
                 itemsizing='constant',  # Đảm bảo mỗi mục có kích thước giống nhau
                 traceorder='normal',
                 font=dict(size=10),
-                title=dict(text='Quận/Huyện', font=dict(size=12))
+                title=dict(text='Quận/Huyện', font=dict(size=12), 
+                        x=0,  # Di chuyển tiêu đề sang bên trái
+                        xanchor='left',  # Căn chỉnh tiêu đề với phía bên trái
+                        yanchor='top'
+                )
             )
         )
         # Hiển thị biểu đồ trên Streamlit
-        st.markdown("**📊 Phân tích thiệt hại theo quận/huyện**")
+        # st.markdown("**📊 Phân tích thiệt hại theo quận/huyện**")
         st.plotly_chart(fig_bubble, use_container_width=True)
 
     ########################################################
@@ -331,7 +345,7 @@ with chart_col2.container():
             x='Thiệt hại trung bình',
             y='Loại phương tiện',
             orientation='h',
-            title='Thiệt hại trung bình theo loại phương tiện',
+            title='📊 Thiệt hại trung bình theo loại phương tiện',
             # title=' ',
             color='Thiệt hại trung bình',
             color_continuous_scale='viridis',
@@ -340,7 +354,7 @@ with chart_col2.container():
 
         # Tùy chỉnh hiển thị
         fig.update_layout(
-            margin=dict(l=0, r=0, t=0, b=0),
+            margin=dict(l=0, r=0, t=70, b=0),
             title_x=0.5,
             # xaxis_title='Thiệt hại trung bình (triệu đồng)',
             # yaxis_title='Loại phương tiện',
@@ -356,10 +370,15 @@ with chart_col2.container():
                 title_font=dict(size=14, color='black'),  # Bôi đen nhãn trục Y
                 tickfont=dict(size=12, color='black')
             ),
+            title=dict(
+                x=0,  # Di chuyển tiêu đề sang bên trái
+                xanchor='left',  # Căn chỉnh tiêu đề với phía bên trái
+                yanchor='top'  # Căn chỉnh theo chiều dọc ở phía trên
+            ),
             # width=900
         )
         # Hiển thị biểu đồ trên Streamlit
-        st.markdown("**📊 Thiệt hại trung bình theo loại phương tiện**")
+        # st.markdown("**📊 Thiệt hại trung bình theo loại phương tiện**")
         st.plotly_chart(fig, use_container_width=True)
 
 

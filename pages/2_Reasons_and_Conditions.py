@@ -125,7 +125,7 @@ with chart_col1.container():
             weather_condition_counts, 
             values='Số vụ', 
             names='Tình trạng thời tiết', 
-            title='Tỷ lệ tai nạn dựa trên tình trạng thời tiết',
+            title='📊 Tỷ lệ tai nạn dựa trên tình trạng thời tiết',
             # title=' ',
             color_discrete_sequence=px.colors.sequential.Viridis  # Changed to Viridis for better contrast
         )
@@ -137,18 +137,23 @@ with chart_col1.container():
             textfont_size=12  # Adjust font size for better readability
         )
         fig.update_layout(
-            margin=dict(l=0, r=0, t=0, b=0),
+            margin=dict(l=0, r=0, t=70, b=0),
             title_x=0.5,  # Center the title
             legend_title="Tình trạng thời tiết",
             # width=900,  # Adjusted width for better visualization
             height=300,  # Adjusted height for better visualization
             font=dict(size=10),  # Set default font size
+            title=dict(
+                x=0,  # Di chuyển tiêu đề sang bên trái
+                xanchor='left',  # Căn chỉnh tiêu đề với phía bên trái
+                yanchor='top'  # Căn chỉnh theo chiều dọc ở phía trên
+            ),
             # autosize=True
         )
 
 
         # Hiển thị biểu đồ trên Streamlit
-        st.markdown("**📊 Tỷ lệ tai nạn dựa trên tình trạng thời tiết**")
+        # st.markdown("**📊 Tỷ lệ tai nạn dựa trên tình trạng thời tiết**")
         st.plotly_chart(fig, use_container_width=True)
     ############################################################
     with st.container(border=True):
@@ -177,7 +182,7 @@ with chart_col1.container():
             y='Số vụ', 
             text='Số vụ',
             color='Số vụ', 
-            title='Top 10 Nguyên nhân gây tai nạn có người chết',
+            title='📊 Top 10 Nguyên nhân gây tai nạn có người chết',
             # title=' ',
             color_continuous_scale='Viridis',
             labels={'Abbreviation': 'Nguyên nhân (Rút gọn)', 'Số vụ': 'Số vụ'}
@@ -206,7 +211,7 @@ with chart_col1.container():
         fig.update_traces(textposition='outside')
         # Customize layout
         fig.update_layout(
-            margin=dict(l=0, r=0, t=0, b=0),
+            margin=dict(l=0, r=0, t=70, b=0),
             title_x=0.5,  # Center the title
             # xaxis_title='Nguyên nhân (Rút gọn)',
             # yaxis_title='Số vụ',
@@ -225,6 +230,11 @@ with chart_col1.container():
                 title_font=dict(size=14, color='black'),  # Bôi đen nhãn trục Y
                 tickfont=dict(size=12, color='black')
             ),
+            title=dict(
+                x=0,  # Di chuyển tiêu đề sang bên trái
+                xanchor='left',  # Căn chỉnh tiêu đề với phía bên trái
+                yanchor='top'  # Căn chỉnh theo chiều dọc ở phía trên
+            ),
             legend=dict(
                 title=dict(text='Nguyên nhân', font=dict(size=14, color='black')),  # Tiêu đề legend in đậm
                 font=dict(size=12, color='black')  # Văn bản trong legend in đậm
@@ -232,7 +242,7 @@ with chart_col1.container():
         )
 
         # Hiển thị biểu đồ trên Streamlit
-        st.markdown("**📊 Top 10 Nguyên nhân gây tai nạn có người chết**")
+        # st.markdown("**📊 Top 10 Nguyên nhân gây tai nạn có người chết**")
         st.plotly_chart(fig, use_container_width=True)
 
 ##########################################################
@@ -251,7 +261,7 @@ with chart_col2.container():
             x='Số vụ',
             y='Loại đường',
             orientation='h',  # Horizontal bar chart
-            title='Top 10 loại đường có số vụ tai nạn cao nhất',
+            title='📊 Top 10 loại đường có số vụ tai nạn cao nhất',
             # title=' ',
             labels={'Số vụ': 'Số vụ tai nạn', 'Loại đường': 'Loại đường'},
             color='Số vụ',
@@ -260,7 +270,7 @@ with chart_col2.container():
 
         # Tùy chỉnh hiển thị biểu đồ
         fig_road_type.update_layout(
-            margin=dict(l=0, r=0, t=0, b=0),
+            margin=dict(l=0, r=0, t=70, b=0),
             title_x=0.5,  # Căn giữa tiêu đề
             # xaxis_title='Số vụ tai nạn',
             # yaxis_title='Loại đường',
@@ -277,10 +287,15 @@ with chart_col2.container():
                 title_font=dict(size=14, color='black'),  # Bôi đen nhãn trục Y
                 tickfont=dict(size=12, color='black')
             ),
+            title=dict(
+                x=0,  # Di chuyển tiêu đề sang bên trái
+                xanchor='left',  # Căn chỉnh tiêu đề với phía bên trái
+                yanchor='top'  # Căn chỉnh theo chiều dọc ở phía trên
+            ),
         )
 
         # Hiển thị biểu đồ trên Streamlit
-        st.markdown("**📊 Top 10 loại đường có số vụ tai nạn cao nhất**")
+        # st.markdown("**📊 Top 10 loại đường có số vụ tai nạn cao nhất**")
         st.plotly_chart(fig_road_type, use_container_width=True)
     ######################################################
     with st.container(border=True):
@@ -300,7 +315,7 @@ with chart_col2.container():
             treemap_summary,
             path=['Quận/Huyện', 'Loại phương tiện'],  # Cấp độ: Quận/Huyện -> Loại phương tiện
             values='Số vụ',
-            title='Phân tích tai nạn theo loại phương tiện và quận/huyện',
+            title='📊 Phân tích tai nạn theo loại phương tiện và quận/huyện',
             # title=' ',
             color='Số vụ',
             color_continuous_scale='Viridis',  # Thang màu
@@ -309,13 +324,18 @@ with chart_col2.container():
 
         # Tùy chỉnh hiển thị
         fig.update_layout(
-            margin=dict(l=0, r=0, t=0, b=0),
+            margin=dict(l=0, r=0, t=70, b=0),
             title_x=0.5,  # Căn giữa tiêu đề
             height=300,  # Chiều cao biểu đồ
             # width=900,  # Độ rộng biểu đồ
-            font=dict(size=12)  # Kích thước font chữ
+            font=dict(size=12),  # Kích thước font chữ
+            title=dict(
+                x=0,  # Di chuyển tiêu đề sang bên trái
+                xanchor='left',  # Căn chỉnh tiêu đề với phía bên trái
+                yanchor='top'  # Căn chỉnh theo chiều dọc ở phía trên
+            ),
         )
 
         # Hiển thị biểu đồ trên Streamlit
-        st.markdown("**📊 Phân tích tai nạn theo loại phương tiện và quận/huyện**")
+        # st.markdown("**📊 Phân tích tai nạn theo loại phương tiện và quận/huyện**")
         st.plotly_chart(fig, use_container_width=True)
