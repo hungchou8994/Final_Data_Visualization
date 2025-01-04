@@ -263,7 +263,7 @@ with chart_col2.container():
             # yaxis_title='Loại đường',
             # width=900,  # Độ rộng biểu đồ
             height=300,  # Chiều cao biểu đồ
-            font=dict(size=12)  # Kích thước font chữ
+            font=dict(size=12),  # Kích thước font chữ
             xaxis=dict(
                 title='Số vụ tai nạn',
                 title_font=dict(size=14, color='black'),  # Bôi đen nhãn trục X
