@@ -109,87 +109,88 @@ with st.container():
             # Tạo một đối tượng TextObject để chèn toàn bộ đoạn văn mà không cần dùng strip
             text_object = c.beginText(x_position, y_position)
             text_object.setFont("Helvetica", 12)
-            text_object.setTextOrigin(x_position, y_position)
+            text_object.setTextOrigin(x_position, y_position)   
 
-        # Hiển thị hình ảnh nếu người dùng tải lên
+            # Build the prompt
+            user_input = """As a professional Data Scientist, your task is write a paragraph (about 300-400 characters) to analyze given chart images. 
+            Begin by identifying the chart type (e.g., bar chart, line graph, scatter plot, pie chart, histogram) and briefly explain their purpose and what they convey. 
+            Describe the axes, including the variables on the x-axis and y-axis, and note any important markers such as trends, categories, or data points. 
+            Analyze the overall data patterns, highlighting trends (e.g., increasing, decreasing), correlations between variables, and any visible clusters or groupings. 
+            Summarize the main insights drawn from the charts, considering how the data aligns with or challenges expectations. 
+            Based on your analysis, suggest actionable insights, potential decisions, or further areas for investigation.\n"""
+
+            # Add data columns (if available)
+            try:
+                for col in data.columns:
+                    user_input += f"{col}: {data[col].tolist()}\n"
+            except NameError:
+                st.warning("⚠️ Data is not defined. Skipping data columns in the prompt.")
+            
+            # List to store all encoded images
+            img_base64_list = []
+            user_input_list = []
+
+            # Loop to process images and convert them to Base64
             for image in img_file_buffer:
                 if image:
                     image = Image.open(image)
-                    # st.image(image, caption="Ảnh đã tải lên", width=500)
 
+                    # Convert image to Base64
                     buffered = io.BytesIO()
                     image.save(buffered, format="PNG")
                     img_base64 = base64.b64encode(buffered.getvalue()).decode('utf-8')
+                    img_base64_list.append(img_base64)
 
-                    # Xử lý hình ảnh với API Ollama (LLaVA)
-                    try:
-                        user_input = """As a professional Data Scientist, your task is write a paragraph (about 300-400 characters) to analyze a given chart image. 
-                            Begin by identifying the chart type (e.g., bar chart, line graph, scatter plot, pie chart, histogram) and briefly explain its purpose and what it conveys. 
-                            Describe the axes, including the variables on the x-axis and y-axis, and note any important markers such as trends, categories, or data points. 
-                            Analyze the overall data patterns, highlighting trends (e.g., increasing, decreasing), correlations between variables, and any visible clusters or groupings. 
-                            Summarize the main insights drawn from the chart, considering how the data aligns with or challenges expectations. 
-                            Based on your analysis, suggest actionable insights, potential decisions, or further areas for investigation.\n"""
+                    user_input_list.append(user_input)
 
-                        # Duyệt qua tất cả các cột và dữ liệu
-                        for col in data.columns:
-                            user_input += f"{col}: {data[col].tolist()}\n"
+            # Send a single API request
+            try:
+                response = requests.post(
+                    "https://ea4e-115-78-15-156.ngrok-free.app/api/generate",
+                    json={
+                        "modelfile": modelfile,
+                        "model": "llava",
+                        "prompt": user_input_list,
+                        "images": img_base64_list,
+                        "stream": False
+                    }
+                )
 
-                        #####################################
-                        # Gửi yêu cầu đến API Ollama
-                        response = requests.post(
-                            "https://ea4e-115-78-15-156.ngrok-free.app/api/generate",
-                            json={"modelfile": modelfile, "model": "llava", "prompt": user_input, "images":[img_base64], "stream": False}
-                        )
-                        translator_ollava = Translator(to_lang="vi", from_lang="en")
-                        
-                        if response.status_code == 200:
-                            result = response.json()
-                            st.write("**Trả lời:**")
+                if response.status_code == 200:
+                    result = response.json()
+                    st.write("**Trả lời:**")
 
-                            # Save image temporarily
-                            with tempfile.NamedTemporaryFile(delete=False, suffix=".png") as tmp_file:
-                                image.save(tmp_file, format="PNG")
-                                tmp_file_path = tmp_file.name
+                    response_text = result['response']
+                    wrapped_text = textwrap.wrap(response_text, width=70)
 
-                            c.drawImage(tmp_file_path, x_position, y_position - 200, width=200, height=150)
-                            # st.write(translator_ollava.translate(result['response']))
+                    text_object = c.beginText(x_position, y_position)
+                    text_object.setFont("Helvetica", 12)
 
-                            # Giảm y_position sau khi thêm ảnh
-                            y_position -= 220
+                    for line in wrapped_text:
+                        if y_position < 100:  # Check for page overflow
+                            c.showPage()
+                            text_object = c.beginText(x_position, 750)
+                            text_object.setFont("Helvetica", 12)
+                            y_position = 750
 
-                            # response_text = translator_ollava.translate(result['response'])
-                            response_text = result['response']
-                            wrapped_text = textwrap.wrap(response_text, width=70)
+                        text_object.setTextOrigin(x_position, y_position)
+                        text_object.textLine(line)
+                        y_position -= 15
 
-                            for line in wrapped_text:
-                                if y_position < 100:  # Nếu hết trang
-                                    c.showPage()
-                                    text_object = c.beginText(x_position, 750)
-                                    text_object.setFont("Helvetica", 12)
-                                    y_position = 750
+                    c.drawText(text_object)
 
-                                text_object.setTextOrigin(x_position, y_position)
-                                text_object.textLine(line)
-                                y_position -= 15  # Giảm y_position cho mỗi dòng
+                    st.write(response_text)
+                    st.success("Analysis added to the PDF!")
 
-                            c.drawText(text_object)
+                elif response.status_code == 403:
+                    st.error("🚫 Forbidden: Check if the API endpoint requires authentication or IP whitelisting.")
+                elif response.status_code == 404:
+                    st.error("🔍 API endpoint not found. Verify the URL.")
+                else:
+                    st.error(f"⚠️ Unexpected Error: {response.status_code}, {response.text}")
 
-                            os.remove(tmp_file_path)
-                            st.success("Analysis added to the PDF!")
-                        elif response.status_code == 403:
-                            st.error("🚫 Forbidden: Check if the API endpoint requires authentication or IP whitelisting.")
-                        elif response.status_code == 404:
-                            st.error("🔍 API endpoint not found. Verify the URL.")
-                        else:
-                            st.error(f"⚠️ Unexpected Error: {response.status_code}, {response.text}")
-                        ####################################
-
-                        # res = ollama.generate(model="data_science_assistant", prompt=user_input, images=[img_base64])
-
-                        # st.write("Chatbot")
-                        # st.write(res["response"])
-                    except Exception as e:
-                        st.error(f"Lỗi xử lý hình ảnh: {e}")
+            except Exception as e:
+                st.error(f"Lỗi xử lý hình ảnh: {e}")
 
             c.save()
             pdf_buffer.seek(0)
