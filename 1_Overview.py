@@ -171,10 +171,12 @@ with st.container(border=False):
                 dtick=1,
                 title='Tháng trong năm',
                 title_font=dict(size=14, color='black'),  # Bôi đen nhãn trục X
+                tickfont=dict(size=12, color='black')
             ),
             yaxis=dict(
                 title='Số vụ tai nạn',
                 title_font=dict(size=14, color='black'),  # Bôi đen nhãn trục Y
+                tickfont=dict(size=12, color='black')
             ),
             font=dict(size=12),
             height=300
