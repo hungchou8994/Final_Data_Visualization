@@ -208,8 +208,8 @@ with chart_col1.container():
             title_x=0.5,  # Center the title
             # xaxis_title='Nguyên nhân (Rút gọn)',
             # yaxis_title='Số vụ',
-            font=dict(size=12, weight='bold'),  # Set default font size
-            legend_title="Nguyên nhân",
+            font=dict(size=12),  # Set default font size
+            # legend_title="Nguyên nhân",
             # width=1000,  # Adjust width to make room for annotations
             # height=600  # Adjust height
             height=300,
@@ -222,6 +222,10 @@ with chart_col1.container():
                 title='Số vụ',
                 title_font=dict(size=14, color='black'),  # Bôi đen nhãn trục Y
                 tickfont=dict(size=12, color='black')
+            ),
+            legend=dict(
+                title=dict(text='Nguyên nhân', font=dict(size=14, color='black'),  # Tiêu đề legend in đậm
+                font=dict(size=12, color='black')  # Văn bản trong legend in đậm
             ),
         )
 
