@@ -154,8 +154,8 @@ with st.container():
                             # Giảm y_position sau khi thêm ảnh
                             y_position -= 220
 
-                            response_text = translator_ollava.translate(result['response'])
-                            # response_text = result['response']
+                            # response_text = translator_ollava.translate(result['response'])
+                            response_text = result['response']
                             st.write(response_text)
                             wrapped_text = textwrap.wrap(response_text, width=70)
 
