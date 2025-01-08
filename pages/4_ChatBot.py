@@ -19,12 +19,14 @@ from reportlab.lib.pagesizes import letter
 from reportlab.pdfgen import canvas
 from reportlab.pdfbase.ttfonts import TTFont
 from reportlab.pdfbase import pdfmetrics
-import openai
+from openai import OpenAI
 
 set_pd_engine("pandas")
 
 # OpenAI API Key
-openai.api_key = "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"
+
+client = OpenAI(api_key=os.getenv('OPENAI_API_KEY'))
+# openai.api_key = "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"
 
 # Đăng ký font Be VietNam Pro
 pdfmetrics.registerFont(TTFont('BeVietNamPro', r'Be_Vietnam_Pro/BeVietnamPro-Light.ttf'))
@@ -113,7 +115,7 @@ with st.container():
 
             introduce_dataset_input = """Hãy viết một bản báo cáo giới thiệu sơ lược về tập dữ liệu tai nạn giao thông ở Việt Nam, mô tả các thuộc tính cũng như sử dụng các phép toán thống kê đơn giản cho tập dữ liệu"""
 
-            result = openai.completions.create(
+            result = client.chat.completions.create(
                             model="gpt-4",
                             messages=[
                                 {"role": "system", "content": modelfile},
@@ -165,7 +167,7 @@ with st.container():
                         # # Duyệt qua tất cả các cột và dữ liệu
                         # for col in data.columns:
                         #     user_input += f"{col}: {data[col].tolist()}\n"
-                        result = openai.completions.create(
+                        result = client.chat.completions.create(
                             model="gpt-4-vision-preview",
                             messages=[
                                 {"role": "system", "content": modelfile},
