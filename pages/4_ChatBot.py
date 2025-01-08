@@ -237,13 +237,17 @@ with st.container():
                         st.write(response_text)
 
                         content.append(Image(tmp_file_path, width=10*cm, height=6*cm))
+                        st.write("DONE1")
                         content.append(Spacer(1, 0.5 * cm))
+                        st.write("DONE2")
 
                         paragraphs = response_text.split('\n')
                         for para in paragraphs:
                             if para.strip():
                                 content.append(Paragraph(para.strip(), custom_style))
+                                st.write("DONE3")
                                 content.append(Spacer(1, 0.2 * cm))
+                                st.write("DONE4")
                         ##################################
 
 
@@ -271,7 +275,7 @@ with st.container():
 
                         # c.drawText(text_object)
 
-                        # os.remove(tmp_file_path)
+                        os.remove(tmp_file_path)
                         st.success("Analysis added to the PDF!")
                         # elif response.status_code == 403:
                         #     st.error("🚫 Forbidden: Check if the API endpoint requires authentication or IP whitelisting.")
