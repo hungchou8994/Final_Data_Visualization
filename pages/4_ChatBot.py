@@ -235,6 +235,7 @@ with st.container():
                         #################################
                         response_text = result.choices[0].message.content
                         st.write(response_text)
+                        st.image(Image(tmp_file_path))
 
                         content.append(Image(tmp_file_path, width=10*cm, height=6*cm))
                         st.write("DONE1")
