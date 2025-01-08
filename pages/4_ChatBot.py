@@ -223,6 +223,7 @@ with st.container():
                             tmp_file_path = tmp_file.name
 
                         #################################
+                        response_text = result.choices[0].message.content
 
                         content.append(Image(tmp_file_path, width=10*cm, height=6*cm))
                         content.append(Spacer(1, 0.5 * cm))
