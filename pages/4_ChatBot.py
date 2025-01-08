@@ -113,7 +113,7 @@ with st.container():
 
             introduce_dataset_input = """Hãy viết một bản báo cáo giới thiệu sơ lược về tập dữ liệu tai nạn giao thông ở Việt Nam, mô tả các thuộc tính cũng như sử dụng các phép toán thống kê đơn giản cho tập dữ liệu"""
 
-            result = openai.ChatCompletion.create(
+            result = openai.completions.create(
                             model="gpt-4",
                             messages=[
                                 {"role": "system", "content": modelfile},
@@ -165,7 +165,7 @@ with st.container():
                         # # Duyệt qua tất cả các cột và dữ liệu
                         # for col in data.columns:
                         #     user_input += f"{col}: {data[col].tolist()}\n"
-                        result = openai.ChatCompletion.create(
+                        result = openai.completions.create(
                             model="gpt-4-vision-preview",
                             messages=[
                                 {"role": "system", "content": modelfile},
