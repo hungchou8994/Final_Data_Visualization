@@ -123,7 +123,7 @@ with st.container():
                             ],
                             max_tokens=500
                         )
-            response_text = result['choices'][0]['message']['content']
+            response_text = result.choices[0].message.content
             st.write(response_text)
             wrapped_text = textwrap.wrap(response_text, width=80)
 
@@ -189,7 +189,7 @@ with st.container():
                         y_position -= 220
 
                         # response_text = translator_ollava.translate(result['response'])
-                        response_text = result['choices'][0]['message']['content']
+                        response_text = result.choices[0].message.content
                         st.write(response_text)
                         wrapped_text = textwrap.wrap(response_text, width=80)
 
