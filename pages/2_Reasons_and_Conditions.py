@@ -4,6 +4,20 @@ import plotly.express as px
 from overview_parameters import filter_string, create_widgets, filter_df
 import ast
 
+##################################################
+st.markdown(
+    """
+    <style>
+    .stApp {
+        background: linear-gradient(to right, #4facfe, #00f2fe);
+    }
+    </style>
+    """,
+    unsafe_allow_html=True
+)
+#################################################
+
+
 # Load data
 file_path = 'data_dv.csv'  # Replace with your uploaded file path
 data = pd.read_csv(file_path)
