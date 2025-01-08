@@ -56,7 +56,7 @@ st.markdown(
     """,
     unsafe_allow_html=True
 )
-st.markdown("<h3 style='text-align: center;'>ChatBot</h3>", unsafe_allow_html=True)
+st.markdown("<h3 style='text-align: center;'>Intelligent Dialogue Agent</h3>", unsafe_allow_html=True)
 
 ####################################################
 st.image("Animation - 1736347933572.gif")
