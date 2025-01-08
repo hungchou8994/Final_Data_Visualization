@@ -13,20 +13,6 @@ data = pd.read_csv(file_path)
 st.set_page_config(page_title="Reasons and Conditions", layout="wide")
 
 
-##################################################
-st.markdown(
-    """
-    <style>
-    .stApp {
-        background: linear-gradient(to right, #4facfe, #00f2fe);
-    }
-    </style>
-    """,
-    unsafe_allow_html=True
-)
-#################################################
-
-
 # Tùy chỉnh CSS để đẩy Markdown sát trên cùng
 st.markdown(
     """
@@ -46,6 +32,18 @@ st.markdown(
 st.markdown("<h3 style='text-align: center;'>Nguyên nhân và điều kiện khách quan</h3>", unsafe_allow_html=True)
 
 ###########################################
+##################################################
+st.markdown(
+    """
+    <style>
+    .stApp {
+        background: linear-gradient(to right, #4facfe, #00f2fe);
+    }
+    </style>
+    """,
+    unsafe_allow_html=True
+)
+#################################################
 
 st.sidebar.title("Control Panel")
 
