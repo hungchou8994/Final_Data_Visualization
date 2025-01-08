@@ -32,29 +32,6 @@ st.markdown(
 st.markdown("<h3 style='text-align: center;'>Nguyên nhân và điều kiện khách quan</h3>", unsafe_allow_html=True)
 
 ###########################################
-##################################################
-st.markdown(
-    """
-    <style>
-    .stApp {
-        background: linear-gradient(to right, #212750, #212750);
-    }
-    </style>
-    """,
-    unsafe_allow_html=True
-)
-# Sidebar background color
-st.markdown(
-    """
-    <style>
-        section[data-testid="stSidebar"] {
-            background-color: #1A1A3D;
-        }
-    </style>
-    """,
-    unsafe_allow_html=True
-)
-#################################################
 
 st.sidebar.title("Control Panel")
 
