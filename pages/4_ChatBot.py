@@ -211,8 +211,18 @@ with st.container():
                             model="gpt-4o",
                             messages=[
                                 {"role": "system", "content": modelfile},
-                                {"role": "user", "content": chart_analysis_input, 
-                                "name": "image_analysis", "image": [img_base64]}
+                                {"role": "user", "content":[
+                                    {
+                                        "type": "text",
+                                        "text": chart_analysis_input
+                                    },
+                                    {
+                                        "type": "image_url",
+                                        "image_url": {
+                                            "url": f"data:image/png;base64, {img_base64}"
+                                        }
+                                    }
+                                ]}
                             ],
                             max_tokens=500
                         )
