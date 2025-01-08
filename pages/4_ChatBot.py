@@ -66,7 +66,6 @@ with c2:
     st.markdown("""Chào mừng bạn đến với ChatBot Tư vấn Tai nạn Giao thông, một trợ lý ảo thông minh được phát triển để giúp bạn dễ dàng truy vấn thông tin và tạo ra các báo cáo chi tiết về tình hình tai nạn giao thông ở Việt Nam.
                 Dựa trên một tập dữ liệu phong phú và cập nhật, ChatBot có khả năng trả lời nhanh chóng và chính xác các câu hỏi liên quan đến số lượng, loại hình, địa điểm và nguyên nhân của các vụ tai nạn giao thông trong nước.
                 Với khả năng phân tích dữ liệu mạnh mẽ, ChatBot không chỉ đơn giản trả lời câu hỏi mà còn có thể tạo ra các báo cáo tùy chỉnh theo yêu cầu của bạn. Bạn có thể yêu cầu các báo cáo về:
-
                 - Tình hình tai nạn giao thông theo từng năm, từng khu vực.
                 - Mối liên hệ giữa các yếu tố như thời tiết, giờ cao điểm và số lượng tai nạn.
                 - Phân tích nguyên nhân tai nạn và các nhóm đối tượng liên quan.
