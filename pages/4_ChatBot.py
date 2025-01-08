@@ -236,11 +236,7 @@ with st.container():
                             response_text = result.choices[0].message.content
                             st.write(response_text)
 
-                            buffered = io.BytesIO()
-                            tmp_file_path.save(buffered, format="PNG")
-                            buffered.seek(0)
-
-                            content.append(Image(buffered, width=10*cm, height=6*cm))
+                            content.append(Image(tmp_file_path))
                             content.append(Spacer(1, 0.5 * cm))
 
                             paragraphs = response_text.split('\n')
