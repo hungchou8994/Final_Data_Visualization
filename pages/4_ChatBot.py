@@ -238,7 +238,7 @@ with st.container():
                             response_text = result.choices[0].message.content
                             st.write(response_text)
 
-                            content.append(Image(f, width=10*cm, height=6*cm))
+                            content.append(Image(image, width=10*cm, height=6*cm))
                             content.append(Spacer(1, 0.5 * cm))
 
                             paragraphs = response_text.split('\n')
