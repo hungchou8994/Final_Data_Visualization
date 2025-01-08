@@ -232,7 +232,7 @@ with st.container():
                             image.save(tmp_file, format="PNG")
                             tmp_file_path = tmp_file.name
 
-                            st.write(tmp_file_path)
+                            st.image(tmp_file_path)
 
                             #################################
                             response_text = result.choices[0].message.content
