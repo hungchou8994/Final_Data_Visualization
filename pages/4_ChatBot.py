@@ -105,6 +105,8 @@ with st.container(border=True):
                         st.write(f"Chatbot: {response}")
 
     with col2.container(border=True):
+
+        st.header("Report Generator")
         
         modelfile = f"""Bạn là một chuyên gia phân tích dữ liệu và biểu đồ với chủ đề Tai nạn giao thông ở Việt Nam, bạn có thể sử dụng thông tin dataset ở đây {data}"""
 
