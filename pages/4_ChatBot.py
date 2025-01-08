@@ -232,13 +232,15 @@ with st.container():
                             image.save(tmp_file, format="PNG")
                             tmp_file_path = tmp_file.name
 
-                            st.image(tmp_file_path)
-
                             #################################
                             response_text = result.choices[0].message.content
                             st.write(response_text)
 
-                            content.append(Image(tmp_file_path, width=10*cm, height=6*cm))
+                            buffered = io.BytesIO()
+                            tmp_file_path.save(buffered, format="PNG")
+                            buffered.seek(0)
+
+                            content.append(Image(buffered, width=10*cm, height=6*cm))
                             content.append(Spacer(1, 0.5 * cm))
 
                             paragraphs = response_text.split('\n')
