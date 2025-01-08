@@ -59,7 +59,7 @@ st.markdown(
 st.markdown("<h3 style='text-align: center;'>ChatBot</h3>", unsafe_allow_html=True)
 
 ####################################################
-st.markdown("![Alt Text](Animation - 1736347284012.gif)")
+st.image("Animation - 1736347284012.gif")
 ####################################################
 
 
