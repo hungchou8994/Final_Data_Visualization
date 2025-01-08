@@ -21,6 +21,11 @@ from reportlab.pdfbase.ttfonts import TTFont
 from reportlab.pdfbase import pdfmetrics
 from openai import OpenAI
 
+from reportlab.lib.pagesizes import A4
+from reportlab.lib.styles import getSampleStyleSheet, ParagraphStyle
+from reportlab.platypus import SimpleDocTemplate, Paragraph, Spacer
+from reportlab.lib.units import cm
+
 set_pd_engine("pandas")
 
 # OpenAI API Key
@@ -97,21 +102,21 @@ with st.container():
         if user_input:
             st.write("Input")
             # Create PDF in memory
-            pdf_buffer = BytesIO()
-            c = canvas.Canvas(pdf_buffer, pagesize=letter)
+            # pdf_buffer = BytesIO()
+            # c = canvas.Canvas(pdf_buffer, pagesize=letter)
 
             # Add the paragraph
-            c.setFont("BeVietNamPro", 12)
+            # c.setFont("BeVietNamPro", 12)
 
             # Tọa độ bắt đầu
-            x_position = 100  # Vị trí x cố định
-            y_position = 750  # Vị trí y bắt đầu từ trên xuống
-            max_width = 450  # Chiều rộng tối đa của một dòng
+            # x_position = 100  # Vị trí x cố định
+            # y_position = 750  # Vị trí y bắt đầu từ trên xuống
+            # max_width = 450  # Chiều rộng tối đa của một dòng
 
             # Tạo một đối tượng TextObject để chèn toàn bộ đoạn văn mà không cần dùng strip
-            text_object = c.beginText(x_position, y_position)
-            text_object.setFont("BeVietNamPro", 12)
-            text_object.setTextOrigin(x_position, y_position)
+            # text_object = c.beginText(x_position, y_position)
+            # text_object.setFont("BeVietNamPro", 12)
+            # text_object.setTextOrigin(x_position, y_position)
 
             introduce_dataset_input = """Hãy viết một bản báo cáo giới thiệu sơ lược về tập dữ liệu tai nạn giao thông ở Việt Nam, mô tả các thuộc tính cũng như sử dụng các phép toán thống kê đơn giản cho tập dữ liệu"""
 
@@ -125,20 +130,55 @@ with st.container():
                         )
             response_text = result.choices[0].message.content
             st.write(response_text)
-            wrapped_text = textwrap.wrap(response_text, width=80)
 
-            for line in wrapped_text:
-                if y_position < 100:  # Nếu hết trang
-                    c.showPage()
-                    text_object = c.beginText(x_position, 750)
-                    text_object.setFont("BeVietNamPro", 12)
-                    y_position = 750
 
-                text_object.setTextOrigin(x_position, y_position)
-                text_object.textLine(line)
-                y_position -= 15  # Giảm y_position cho mỗi dòng
+            ##################################
+            # Tạo file PDF
+            pdf_buffer = io.BytesIO()
 
-            c.drawText(text_object)
+            pdf = SimpleDocTemplate(pdf_buffer, pagesize=A4)
+            styles = getSampleStyleSheet()
+            
+            # Tùy chỉnh các style
+            title_style = ParagraphStyle(
+                'TitleStyle', fontName='BeVietNamPro', fontSize=18, alignment=1, spaceAfter=12
+            )
+            body_style = ParagraphStyle(
+                'BodyStyle', fontName='BeVietNamPro', fontSize=12, leading=14, spaceAfter=10
+            )
+            custom_style = ParagraphStyle(
+                'CustomStyle', parent=body_style, alignment=0, spaceAfter=10
+            )
+            
+            # Nội dung PDF
+            content = []
+            content.append(Paragraph('Báo Cáo Tai Nạn Giao Thông', title_style))
+            content.append(Spacer(1, 0.5 * cm))
+            
+            # Lặp 3 lần để chèn văn bản và ảnh
+            paragraphs = response_text.split('\n')
+            for para in paragraphs:
+                if para.strip():
+                    content.append(Paragraph(para.strip(), custom_style))
+                    content.append(Spacer(1, 0.2 * cm))
+            
+            #################################
+
+
+            # wrapped_text = textwrap.wrap(response_text, width=80)
+
+            # for line in wrapped_text:
+            #     if y_position < 100:  # Nếu hết trang
+            #         c.showPage()
+            #         text_object = c.beginText(x_position, 750)
+            #         text_object.setFont("BeVietNamPro", 12)
+            #         y_position = 750
+
+            #     text_object.setTextOrigin(x_position, y_position)
+            #     text_object.textLine(line)
+            #     y_position -= 15  # Giảm y_position cho mỗi dòng
+
+            # c.drawText(text_object)
             st.success("Introduction added to the PDF!")
 
 
@@ -182,29 +222,42 @@ with st.container():
                             image.save(tmp_file, format="PNG")
                             tmp_file_path = tmp_file.name
 
-                        c.drawImage(tmp_file_path, x_position, y_position - 200, width=450 ,height=200)
-                        # st.write(translator_ollava.translate(result['response']))
+                        #################################
 
-                        # Giảm y_position sau khi thêm ảnh
-                        y_position -= 220
+                        content.append(Image(tmp_file_path, width=10*cm, height=6*cm))
+                        content.append(Spacer(1, 0.5 * cm))
 
-                        # response_text = translator_ollava.translate(result['response'])
-                        response_text = result.choices[0].message.content
-                        st.write(response_text)
-                        wrapped_text = textwrap.wrap(response_text, width=80)
+                        paragraphs = response_text.split('\n')
+                        for para in paragraphs:
+                            if para.strip():
+                                content.append(Paragraph(para.strip(), custom_style))
+                                content.append(Spacer(1, 0.2 * cm))
+                        ##################################
 
-                        for line in wrapped_text:
-                            if y_position < 100:  # Nếu hết trang
-                                c.showPage()
-                                text_object = c.beginText(x_position, 750)
-                                text_object.setFont("BeVietNamPro", 12)
-                                y_position = 750
 
-                            text_object.setTextOrigin(x_position, y_position)
-                            text_object.textLine(line)
-                            y_position -= 15  # Giảm y_position cho mỗi dòng
+                        # c.drawImage(tmp_file_path, x_position, y_position - 200, width=450 ,height=200)
+                        # # st.write(translator_ollava.translate(result['response']))
 
-                        c.drawText(text_object)
+                        # # Giảm y_position sau khi thêm ảnh
+                        # y_position -= 220
+
+                        # # response_text = translator_ollava.translate(result['response'])
+                        # response_text = result.choices[0].message.content
+                        # st.write(response_text)
+                        # wrapped_text = textwrap.wrap(response_text, width=80)
+
+                        # for line in wrapped_text:
+                        #     if y_position < 100:  # Nếu hết trang
+                        #         c.showPage()
+                        #         text_object = c.beginText(x_position, 750)
+                        #         text_object.setFont("BeVietNamPro", 12)
+                        #         y_position = 750
+
+                        #     text_object.setTextOrigin(x_position, y_position)
+                        #     text_object.textLine(line)
+                        #     y_position -= 15  # Giảm y_position cho mỗi dòng
+
+                        # c.drawText(text_object)
 
                         # os.remove(tmp_file_path)
                         st.success("Analysis added to the PDF!")
@@ -223,7 +276,7 @@ with st.container():
                     except Exception as e:
                         st.error(f"Lỗi xử lý hình ảnh: {e}")
 
-            c.save()
+            pdf.build(content)
             pdf_buffer.seek(0)
 
             st.write("Done")
