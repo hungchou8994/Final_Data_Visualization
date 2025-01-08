@@ -19,8 +19,13 @@ from reportlab.lib.pagesizes import letter
 from reportlab.pdfgen import canvas
 from reportlab.pdfbase.ttfonts import TTFont
 from reportlab.pdfbase import pdfmetrics
+import openai
 
 set_pd_engine("pandas")
+
+# OpenAI API Key
+openai.api_key = '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'
+
 
 # Đăng ký font Be VietNam Pro
 pdfmetrics.registerFont(TTFont('BeVietNamPro', r'Be_Vietnam_Pro/BeVietnamPro-Light.ttf'))
@@ -81,11 +86,8 @@ with st.container():
                         st.write(f"Chatbot: {response}")
 
     with col2.container(border=True):
-        modelfile = f"""
-            FROM llava
-            SYSTEM f"Bạn là một chuyên gia phân tích dữ liệu và biểu đồ với chủ đề Tai nạn giao thông ở Việt Nam, bạn có thể sử dụng thông tin dataset ở đây '$(data_dv.csv)'"
-            PARAMETER temperature 0.7
-            """
+        
+        modelfile = f"""Bạn là một chuyên gia phân tích dữ liệu và biểu đồ với chủ đề Tai nạn giao thông ở Việt Nam, bạn có thể sử dụng thông tin dataset ở đây {data}"""
 
         # User input
         img_file_buffer = st.file_uploader("Upload an image", type=["png", "jpg", "jpeg"], accept_multiple_files=True)
@@ -110,6 +112,35 @@ with st.container():
             text_object.setFont("BeVietNamPro", 12)
             text_object.setTextOrigin(x_position, y_position)
 
+            introduce_dataset_input = """Hãy viết một bản báo cáo giới thiệu sơ lược về tập dữ liệu tai nạn giao thông ở Việt Nam, mô tả các thuộc tính cũng như sử dụng các phép toán thống kê đơn giản cho tập dữ liệu"""
+
+            result = openai.ChatCompletion.create(
+                            model="gpt-4",
+                            messages=[
+                                {"role": "system", "content": modelfile},
+                                {"role": "user", "content": introduce_dataset_input}
+                            ],
+                            max_tokens=500
+                        )
+            response_text = result['choices'][0]['message']['content']
+            st.write(response_text)
+            wrapped_text = textwrap.wrap(response_text, width=80)
+
+            for line in wrapped_text:
+                if y_position < 100:  # Nếu hết trang
+                    c.showPage()
+                    text_object = c.beginText(x_position, 750)
+                    text_object.setFont("BeVietNamPro", 12)
+                    y_position = 750
+
+                text_object.setTextOrigin(x_position, y_position)
+                text_object.textLine(line)
+                y_position -= 15  # Giảm y_position cho mỗi dòng
+
+            c.drawText(text_object)
+            st.success("Introduction added to the PDF!")
+
+
         # Hiển thị hình ảnh nếu người dùng tải lên
             for image in img_file_buffer:
                 if image:
@@ -124,61 +155,64 @@ with st.container():
 
                     # Xử lý hình ảnh với API Ollama (LLaVA)
                     try:
-                        # user_input = """This is one of the charts in the traffic accident data in Vietnam for the years 2020-2021, analyze this chart."""
-                        user_input = """Từ tập dữ liệu "$(data_dv.csv)" Phân tích biểu đồ này, mô tả title của biểu đồ, là dòng chữ phía trên bên trái của biểu đồ, phía sau kí tự '📊', mô tả các trục của biểu đồ, mô tả các điểm quan trọng của biểu đồ, từ biểu đồ đó rút ra mô tả xu hướng của biểu đồ."""
+                        # user_input = """Từ tập dữ liệu "$(data_dv.csv)" Phân tích biểu đồ này, mô tả title của biểu đồ, là dòng chữ phía trên bên trái của biểu đồ, phía sau kí tự '📊', mô tả các trục của biểu đồ, mô tả các điểm quan trọng của biểu đồ, từ biểu đồ đó rút ra mô tả xu hướng của biểu đồ."""
+                        chart_analysis_input = """Bạn là một chuyên gia phân tích dữ liệu và trực quan hóa, có kỹ năng đọc hiểu biểu đồ chuyên sâu. Dựa trên biểu đồ cũng như tập dữ liệu được cung cấp, hãy viết một báo cáo phân tích chi tiết, rõ ràng và mạch lạc. Báo cáo cần bao gồm các phần sau:
+                                                Tổng quan: Mô tả loại biểu đồ, mục đích và ý nghĩa tổng quát. Xác định chủ đề chính và phạm vi dữ liệu.
+                                                Xu hướng chính: Phân tích các xu hướng nổi bật, sự thay đổi đáng chú ý và mối quan hệ giữa các yếu tố trong biểu đồ.
+                                                Chi tiết đặc trưng: Làm rõ các điểm dữ liệu quan trọng, giá trị cao nhất, thấp nhất, và các ngoại lệ.
+                                                Phát hiện ẩn: Nhận diện các xu hướng hoặc mẫu dữ liệu tinh tế mà người xem thông thường có thể bỏ qua.
+                                                Kết luận: Tóm tắt lại các phát hiện quan trọng, đưa ra nhận định tổng thể và ý nghĩa từ biểu đồ.
+                                                Sử dụng ngôn ngữ chuyên nghiệp, chính xác, có dẫn chứng số liệu cụ thể từ biểu đồ. Hãy đảm bảo phân tích toàn diện, không bỏ sót thông tin quan trọng nào và rút ra được những kết luận sâu sắc."""
                         # # Duyệt qua tất cả các cột và dữ liệu
                         # for col in data.columns:
                         #     user_input += f"{col}: {data[col].tolist()}\n"
-
-                        #####################################
-                        # Gửi yêu cầu đến API Ollama
-                        response = requests.post(
-                            "https://e70b-14-161-7-63.ngrok-free.app/api/generate",
-                            json={"modelfile": modelfile, "model": "llava", "prompt": user_input, "images":[img_base64], "stream": False}
+                        result = openai.ChatCompletion.create(
+                            model="gpt-4-vision-preview",
+                            messages=[
+                                {"role": "system", "content": modelfile},
+                                {"role": "user", "content": chart_analysis_input, 
+                                "name": "image_analysis", "image": [img_base64]}
+                            ],
+                            max_tokens=500
                         )
-                        translator_ollava = Translator(to_lang="vi", from_lang="en")
                         
-                        if response.status_code == 200:
-                            result = response.json()
-                            st.write("**Trả lời:**")
+                        # Save image temporarily
+                        with tempfile.NamedTemporaryFile(delete=False, suffix=".png") as tmp_file:
+                            image.save(tmp_file, format="PNG")
+                            tmp_file_path = tmp_file.name
 
-                            # Save image temporarily
-                            with tempfile.NamedTemporaryFile(delete=False, suffix=".png") as tmp_file:
-                                image.save(tmp_file, format="PNG")
-                                tmp_file_path = tmp_file.name
+                        c.drawImage(tmp_file_path, x_position, y_position - 200, width=450 ,height=200)
+                        # st.write(translator_ollava.translate(result['response']))
 
-                            c.drawImage(tmp_file_path, x_position, y_position - 200, width=450 ,height=200)
-                            # st.write(translator_ollava.translate(result['response']))
+                        # Giảm y_position sau khi thêm ảnh
+                        y_position -= 220
 
-                            # Giảm y_position sau khi thêm ảnh
-                            y_position -= 220
+                        # response_text = translator_ollava.translate(result['response'])
+                        response_text = result['choices'][0]['message']['content']
+                        st.write(response_text)
+                        wrapped_text = textwrap.wrap(response_text, width=80)
 
-                            # response_text = translator_ollava.translate(result['response'])
-                            response_text = result['response']
-                            st.write(response_text)
-                            wrapped_text = textwrap.wrap(response_text, width=80)
+                        for line in wrapped_text:
+                            if y_position < 100:  # Nếu hết trang
+                                c.showPage()
+                                text_object = c.beginText(x_position, 750)
+                                text_object.setFont("BeVietNamPro", 12)
+                                y_position = 750
 
-                            for line in wrapped_text:
-                                if y_position < 100:  # Nếu hết trang
-                                    c.showPage()
-                                    text_object = c.beginText(x_position, 750)
-                                    text_object.setFont("BeVietNamPro", 12)
-                                    y_position = 750
+                            text_object.setTextOrigin(x_position, y_position)
+                            text_object.textLine(line)
+                            y_position -= 15  # Giảm y_position cho mỗi dòng
 
-                                text_object.setTextOrigin(x_position, y_position)
-                                text_object.textLine(line)
-                                y_position -= 15  # Giảm y_position cho mỗi dòng
+                        c.drawText(text_object)
 
-                            c.drawText(text_object)
-
-                            os.remove(tmp_file_path)
-                            st.success("Analysis added to the PDF!")
-                        elif response.status_code == 403:
-                            st.error("🚫 Forbidden: Check if the API endpoint requires authentication or IP whitelisting.")
-                        elif response.status_code == 404:
-                            st.error("🔍 API endpoint not found. Verify the URL.")
-                        else:
-                            st.error(f"⚠️ Unexpected Error: {response.status_code}, {response.text}")
+                        # os.remove(tmp_file_path)
+                        st.success("Analysis added to the PDF!")
+                        # elif response.status_code == 403:
+                        #     st.error("🚫 Forbidden: Check if the API endpoint requires authentication or IP whitelisting.")
+                        # elif response.status_code == 404:
+                        #     st.error("🔍 API endpoint not found. Verify the URL.")
+                        # else:
+                        #     st.error(f"⚠️ Unexpected Error: {response.status_code}, {response.text}")
                         ####################################
 
                         # res = ollama.generate(model="data_science_assistant", prompt=user_input, images=[img_base64])

@@ -1,9 +1,24 @@
 {
-  "Report Name": "Traffic Reporter",
-  "Reporter Name": "Minh Hung",
-  "Graphs": [
-    "Biểu đồ cột mô tả xu hướng số vụ tai nạn theo từng tháng",
-    "Biểu đồ cột mô tả top 10 Quận/Huyện Có Số Vụ Tai Nạn Cao Nhất"
-  ],
-  "Colors": ["viridis"]
+  "filter": {
+    "or": [
+      {
+        "property": "Task's Name",
+        "rich_text": {
+          "contains": "{keyword} "
+        }
+      },
+      {
+        "property": "Implementor",
+        "multi_select": {
+          "contains": "{tag}"
+        }
+      }
+    ]
+  },
+  "sorts": [
+    {
+      "property": "Completion Date",
+      "direction": "ascending"
+    }
+  ]
 }
