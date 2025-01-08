@@ -168,7 +168,7 @@ with st.container():
                         # for col in data.columns:
                         #     user_input += f"{col}: {data[col].tolist()}\n"
                         result = client.chat.completions.create(
-                            model="gpt-4-vision-preview",
+                            model="gpt-4o",
                             messages=[
                                 {"role": "system", "content": modelfile},
                                 {"role": "user", "content": chart_analysis_input, 
