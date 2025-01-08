@@ -56,7 +56,7 @@ st.markdown(
     """,
     unsafe_allow_html=True
 )
-st.markdown("<h3 style='text-align: center;'>Intelligent Dialogue Agent</h3>", unsafe_allow_html=True)
+st.markdown("<h3 style='text-align: center;'>Traffic Accident Advisory ChatBot</h3>", unsafe_allow_html=True)
 
 ####################################################
 c1, c2 = st.columns([1, 7])
@@ -64,7 +64,7 @@ with c1:
     st.image("Animation - 1736347933572.gif")
 with c2:
     st.markdown("""
-Chào mừng bạn đến với ChatBot Tư vấn Tai nạn Giao thông, một trợ lý ảo thông minh được phát triển để giúp bạn dễ dàng truy vấn thông tin và tạo ra các báo cáo chi tiết về tình hình tai nạn giao thông ở Việt Nam.
+Chào mừng bạn đến với *Traffic Accident Advisory ChatBot*, một trợ lý ảo thông minh được phát triển để giúp bạn dễ dàng truy vấn thông tin và tạo ra các báo cáo chi tiết về tình hình tai nạn giao thông ở Việt Nam.
 Dựa trên một tập dữ liệu phong phú và cập nhật, ChatBot có khả năng trả lời nhanh chóng và chính xác các câu hỏi liên quan đến số lượng, loại hình, địa điểm và nguyên nhân của các vụ tai nạn giao thông trong nước.
 Với khả năng phân tích dữ liệu mạnh mẽ, ChatBot không chỉ đơn giản trả lời câu hỏi mà còn có thể tạo ra các báo cáo tùy chỉnh theo yêu cầu của bạn. Bạn có thể yêu cầu các báo cáo về:
 - Tình hình tai nạn giao thông theo từng năm, từng khu vực.
@@ -72,13 +72,13 @@ Với khả năng phân tích dữ liệu mạnh mẽ, ChatBot không chỉ đơ
 - Phân tích nguyên nhân tai nạn và các nhóm đối tượng liên quan.
 - Dự đoán xu hướng tai nạn giao thông trong tương lai dựa trên các dữ liệu hiện tại.
 
-ChatBot sẽ giúp bạn tiết kiệm thời gian và công sức khi tìm kiếm thông tin và tạo báo cáo, đồng thời cung cấp một công cụ hữu ích để nắm bắt và phân tích tình hình tai nạn giao thông một cách dễ dàng và trực quan.""")
+*Traffic Accident Advisory ChatBot* sẽ giúp bạn tiết kiệm thời gian và công sức khi tìm kiếm thông tin và tạo báo cáo, đồng thời cung cấp một công cụ hữu ích để nắm bắt và phân tích tình hình tai nạn giao thông một cách dễ dàng và trực quan.""")
 ####################################################
 
 
 translator = Translator(to_lang="en", from_lang="vi")
 
-with st.container():
+with st.container(border=True):
     col1, col2 = st.columns(2)
     with col1.container(border=True):
         os.environ["PANDASAI_API_KEY"] = "$2a$10$GEsfXrwFuOWndHnBgXcSkecd3RlY3ffzDyDk19gXMRue4Dr.oqz4m"
