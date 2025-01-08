@@ -37,7 +37,7 @@ st.markdown(
     """
     <style>
     .stApp {
-        background: linear-gradient(to right, #a1c4fd, #c2e9fb);
+        background: linear-gradient(to right, #212750, #212750);
     }
     </style>
     """,
@@ -48,7 +48,7 @@ st.markdown(
     """
     <style>
         section[data-testid="stSidebar"] {
-            background-color: #a6c1ee;
+            background-color: #1A1A3D;
         }
     </style>
     """,
