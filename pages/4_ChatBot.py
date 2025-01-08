@@ -2,7 +2,7 @@ import streamlit as st
 import pandas as pd
 import plotly.express as px
 import os
-from PIL import Image
+from PIL import Image as PILImage
 import base64
 import requests
 import io
@@ -185,7 +185,7 @@ with st.container():
         # Hiển thị hình ảnh nếu người dùng tải lên
             for image in img_file_buffer:
                 if image:
-                    image = Image.open(image)
+                    image = PILImage.open(image)
                     # st.image(image, caption="Ảnh đã tải lên", width=500)
                     # image = image.resize((512, 200))
                     # image = image.convert("L")
