@@ -43,6 +43,17 @@ st.markdown(
     """,
     unsafe_allow_html=True
 )
+# Sidebar background color
+st.markdown(
+    """
+    <style>
+        section[data-testid="stSidebar"] {
+            background-color: #a6c1ee;
+        }
+    </style>
+    """,
+    unsafe_allow_html=True
+)
 #################################################
 
 st.sidebar.title("Control Panel")
