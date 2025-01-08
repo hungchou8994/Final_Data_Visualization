@@ -4,6 +4,15 @@ import plotly.express as px
 from overview_parameters import filter_string, create_widgets, filter_df
 import ast
 
+
+# Load data
+file_path = 'data_dv.csv'  # Replace with your uploaded file path
+data = pd.read_csv(file_path)
+
+# Page configuration
+st.set_page_config(page_title="Reasons and Conditions", layout="wide")
+
+
 ##################################################
 st.markdown(
     """
@@ -17,13 +26,6 @@ st.markdown(
 )
 #################################################
 
-
-# Load data
-file_path = 'data_dv.csv'  # Replace with your uploaded file path
-data = pd.read_csv(file_path)
-
-# Page configuration
-st.set_page_config(page_title="Reasons and Conditions", layout="wide")
 
 # Tùy chỉnh CSS để đẩy Markdown sát trên cùng
 st.markdown(
