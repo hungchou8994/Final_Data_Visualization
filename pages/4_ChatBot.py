@@ -109,8 +109,8 @@ with st.container(border=True):
         modelfile = f"""Bạn là một chuyên gia phân tích dữ liệu và biểu đồ với chủ đề Tai nạn giao thông ở Việt Nam, bạn có thể sử dụng thông tin dataset ở đây {data}"""
 
         # User input
-        img_file_buffer = st.file_uploader("Upload an image", type=["png", "jpg", "jpeg"], accept_multiple_files=True)
-        user_input = st.chat_input("Ask me ><:")
+        img_file_buffer = st.file_uploader("Thêm các ảnh bạn muốn phân tích vào báo cáo", type=["png", "jpg", "jpeg"], accept_multiple_files=True)
+        user_input = st.chat_input("Ask me >< ")
 
         if user_input:
             st.write("Input")
