@@ -23,7 +23,7 @@ from openai import OpenAI
 
 from reportlab.lib.pagesizes import A4
 from reportlab.lib.styles import getSampleStyleSheet, ParagraphStyle
-from reportlab.platypus import SimpleDocTemplate, Paragraph, Spacer
+from reportlab.platypus import SimpleDocTemplate, Paragraph, Spacer, Image
 from reportlab.lib.units import cm
 
 set_pd_engine("pandas")
@@ -238,7 +238,7 @@ with st.container():
                             response_text = result.choices[0].message.content
                             st.write(response_text)
 
-                            content.append(Image(image, width=10*cm, height=6*cm))
+                            content.append(Image(tmp_file_path, width=10*cm, height=6*cm))
                             content.append(Spacer(1, 0.5 * cm))
 
                             paragraphs = response_text.split('\n')
