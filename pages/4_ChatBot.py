@@ -59,7 +59,7 @@ st.markdown(
 st.markdown("<h3 style='text-align: center;'>ChatBot</h3>", unsafe_allow_html=True)
 
 ####################################################
-st.markdown("![Alt Text](https://media.giphy.com/media/G56u3vJFPIevIfVnEK/giphy.gif)")
+st.markdown("![Alt Text](https://app.lottiefiles.com/animation/157e6e55-3573-424d-8ab6-8c780a84606c)")
 ####################################################
 
 
