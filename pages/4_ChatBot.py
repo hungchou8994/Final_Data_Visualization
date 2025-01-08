@@ -24,8 +24,7 @@ import openai
 set_pd_engine("pandas")
 
 # OpenAI API Key
-openai.api_key = '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'
-
+openai_api_key = os.getenv("OPENAI_APIKEY")
 
 # Đăng ký font Be VietNam Pro
 pdfmetrics.registerFont(TTFont('BeVietNamPro', r'Be_Vietnam_Pro/BeVietnamPro-Light.ttf'))
