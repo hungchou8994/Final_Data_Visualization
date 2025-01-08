@@ -232,13 +232,16 @@ with st.container():
                             image.save(tmp_file, format="PNG")
                             tmp_file_path = tmp_file.name
 
+                            # pil_image = PILImage.new('RGB', (200, 100), color='blue')  # Example image
+                            # pil_image.save(tmp_file_path, format="PNG")     
+
                             f = open(tmp_file_path, 'rb')
 
                             #################################
                             response_text = result.choices[0].message.content
                             st.write(response_text)
 
-                            content.append(Image(tmp_file_path, width=10*cm, height=6*cm))
+                            content.append(Image(f, width=10*cm, height=6*cm))
                             content.append(Spacer(1, 0.5 * cm))
 
                             paragraphs = response_text.split('\n')
