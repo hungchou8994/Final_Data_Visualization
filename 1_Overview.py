@@ -150,7 +150,8 @@ with st.container(border=False):
             title='📊 Xu hướng số vụ tai nạn theo từng tháng',
             # title=' ',
             labels={'Tháng': 'Tháng trong năm', 'Số vụ': 'Số vụ tai nạn'},
-            color_discrete_sequence=['#636EFA']  # Màu biểu đồ
+            # color_discrete_sequence=['#636EFA']  # Màu biểu đồ
+            color_discrete_sequence=px.colors.sequential.Cividis
         )
 
         # Tùy chỉnh hiển thị biểu đồ
@@ -273,7 +274,8 @@ with st.container(border=False):
             # title=' ',
             text='Số vụ',
             color='Số vụ',
-            color_continuous_scale='Plasma'  # Thang màu Plasma
+            # color_continuous_scale='Plasma'  # Thang màu Plasma
+            color_continuous_scale='Viridis'
         )
 
         # Tùy chỉnh hiển thị biểu đồ
@@ -337,7 +339,8 @@ with st.container(border=False):
             # title=' ',
             labels={'Quận/Huyện': 'Quận/Huyện', 'index': 'index'},
             color='Quận/Huyện',
-            color_continuous_scale='Viridis'  # Thang màu Viridis
+            # color_continuous_scale='Viridis'  # Thang màu Viridis
+            color_continuous_scale=px.colors.sequential.Cividis
         )
 
         # Tùy chỉnh hiển thị biểu đồ
