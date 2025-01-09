@@ -267,7 +267,8 @@ with chart_col2.container():
             # title=' ',
             labels={'Số vụ': 'Số vụ tai nạn', 'Loại đường': 'Loại đường'},
             color='Số vụ',
-            color_continuous_scale='Plasma'  # Thang màu
+            # color_continuous_scale='Plasma'  # Thang màu
+            color_continuous_scale='Viridis'  # Thang màu
         )
 
         # Tùy chỉnh hiển thị biểu đồ

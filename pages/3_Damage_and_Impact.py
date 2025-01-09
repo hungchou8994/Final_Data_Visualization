@@ -142,7 +142,8 @@ with chart_col1.container():
             title='📊 Số người chết và bị thương theo quận/huyện',
             # title=' ',
             labels={'Số lượng': 'Số người', 'Quận/Huyện': 'Quận/Huyện', 'Loại thống kê': 'Loại thống kê'},
-            color_discrete_sequence=px.colors.qualitative.Set2  # Sử dụng bảng màu Set1
+            # color_discrete_sequence=px.colors.qualitative.Set2  # Sử dụng bảng màu Set1
+            color_discrete_sequence=px.colors.qualitative.D3
         )
 
         # Tùy chỉnh hiển thị
@@ -219,7 +220,8 @@ with chart_col1.container():
                 'Loại thống kê': 'Loại thống kê'
             },
             barmode='stack',  # Biểu đồ dạng stacked
-            color_discrete_sequence=px.colors.qualitative.Set2  # Bảng màu
+            # color_discrete_sequence=px.colors.qualitative.Set2  # Bảng màu
+            color_discrete_sequence=px.colors.qualitative.D3
         )
 
         # Tùy chỉnh hiển thị
