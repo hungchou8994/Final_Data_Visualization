@@ -314,73 +314,73 @@ with st.container(border=False):
         # st.markdown("**📊 Số vụ tai nạn theo khung giờ**")
         st.plotly_chart(fig_hourly, use_container_width=True)
     ######################################################
+    with chart_col2.container(border=True):
+        data['Ngày xảy ra tai nạn'] = pd.to_datetime(data['Ngày xảy ra tai nạn'], format='%d/%m/%Y')
+        data['Thứ trong tuần'] = data['Ngày xảy ra tai nạn'].dt.day_name()
 
-    data['Ngày xảy ra tai nạn'] = pd.to_datetime(data['Ngày xảy ra tai nạn'], format='%d/%m/%Y')
-    data['Thứ trong tuần'] = data['Ngày xảy ra tai nạn'].dt.day_name()
+        # Map English day names to Vietnamese day names
+        day_name_mapping = {
+            'Monday': 'Thứ Hai',
+            'Tuesday': 'Thứ Ba',
+            'Wednesday': 'Thứ Tư',
+            'Thursday': 'Thứ Năm',
+            'Friday': 'Thứ Sáu',
+            'Saturday': 'Thứ Bảy',
+            'Sunday': 'Chủ Nhật'
+        }
+        data['Thứ trong tuần'] = data['Thứ trong tuần'].map(day_name_mapping)
 
-    # Map English day names to Vietnamese day names
-    day_name_mapping = {
-        'Monday': 'Thứ Hai',
-        'Tuesday': 'Thứ Ba',
-        'Wednesday': 'Thứ Tư',
-        'Thursday': 'Thứ Năm',
-        'Friday': 'Thứ Sáu',
-        'Saturday': 'Thứ Bảy',
-        'Sunday': 'Chủ Nhật'
-    }
-    data['Thứ trong tuần'] = data['Thứ trong tuần'].map(day_name_mapping)
+        # Group by day of the week and count the number of accidents, ensuring the correct order
+        accidents_by_day_vn = data['Thứ trong tuần'].value_counts().reindex(
+            ['Thứ Hai', 'Thứ Ba', 'Thứ Tư', 'Thứ Năm', 'Thứ Sáu', 'Thứ Bảy', 'Chủ Nhật']
+        )
 
-    # Group by day of the week and count the number of accidents, ensuring the correct order
-    accidents_by_day_vn = data['Thứ trong tuần'].value_counts().reindex(
-        ['Thứ Hai', 'Thứ Ba', 'Thứ Tư', 'Thứ Năm', 'Thứ Sáu', 'Thứ Bảy', 'Chủ Nhật']
-    )
+        fig = px.bar(
+            x=accidents_by_day_vn.index,
+            y=accidents_by_day_vn.values,
+            labels={'x': 'Thứ trong tuần', 'y': 'Số vụ tai nạn'},
+            title='📊 Số vụ tai nạn theo các thứ trong tuần',
+            text=accidents_by_day_vn.values,
+            color=accidents_by_day_vn.values,
+            color_continuous_scale=px.colors.sequential.Cividis  # Thân thiện cho người mù màu
+        )
 
-    fig = px.bar(
-        x=accidents_by_day_vn.index,
-        y=accidents_by_day_vn.values,
-        labels={'x': 'Thứ trong tuần', 'y': 'Số vụ tai nạn'},
-        title='📊 Số vụ tai nạn theo các thứ trong tuần',
-        text=accidents_by_day_vn.values,
-        color=accidents_by_day_vn.values,
-        color_continuous_scale=px.colors.sequential.Cividis  # Thân thiện cho người mù màu
-    )
-
-    # Customize the layout with size adjustments
-    fig.update_layout(
-        # xaxis_title='Thứ trong tuần',
-        # yaxis_title='Số vụ tai nạn',
-        # title_font_size=18,
-        title_x=0.5,
-        xaxis_tickangle=0,
-        template='plotly_white',
-        # width=800,  # Độ rộng biểu đồ
-        # height=500  # Chiều cao biểu đồ
-        xaxis=dict(
-            tickmode='linear',
-            dtick=1,
-            title='Thứ trong tuần',
-            title_font=dict(size=14, color='black'),  # Bôi đen nhãn trục X
-            tickfont=dict(size=12, color='black')
-        ),
-        yaxis=dict(
-            title='Số vụ tai nạn',
-            title_font=dict(size=14, color='black'),  # Bôi đen nhãn trục Y
-            tickfont=dict(size=12, color='black')
-        ),
-        title=dict(
-            x=0,  # Di chuyển tiêu đề sang bên trái
-            xanchor='left',  # Căn chỉnh tiêu đề với phía bên trái
-            yanchor='top'  # Căn chỉnh theo chiều dọc ở phía trên
-        ),
-        font=dict(size=12),
-        height=300
-    )
+        # Customize the layout with size adjustments
+        fig.update_layout(
+            # xaxis_title='Thứ trong tuần',
+            # yaxis_title='Số vụ tai nạn',
+            # title_font_size=18,
+            title_x=0.5,
+            xaxis_tickangle=0,
+            template='plotly_white',
+            # width=800,  # Độ rộng biểu đồ
+            # height=500  # Chiều cao biểu đồ
+            xaxis=dict(
+                tickmode='linear',
+                dtick=1,
+                title='Thứ trong tuần',
+                title_font=dict(size=14, color='black'),  # Bôi đen nhãn trục X
+                tickfont=dict(size=12, color='black')
+            ),
+            yaxis=dict(
+                title='Số vụ tai nạn',
+                title_font=dict(size=14, color='black'),  # Bôi đen nhãn trục Y
+                tickfont=dict(size=12, color='black')
+            ),
+            title=dict(
+                x=0,  # Di chuyển tiêu đề sang bên trái
+                xanchor='left',  # Căn chỉnh tiêu đề với phía bên trái
+                yanchor='top'  # Căn chỉnh theo chiều dọc ở phía trên
+            ),
+            font=dict(size=12),
+            height=300
+        )
 
 
 
-    # Show the chart
-    # fig.show()
-    st.plotly_chart(fig, use_container_width=True)
+        # Show the chart
+        # fig.show()
+        st.plotly_chart(fig, use_container_width=True)
 
     ######################################################
     # with chart_col2.container(border=True):
