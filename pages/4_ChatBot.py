@@ -213,7 +213,6 @@ with st.container(border=True):
         user_input = st.chat_input("Ask me >.< ")
 
         if user_input:
-            st.write("Input")
 
             introduce_dataset_input = """Hãy viết một bản báo cáo giới thiệu sơ lược về tập dữ liệu tai nạn giao thông ở Việt Nam, mô tả các thuộc tính cũng như sử dụng các phép toán thống kê đơn giản cho tập dữ liệu"""
 
@@ -323,7 +322,7 @@ with st.container(border=True):
                             response_text = result.choices[0].message.content
                             st.write(response_text)
 
-                            content.append(Image(f, width=10*cm, height=6*cm))
+                            content.append(Image(f, width=14*cm, height=8*cm))
                             content.append(Spacer(1, 0.5 * cm))
 
                             paragraphs = response_text.split('\n')
