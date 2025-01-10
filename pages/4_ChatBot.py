@@ -96,13 +96,13 @@ with st.container(border=True):
                 return ""
 
         # Load dataset-related information
-        dataset_text = load_file_content("../data/dataset_info.txt")
-        extra_info = load_file_content("../data/extra_info.txt")
-        extra_info_2 = load_file_content("../data/extra_info_2.txt")
+        dataset_text = load_file_content("./data/dataset_info.txt")
+        extra_info = load_file_content("./data/extra_info.txt")
+        extra_info_2 = load_file_content("./data/extra_info_2.txt")
         #density = load_file_content("./data/density.txt")
-        openai_insights = load_file_content("../data/openai_insights.txt")
+        openai_insights = load_file_content("./data/openai_insights.txt")
         #openai_insights_2 = load_file_content("./data/openai_insights_2.txt")
-        openai_summary = load_file_content("../data/openai_summary.txt")
+        openai_summary = load_file_content("./data/openai_summary.txt")
 
 
         class StreamlitResponse(ResponseParser):
@@ -129,8 +129,8 @@ with st.container(border=True):
 
         llm = pOpenAI(api_token=OPENAI_API_KEY)
 
-        query = st.text_area("🗣️ Chat with Dataframe")
-
+        # query = st.text_area("🗣️ Chat with Dataframe")
+        query = st.chat_input("Chat with Dataframe >.< ")
         # client = OpenAI(
         #     api_key=OPENAI_API_KEY,
         # )
@@ -214,7 +214,7 @@ with st.container(border=True):
 
         # User input
         img_file_buffer = st.file_uploader("Thêm các ảnh bạn muốn phân tích vào báo cáo", type=["png", "jpg", "jpeg"], accept_multiple_files=True)
-        user_input = st.chat_input("Ask me >< ")
+        user_input = st.chat_input("Ask me >.< ")
 
         if user_input:
             st.write("Input")
