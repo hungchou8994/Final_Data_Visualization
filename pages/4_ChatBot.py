@@ -123,7 +123,7 @@ with st.container(border=True):
 
         # df = pd.read_csv('./data/data_dv.csv', encoding="utf-8")
 
-        st.write("Trợ lý AI báo cáo dữ liệu")
+        st.header("Questions and Answers")
 
         OPENAI_API_KEY= os.getenv('OPENAI_API_KEY')
 
