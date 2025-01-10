@@ -1,0 +1,25 @@
+Thông tin các cột về dataset tai nạn giao thông ở Việt Nam:
+Thời gian xảy ra tai nạn: Thời gian lúc xảy ra tai nạn theo định dạng 24 giờ
+Ngày xảy ra tai nạn: Là ngày xảy ra tai nạn theo định dạng dd/mmm/yy
+Quận/Huyện: Là quận hay huyện nơi xảy ra tai nạn ở Việt Nam
+Phường/Xã: Là phường hay xã nơi xảy ra tai nạn ở Việt Nam
+Loại đường: Là loại đường xảy ra tai nạn
+Số người chết: Là số người chết khi xảy ra vụ tai nạn
+Số người bị thương: Là số người bị thương khi xảy ra vụ tai nạn
+Số người thương nặng: Là số người bị thương nặng khi xảy ra vụ tai nạn
+Số người thương nhẹ: Là số người bị thương nhẹ khi xảy ra vụ tai nạn
+Nhóm PT1: Nhóm phương tiện đại diện cho phương tiện 1
+Phương tiện 1: Loại phương tiện gây ra tai nạn thuộc nhóm phương tiện 1
+Nhóm PT2: Nhóm phương tiện đại diện cho phương tiện 2
+Phương tiện 2: Loại phương tiện gây ra tai nạn thuộc nhóm phương tiện 2
+Thiệt hại ước tính (triệu đồng): ƯỚc tính thiệt hại của vụ tại nạn tính bằng triệu việt nam đồng
+Phân loại tai nạn: Phân loại các vụ tai nạn
+Tình trạng thời tiết: Tình trạng thời tiết lúc xảy ra vụ tai nạn
+Hình thức va chạm: Hình thức mà các phương tiện gây ra vụ tai nạn
+Dạng đường: Dạng đường nơi xảy ra tai nạn
+Loại mặt đường: Loại mặt đường nơi xảy ra tai nạn
+Độ rộng đường: Là khoảng ước lượng độ rộng đường được đo bằng đơn vị mét
+Tình trạng mặt đường: Phân loại tình trạng mặt đường nơi xảy ra tai nạn
+Tổ chức giao thông: Tổ chức giao thông nơi xảy ra tai nạn
+Vòng xuyến: Xác định nơi xảy ra tia nạn có vòng xuyến hay không
+Nguyên nhân và lỗi vi phạm: Nguyên nhân gây ra tai nạn và lỗi vi phạm cho vụ tai nạn đó

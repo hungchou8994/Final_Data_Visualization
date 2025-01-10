@@ -1,0 +1,27 @@
+Dataset tai nạn giao thông ở Việt Nam 
+Phân phối về các thuộc tính có các giới hạn giá trị như sau:
+
+Quận/Huyện: 24 Quận/Huyện ở thành phố Hồ Chí Minh
+Phường/Xã: 173 Phường/Xã ở thành phố Hồ Chí Minh
+Loại đường: gồm 16 loại đường khác nhau
+Nhóm PT1: gồm 9 nhóm phương tiện 1
+Phương tiện 1: gồm 68 loại phương tiện khác nhau thuộc Nhóm PT1
+Nhóm PT2: gồm 9 nhóm phương tiện 2
+Phương tiện 2: gồm 66 loại phương tiện khác nhau thuộc Nhóm PT2
+Thiệt hại ước tính (triệu đồng): Dao động trong khoảng từ 1 - 1000 triệu đồng
+Phân loại tai nạn: được chia ra thành 5 loại tai nạn
+Tình trạng thời tiết: được chia ra thành 6 loại thời tiết
+Hình thức va chạm: có 4 loại hình thức va chạm 
+Dạng đường: có 9 loại dạng đường
+Loại mặt đường: có 4 loại mặt đường
+Tình trạng mặt đường: có 6 loại tình trạng mặt đường
+Tổ chức giao thông: có 4 loại tổ chức giao thông
+
+Phân phối về các thuộc tính
+Thời gian xảy ra tai nạn: tập chung nhiều nhất là vào lúc tối từ khoảng từ 20-23 giờ với số vụ tai nạn trung bình là 318 vụ
+Quận/Huyện: gồm các quận như Bình Tân, Bình Chánh xảy ra nhiều vụ tai nạn với trung bình 640 vụ
+Phường/Xã: có phường BÌnh Hưng Hòa B là nơi xảy ra nhiều vụ tai nạn nhất với 127 vụ 
+Loại đường: trung bình thì đường huyện là nơi xảy ra vụ tai nạn ít nhất với trung bình 1014 vụ, còn đường cao tốc xảy ra ít nhất với trung bình 21 vụ
+Nhóm PT: chủ yếu các vụ tai nạn là do nhóm phương tiện Mô tô, xe máy
+Phương tiện: Loại phương tiện chủ yếu gây ra tai nạn là Xe hai bánh từ 50-173cm3
+Phân loại tai nạn: Các vụ tai nạn chủ yếu là các vụ va chạm giao thông

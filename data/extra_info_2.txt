@@ -1,0 +1,83 @@
+Phân tích Dashboard 1: xu hướng tại nạn theo thời gian và địa điểm
+1. Biểu đồ miền thể hiện xu hướng số vụ tai nạn theo từng tháng
+Nhận xét
+Khoảng thời gian từ cuối năm đến tháng 5 năm sau thường xảy ra số vụ tai nạn cao do lượng phươn tiện tham gia giao thông tăng đáng kể
+
+2. Biểu đồ đường thể hiện xu hướng số vụ tai nạn theo ngày
+Nhận xét
+Số vụ tai nạn giao thông có sự biến động khá lớn từ ngày này sang ngày khác, không theo một quy luật nhất định.
+
+3. Biểu đồ cột thể hiện số vụ tai nạn theo khung giờ (từ 00 - 23)
+Nhận xét
+Biểu đồ cho thấy một xu hướng khá rõ ràng là số vụ tai nạn tăng dần từ đầu giờ chiều đến tận đêm khuya.
+
+4. Biểu đồ cột cho thấy top 10 quận/huyện có số vụ tai nạn cao nhất
+Nhận xét
+Bình Chánh dẫn đầu về số vụ tai nạn: Điều này cho thấy tình hình giao thông tại Bình Chánh đang rất đáng lo ngại và cần có những giải pháp cấp bách.
+Sự chênh lệch lớn giữa các quận huyện: Điều này cho thấy có sự bất đồng lớn về tình hình an toàn giao thông giữa các khu vực, đòi hỏi các giải pháp phải được điều chỉnh phù hợp với từng địa phương.
+Tập trung ở các quận ngoại thành: Việc các quận ngoại thành chiếm đa số trong top 10 cho thấy có thể có những yếu tố đặc thù liên quan đến cơ sở hạ tầng, mật độ dân số, và các hoạt động kinh tế ở những khu vực này.
+
+Phân tích Dashboard 2: Cái nhìn đa chiều về tai nạn giao thông và đánh giá các yếu tố rủi ro
+1. Biểu đồ cột thể hiện top 10 nguyên nhân gây tai nạn có người chết
+Nhận xét
+Nguyên nhân chính: Nguyên nhân hàng đầu gây ra tai nạn giao thông có người chết là do người điều khiển phương tiện không chú ý quan sát, chiếm tỷ lệ áp đảo so với các nguyên nhân khác.
+Các lỗi vi phạm phổ biến: Các lỗi vi phạm như không giữ khoảng cách an toàn, không chấp hành quy định về tốc độ, chuyển hướng không đúng quy định cũng là những nguyên nhân chính dẫn đến tai nạn.
+Yếu tố con người chiếm ưu thế: Hầu hết các nguyên nhân đều liên quan đến lỗi của người điều khiển phương tiện, cho thấy ý thức chấp hành luật giao thông của một bộ phận người dân còn hạn chế.
+Sự đa dạng của các nguyên nhân: Ngoài những nguyên nhân chính, còn có nhiều nguyên nhân khác gây ra tai nạn, cho thấy vấn đề an toàn giao thông là một vấn đề phức tạp, cần nhiều giải pháp để giải quyết.
+
+2. Biểu đồ tròn thể hiện tỷ lệ tai nạn dựa trên tình trạng thời tiết
+Nhận xét
+Đêm tối là yếu tố nguy hiểm hàng đầu: Điều kiện thời tiết này chiếm tỷ lệ cao nhất trong các nguyên nhân gây tai nạn giao thông. Tầm nhìn hạn chế vào ban đêm là nguyên nhân chính khiến các vụ tai nạn xảy ra thường xuyên hơn.
+Các yếu tố thời tiết khác cũng góp phần gây tai nạn: Mặc dù không cao bằng đêm tối, nhưng các điều kiện như mưa, bão, gió cũng làm tăng đáng kể nguy cơ xảy ra tai nạn.
+
+3. Biểu đồ cột ngang thể hiện top 10 loại đường có số vụ tai nạn cao nhất
+Nhận xét
+Đường huyện, nội thị là "điểm nóng" tai nạn: Loại đường này chiếm vị trí đầu bảng, cho thấy mật độ giao thông cao, kết hợp với nhiều yếu tố khác như tình trạng đường sá, ý thức người tham gia giao thông đã dẫn đến số lượng tai nạn đáng kể.
+Đường tỉnh cũng tiềm ẩn nhiều nguy cơ: Loại đường này xếp thứ hai, cho thấy tình hình tương tự như đường huyện, nội thị.
+Các loại đường khác: Các loại đường khác như quốc lộ, đường cao tốc, đường xã cũng ghi nhận số vụ tai nạn đáng kể, tuy nhiên tỷ lệ thấp hơn so với đường huyện và đường tỉnh. Điều này cho thấy tai nạn giao thông không chỉ tập trung ở một loại đường cụ thể mà diễn ra trên nhiều loại hình đường khác nhau.
+
+4. Biểu đồ treemap phân tích tai nạn theo thông theo loại phương tiện và quận/huyện
+Nhận xét
+Sự phân bố không đồng đều của tai nạn:
+Khác biệt giữa các quận/huyện: Kích thước của các ô đại diện cho số lượng tai nạn ở mỗi quận/huyện. Rõ ràng, một số quận/huyện tập trung một lượng lớn tai nạn hơn so với các quận khác. Điều này cho thấy có sự chênh lệch đáng kể về tình hình an toàn giao thông giữa các địa phương.
+    Phân bố theo loại phương tiện: Màu sắc của các ô thể hiện loại phương tiện gây tai nạn chính. Ta có thể thấy rằng, một số quận/huyện có tỷ lệ tai nạn do xe máy cao hơn, trong khi các quận khác lại có tỷ lệ tai nạn do ô tô cao hơn.
+
+Các quận/huyện có tỷ lệ tai nạn cao:
+Bình Chánh, Bình Tân: Hai quận này thường xuất hiện với diện tích lớn và màu sắc đậm, cho thấy đây là những "điểm nóng" về tai nạn giao thông. Điều này có thể liên quan đến mật độ dân số cao, lưu lượng giao thông lớn, hoặc các yếu tố khác như cơ sở hạ tầng giao thông chưa hoàn thiện.
+Các quận nội thành: Nhìn chung, các quận nội thành có xu hướng tập trung nhiều tai nạn hơn so với các quận ngoại thành. Điều này có thể giải thích bởi mật độ dân số cao, giao thông đông đúc và nhiều yếu tố phức tạp khác.
+
+Loại phương tiện gây tai nạn chủ yếu:
+Xe máy: Từ biểu đồ, ta có thể thấy rằng xe máy là loại phương tiện thường xuyên gây ra tai nạn nhất. Điều này có thể do nhiều nguyên nhân như số lượng xe máy lớn, ý thức người điều khiển xe máy chưa cao, hoặc cơ sở hạ tầng chưa phù hợp với nhu cầu đi lại bằng xe máy.
+Ô tô: Ô tô cũng là một nguyên nhân gây tai nạn đáng kể, đặc biệt là ở các khu vực đô thị. Các vụ tai nạn liên quan đến ô tô thường gây hậu quả nghiêm trọng hơn so với tai nạn do xe máy.
+
+Phân biểu Dashboard 3: tác động của tai nạn giao thông theo khu vực và phương tiện
+1. Biểu đồ cột chồng thể hiện số người chết và bị thương theo quận/huyện
+Nhận xét
+Biểu đồ cột chồng cho thấy sự chênh lệch lớn về số lượng người chết và bị thương giữa các quận/huyện. Một số quận có tỷ lệ tai nạn giao thông rất cao, trong khi một số khác lại tương đối ổn định. Điều này cho thấy tình hình an toàn giao thông tại các địa phương là không đồng đều.
+
+Các điểm chính cần lưu ý:
+Sự khác biệt lớn giữa các quận: Một số quận có số lượng người chết và bị thương cao hơn đáng kể so với các quận khác.
+Tỷ lệ người chết và người bị thương: Tỷ lệ này khác nhau giữa các quận, cho thấy mức độ nghiêm trọng của tai nạn cũng khác nhau.
+Nguyên nhân: Sự chênh lệch này có thể do nhiều yếu tố gây ra, như mật độ dân số, chất lượng đường sá, ý thức người tham gia giao thông, và các hoạt động kinh tế tại địa phương.
+
+2. Biểu đồ bong bóng phân tích thiệt hại của các vụ tai nạn theo quận/huyện
+Nhận xét
+Phân bố không đồng đều: Thiệt hại về người và tài sản do tai nạn giao thông xảy ra không đồng đều giữa các quận/huyện. Một số quận có số vụ tai nạn cao nhưng thiệt hại lại thấp, trong khi một số khác lại có số vụ tai nạn ít hơn nhưng tổng thiệt hại lại lớn.
+Tương quan giữa số vụ và thiệt hại:
+Không có mối liên hệ tuyến tính rõ ràng: Kích thước của bong bóng không tăng đều theo số vụ tai nạn. Điều này cho thấy, số vụ tai nạn không phải là yếu tố duy nhất quyết định tổng thiệt hại.
+Các yếu tố khác: Có thể có các yếu tố khác tác động đến mức độ thiệt hại như: loại hình phương tiện tham gia giao thông, tính chất vụ tai nạn, mức độ nghiêm trọng của thương tích, giá trị tài sản bị hư hỏng,...
+
+3. Biểu đồ cột ngang thể hiện thiệt hại trung bình theo loại phương tiện
+Nhận xét
+Phân loại phương tiện: Biểu đồ đã chia các phương tiện thành nhiều loại, từ xe thô sơ đến các loại ô tô, xe máy, và thậm chí cả rơ-moóc.
+Mức độ thiệt hại:
+Thiệt hại cao nhất: Rõ ràng, các loại xe tải nặng như rơ-moóc, sơ-mi rơ-moóc gây ra thiệt hại trung bình cao nhất. Điều này có thể giải thích bởi kích thước lớn, trọng tải lớn và động năng lớn của các loại xe này khi xảy ra tai nạn.
+Thiệt hại trung bình: Các loại ô tô con, ô tô khách, xe máy cũng gây ra thiệt hại đáng kể.
+Thiệt hại thấp nhất: Xe thô sơ và một số loại phương tiện chuyên dụng có mức độ thiệt hại thấp hơn. Tuy nhiên, điều này không có nghĩa là các loại xe này không gây ra tai nạn nghiêm trọng.
+Xu hướng: Biểu đồ cho thấy một sự phân hóa rõ rệt về mức độ thiệt hại giữa các loại phương tiện. Các phương tiện có kích thước và trọng tải lớn thường gây ra thiệt hại nặng nề hơn so với các phương tiện nhỏ hơn.
+
+4. Biểu đồ cột chồng thể hiện số người chết bị và bị thương theo loại phương tiện
+Nhận xét
+Mô tô, xe máy là "thủ phạm" chính gây ra tai nạn: Loại phương tiện này chiếm tỷ lệ lớn trong số các vụ tai nạn giao thông, dẫn đến số người chết và bị thương đáng kể.
+Tai nạn giao thông gây ra những hậu quả nghiêm trọng: Số lượng người chết và bị thương do tai nạn giao thông là rất lớn, gây ra những tổn thất về người và tài sản cho xã hội.
+Cần có những giải pháp mạnh mẽ để giảm thiểu tai nạn giao thông: Để giảm thiểu số người chết và bị thương do tai nạn giao thông, cần có sự phối hợp của nhiều bên, từ cơ quan quản lý nhà nước, đến các tổ chức xã hội và người dân.

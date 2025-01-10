@@ -1,0 +1,62 @@
+Dựa trên cấu trúc và nội dung của bộ dữ liệu, các **insight tiềm năng** có thể được rút ra từ thông tin bao gồm:
+
+---
+
+### 1. **Phân tích thời gian**
+- **Thời điểm tai nạn**: 
+  - Khoảng thời gian nào trong ngày (sáng, trưa, tối) có tỷ lệ tai nạn cao nhất?
+  - Ngày nào trong tuần/tháng có nhiều tai nạn hơn? (Có thể liên quan đến giờ cao điểm, ngày lễ, cuối tuần).
+- **Mùa hoặc thời tiết**: 
+  - Mối liên hệ giữa tình trạng thời tiết (nắng, râm, mưa) và số vụ tai nạn.
+
+---
+
+### 2. **Đặc điểm địa điểm**
+- **Khu vực xảy ra tai nạn nhiều nhất**:
+  - Phân bố số vụ tai nạn theo `Quận/Huyện` và `Phường/Xã`.
+  - Loại đường nào (quốc lộ, đường tỉnh, đường huyện) thường xảy ra tai nạn nhất?
+- **Độ rộng và tổ chức giao thông**:
+  - Các loại đường hẹp hơn (ví dụ, dưới 5m) hoặc không có giải phân cách có phải có tỷ lệ tai nạn cao hơn không?
+
+---
+
+### 3. **Hậu quả tai nạn**
+- **Mức độ nghiêm trọng**:
+  - Phân tích các vụ tai nạn có số người chết, bị thương nặng, hoặc nhẹ.
+  - So sánh giữa các loại đường, phương tiện, và thời tiết để xem yếu tố nào làm tăng nguy cơ tử vong.
+- **Thiệt hại kinh tế**:
+  - Số liệu về "Thiệt hại ước tính (triệu đồng)" theo từng yếu tố (loại đường, phương tiện, hình thức va chạm).
+
+---
+
+### 4. **Loại phương tiện liên quan**
+- **Phương tiện tham gia**:
+  - Loại phương tiện nào (mô tô, ô tô, xe tải, xe khách,...) có tỷ lệ liên quan đến tai nạn cao nhất?
+  - So sánh nhóm PT1 (phương tiện gây tai nạn) và PT2 (phương tiện bị va chạm) để tìm mối liên hệ giữa chúng.
+- **Hình thức va chạm**:
+  - Loại va chạm phổ biến nhất: xe với xe, xe với người đi bộ, hoặc tự gây tai nạn.
+
+---
+
+### 5. **Nguyên nhân và lỗi vi phạm**
+- **Lỗi thường gặp**:
+  - Những lỗi phổ biến nhất dẫn đến tai nạn (như không chú ý quan sát, vượt xe không đúng quy định, chuyển hướng sai...).
+- **Tương quan với hình thức va chạm**:
+  - Lỗi vi phạm cụ thể thường gắn với hình thức va chạm nào (xe tự gây tai nạn, xe với xe, v.v.).
+
+---
+
+### 6. **Các yếu tố cơ sở hạ tầng**
+- **Mặt đường và tình trạng**:
+  - Loại mặt đường nào (bê tông nhựa, đất, v.v.) liên quan đến số vụ tai nạn cao nhất?
+  - Đường có tình trạng mặt khô, ướt, hay trơn trượt có ảnh hưởng như thế nào đến số vụ tai nạn và mức độ nghiêm trọng?
+- **Tổ chức giao thông**:
+  - Đường đôi có giải phân cách có tỷ lệ tai nạn thấp hơn so với đường hai chiều không phân cách?
+
+---
+
+### 7. **Phân tích tổng hợp**
+- **Nhóm đối tượng dễ bị ảnh hưởng**:
+  - Tai nạn liên quan đến loại phương tiện nào gây thiệt hại nặng nề nhất (về số người chết, bị thương hoặc thiệt hại kinh tế).
+- **Xu hướng tổng quát**:
+  - Các yếu tố kết hợp (ví dụ: loại đường, thời tiết, và phương tiện) có dẫn đến mức độ nghiêm trọng cao hơn không?
