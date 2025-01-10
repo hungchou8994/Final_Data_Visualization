@@ -59,7 +59,7 @@ st.markdown(
 st.markdown("<h3 style='text-align: center;'>Traffic Accident Advisory ChatBot</h3>", unsafe_allow_html=True)
 
 ####################################################
-c1, c2 = st.columns(2)
+c1, c2 = st.columns([1, 7])
 with c1:
     st.image("Animation - 1736347933572.gif")
 with c2:
@@ -77,7 +77,7 @@ Với khả năng phân tích dữ liệu mạnh mẽ, ChatBot không chỉ đơ
 
 
 with st.container(border=True):
-    col1, col2 = st.columns([10, 1])
+    col1, col2 = st.columns(2)
     with col1.container(border=True):
         client1 = OpenAI(api_key=os.getenv('OPENAI_API_KEY'))
         # from openai import OpenAI as oai
