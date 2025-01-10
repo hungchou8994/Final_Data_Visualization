@@ -31,7 +31,7 @@ st.markdown("<h3 style='text-align: center;'>Thiệt hại và tác động</h3>
 
 ###########################################
 
-st.sidebar.title("Control Panel")
+st.sidebar.title("Bộ lọc")
 
 # Nhập gi
 district_input = st.sidebar.multiselect("Quận/Huyện", options=data['Quận/Huyện'].unique())

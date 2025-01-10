@@ -33,7 +33,7 @@ st.markdown("<h3 style='text-align: center;'>Nguyên nhân và điều kiện kh
 
 ###########################################
 
-st.sidebar.title("Control Panel")
+st.sidebar.title("Bộ lọc")
 
 # Nhập gi
 with st.sidebar.container():

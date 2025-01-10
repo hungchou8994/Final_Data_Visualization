@@ -29,7 +29,7 @@ st.markdown(
 st.markdown("<h3 style='text-align: center;'>Tổng quan về tai nạn giao thông</h3>", unsafe_allow_html=True)
 
 ###########################################
-st.sidebar.title("Control Panel")
+st.sidebar.title("Bộ lọc")
 
 # Nhập ngày
 with st.sidebar.container():
