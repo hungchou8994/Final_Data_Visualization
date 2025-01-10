@@ -341,7 +341,8 @@ with st.container(border=False):
             labels={'x': 'Thứ trong tuần', 'y': 'Số vụ tai nạn'},
             title='📊 Số vụ tai nạn theo các thứ trong tuần',
             text=accidents_by_day_vn.values,
-            color=accidents_by_day_vn.values,
+            color='Số vụ',
+            # color=accidents_by_day_vn.values,
             color_continuous_scale=px.colors.sequential.Cividis  # Thân thiện cho người mù màu
         )
 
@@ -403,7 +404,7 @@ with st.container(border=False):
     #     fig_district = px.bar(
     #         district_accidents,
     #         x='Quận/Huyện',
-    #         y='index',
+    #         y='index',fS
     #         orientation='h',  # Biểu đồ ngang
     #         title='📊 Top 10 quận/huyện có số vụ tai nạn cao nhất (Sắp xếp tăng dần)',
     #         # title=' ',
