@@ -33,8 +33,6 @@ set_pd_engine("pandas")
 # Đăng ký font Be VietNam Pro
 pdfmetrics.registerFont(TTFont('BeVietNamPro', r'Be_Vietnam_Pro/BeVietnamPro-Light.ttf'))
 
-export_folder = os.path.join(os.getcwd(), "exports")
-
 # Load data
 file_path = 'data_dv.csv'  # Replace with your uploaded file path
 data = pd.read_csv(file_path)
