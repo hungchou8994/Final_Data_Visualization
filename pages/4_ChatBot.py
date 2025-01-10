@@ -59,7 +59,7 @@ st.markdown(
 st.markdown("<h3 style='text-align: center;'>Traffic Accident Advisory ChatBot</h3>", unsafe_allow_html=True)
 
 ####################################################
-c1, c2 = st.columns([1, 7])
+c1, c2 = st.columns(2)
 with c1:
     st.image("Animation - 1736347933572.gif")
 with c2:
@@ -75,8 +75,6 @@ Với khả năng phân tích dữ liệu mạnh mẽ, ChatBot không chỉ đơ
 **Traffic Accident Advisory ChatBot** sẽ giúp bạn tiết kiệm thời gian và công sức khi tìm kiếm thông tin và tạo báo cáo, đồng thời cung cấp một công cụ hữu ích để nắm bắt và phân tích tình hình tai nạn giao thông một cách dễ dàng và trực quan.""")
 ####################################################
 
-
-translator = Translator(to_lang="en", from_lang="vi")
 
 with st.container(border=True):
     col1, col2 = st.columns([10, 1])
