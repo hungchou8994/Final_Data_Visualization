@@ -149,7 +149,7 @@ with st.container(border=True):
             except Exception as e:
                 return f"Lỗi khi gọi API OpenAI: {e}"
 
-        def process_user_query(client1, query, openai_answer=""):
+        def process_user_query(client1, query, openai_answer):
             system_prompt = (
                 f"""
         Bạn là một trợ lý thông minh với khả năng trả lời các câu hỏi phức tạp liên quan đến bộ dữ liệu lớn và phân tích sâu sắc. Bạn có khả năng giúp người dùng hiểu rõ hơn về các thông tin và các phân tích có sẵn, cũng như hỗ trợ họ đưa ra các quyết định chính xác và hợp lý dựa trên dữ liệu.
@@ -199,9 +199,8 @@ with st.container(border=True):
             Hãy trả lời một cách chi tiết, rõ ràng và chính xác bằng Tiếng Việt. Đảm bảo rằng câu trả lời của bạn không chỉ đầy đủ mà còn có tính linh hoạt, giúp người dùng không chỉ trả lời câu hỏi mà còn khám phá thêm thông tin có giá trị từ bộ dữ liệu.
             """
 
-            # openai_answer = query_engine.chat(user_query)
-            # answer = process_user_query(client1, query, openai_answer)
-            answer = process_user_query(client1, query)
+            openai_answer = query_engine.chat(user_query)
+            answer = process_user_query(client1, query, openai_answer)
             st.write(answer)
 
     ###############################################################################################
