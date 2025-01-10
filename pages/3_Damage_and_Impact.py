@@ -71,7 +71,7 @@ with st.container():
     col1.markdown(
         f"""
         <div style="
-            background-color: #85CFF9;
+            background-color: #61ECEB;
             border-radius: 10px;
             text-align: center;">
             <span>Số Quận/Huyện</span>
@@ -84,7 +84,7 @@ with st.container():
     col2.markdown(
         f"""
         <div style="
-            background-color: #80E5CE;
+            background-color: #67BBF2;
             border-radius: 10px;
             text-align: center;">
             <span>Số Người Chết</span>
@@ -97,7 +97,7 @@ with st.container():
     col3.markdown(
         f"""
         <div style="
-            background-color: #80E5CE;
+            background-color: #6D96F7;
             border-radius: 10px;
             text-align: center;">
             <span>Số Vụ Tai Nạn</span>
