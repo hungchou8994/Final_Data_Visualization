@@ -347,6 +347,7 @@ with st.container(border=False):
 
         # Customize the layout with size adjustments
         fig.update_layout(
+            margin=dict(l=0, r=0, t=70, b=0),
             # xaxis_title='Thứ trong tuần',
             # yaxis_title='Số vụ tai nạn',
             # title_font_size=18,
