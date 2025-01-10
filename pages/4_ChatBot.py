@@ -30,8 +30,6 @@ set_pd_engine("pandas")
 
 # OpenAI API Key
 
-client = OpenAI(api_key=os.getenv('OPENAI_API_KEY'))
-
 # Đăng ký font Be VietNam Pro
 pdfmetrics.registerFont(TTFont('BeVietNamPro', r'Be_Vietnam_Pro/BeVietnamPro-Light.ttf'))
 
@@ -85,6 +83,7 @@ translator = Translator(to_lang="en", from_lang="vi")
 with st.container(border=True):
     col1, col2 = st.columns(2)
     with col1.container(border=True):
+        client = OpenAI(api_key=os.getenv('OPENAI_API_KEY'))
         # from openai import OpenAI as oai
 
         def load_file_content(file_path):
@@ -207,6 +206,7 @@ with st.container(border=True):
     ###############################################################################################
 
     with col2.container(border=True):
+        client = OpenAI(api_key=os.getenv('OPENAI_API_KEY'))
 
         st.header("Report Generator")
         
