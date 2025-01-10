@@ -340,7 +340,7 @@ with st.container(border=False):
             y=accidents_by_day_vn.values,
             labels={'x': 'Thứ trong tuần', 'y': 'Số vụ tai nạn'},
             title='📊 Số vụ tai nạn theo các thứ trong tuần',
-            text=accidents_by_day_vn.values,
+            # text=accidents_by_day_vn.values,
             # text='Số vụ tai nạn',
             # color='Số vụ tai nạn',
             color=accidents_by_day_vn.values,
@@ -377,6 +377,7 @@ with st.container(border=False):
             ),
             font=dict(size=12),
             height=300,
+            
             legend_title=dict(
                 text='Số vụ'
             )
