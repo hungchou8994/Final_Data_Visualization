@@ -339,6 +339,13 @@ with chart_col2.container():
             ),
         )
 
+        fig.update_traces(
+            hovertemplate=(
+                '<b>Nhãn:</b> %{label}<br>' +
+                '<b>Số vụ tai nạn:</b> %{value}<br>'
+            )
+        )
+
         # Hiển thị biểu đồ trên Streamlit
         # st.markdown("**📊 Phân tích tai nạn theo loại phương tiện và quận/huyện**")
         st.plotly_chart(fig, use_container_width=True)
