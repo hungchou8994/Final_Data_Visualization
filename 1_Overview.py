@@ -376,7 +376,7 @@ with st.container(border=False):
                 yanchor='top'  # Căn chỉnh theo chiều dọc ở phía trên
             ),
             font=dict(size=12),
-            height=300
+            height=300,
             legend_title=dict(
                 text='Số vụ'
             )
