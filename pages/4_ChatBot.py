@@ -81,7 +81,7 @@ Với khả năng phân tích dữ liệu mạnh mẽ, ChatBot không chỉ đơ
 translator = Translator(to_lang="en", from_lang="vi")
 
 with st.container(border=True):
-    col1, col2 = st.columns(2)
+    col1, col2 = st.columns([10, 1])
     with col1.container(border=True):
         client1 = OpenAI(api_key=os.getenv('OPENAI_API_KEY'))
         # from openai import OpenAI as oai
